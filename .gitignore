@@ -1,0 +1,11 @@
+# builds
+arm-p
+arm
+x86
+
+# translations binaries
+*.qm
+
+# IDE
+.device
+.settings
