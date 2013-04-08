@@ -22,7 +22,12 @@ Page {
                     }
                     TextField {
                         id: serverAddress
+                        objectName: "serverAddress"
                         inputMode: TextFieldInputMode.Url
+                        text: _settings.getValueFor(objectName, "")
+                        onTextChanged: {
+                            _settings.saveValueFor(serverAddress.objectName, text);
+                        }
                     }
                 } // Address
                 Container {
@@ -32,6 +37,11 @@ Page {
                     }
                     TextField {
                         id: serverLogin
+                        objectName: "serverLogin"
+                        text: _settings.getValueFor(objectName, "")
+                        onTextChanged: {
+                            _settings.saveValueFor(serverLogin.objectName, text);
+                        }
                     }
                 } // Login
                 Container {
@@ -41,7 +51,12 @@ Page {
                     }
                     TextField {
                         id: serverPassword
+                        objectName: "serverPassword"
                         inputMode: TextFieldInputMode.Password
+                        text: _settings.getValueFor(objectName, "")
+                        onTextChanged: {
+                            _settings.saveValueFor(serverPassword.objectName, text);
+                        }
                     }
                 } // Address
             } // Server settings
