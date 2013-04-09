@@ -5,10 +5,14 @@ device {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
+                 $$quote($$BASEDIR/src/packets/apacket.cpp) \
+                 $$quote($$BASEDIR/src/packets/login.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/packets/apacket.hpp) \
+                 $$quote($$BASEDIR/src/packets/login.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
     }
@@ -16,10 +20,14 @@ device {
     CONFIG(release, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
+                 $$quote($$BASEDIR/src/packets/apacket.cpp) \
+                 $$quote($$BASEDIR/src/packets/login.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/packets/apacket.hpp) \
+                 $$quote($$BASEDIR/src/packets/login.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
     }
@@ -29,16 +37,21 @@ simulator {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
+                 $$quote($$BASEDIR/src/packets/apacket.cpp) \
+                 $$quote($$BASEDIR/src/packets/login.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/packets/apacket.hpp) \
+                 $$quote($$BASEDIR/src/packets/login.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
     }
 }
 
-INCLUDEPATH +=  $$quote($$BASEDIR/src)
+INCLUDEPATH +=  $$quote($$BASEDIR/src/packets) \
+         $$quote($$BASEDIR/src)
 
 CONFIG += precompile_header
 

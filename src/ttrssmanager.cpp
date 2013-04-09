@@ -2,12 +2,14 @@
 
 #include "settings.hpp"
 
+#include "packets/login.hpp"
+
 #include <bb/data/JsonDataAccess>
 #include <QtCore/QDebug>
-#include <QtCore/QMap>
-#include <QtNetwork/QNetworkReply>
 
-TTRSSManager::TTRSSManager() : _networkAccessManager(new QNetworkAccessManager(this)), _loginStatus(NOT_LOGGED_IN) {
+TTRSSManager::TTRSSManager() :	_networkAccessManager(new QNetworkAccessManager(this)),
+								_loginStatus(NOT_LOGGED_IN),
+								_currentPacketID(0) {
 	connect(_networkAccessManager, SIGNAL(finished(QNetworkReply*)),
 			this, SLOT(requestFinished(QNetworkReply*)));
 
@@ -20,14 +22,12 @@ TTRSSManager::~TTRSSManager() {
 
 void TTRSSManager::login() {
 	_loginStatus = IN_PROGRESS;
-	QVariantMap loginPacket;
-	loginPacket["op"] = "login";
-	loginPacket["user"] = Settings::getValueFor("serverLogin", "");
-	loginPacket["password"] = Settings::getValueFor("serverPassword", "");
-	QByteArray packet;
-	bb::data::JsonDataAccess jda;
-	jda.saveToBuffer(loginPacket, &packet);
-	sendRequest(packet);
+	sendPacket(new Login(Settings::getValueFor("serverLogin", "").toString(), Settings::getValueFor("serverPassword", "").toString(), this, _currentPacketID++));
+}
+
+void TTRSSManager::sendPacket(APacket* packet) {
+	_waitingPackets.insert(packet->getId(), packet);
+	sendRequest(packet->getRequestData());
 }
 
 void TTRSSManager::sendRequest(QByteArray requestData) {
@@ -60,8 +60,15 @@ void TTRSSManager::handleReply(QVariant reply) {
 		// TODO: proper error handling
 		qDebug() << "Invalid packet received";
 	} else {
-		// Dispatch depending on seq
-		qDebug() << "Answer to packet" << mReply.value("seq").toInt() << "received.";
+		unsigned long long seq = mReply.value("seq").toLongLong();
+		// TODO: find?
+		if (_waitingPackets.contains(seq)) {
+			APacket* packet = _waitingPackets.take(seq);
+			packet->handleReply(mReply);
+		} else {
+			// TODO: handle error
+			qDebug() << "Received answer to uknown packet" << seq;
+		}
 	}
 }
 
