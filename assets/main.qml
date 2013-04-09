@@ -1,9 +1,7 @@
 import bb.cascades 1.0
 import "FeedsListPage"
 
-NavigationPane {
-    id: nav
-    
+TabbedPane {
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
             onTriggered: {
@@ -12,7 +10,11 @@ NavigationPane {
         }
     } // Menu.definition
     
-    FeedsListPage {}
+    showTabsOnActionBar: false
+    activePane: NavigationPane {
+        id: nav
+        FeedsListPage {}
+    } // NavigationPane
 
     attachedObjects: [
         ComponentDefinition {
@@ -25,4 +27,12 @@ NavigationPane {
         var page = settingsPageDefinition.createObject();
         nav.push(page)
     }
-} // NavigationPane
+
+    Tab {
+        title: qsTr("All feeds")
+    }
+
+    Tab {
+        title: qsTr("Test")
+    }
+} // TabbedPane
