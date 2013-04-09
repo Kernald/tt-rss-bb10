@@ -17,6 +17,7 @@ public:
 	void login();
 
 signals:
+	void networkError(QNetworkReply::NetworkError error);
 	void loginResult(bool result);
 
 private:
@@ -26,6 +27,8 @@ private slots:
 	void requestFinished(QNetworkReply* reply);
 
 private:
+	void handleReply(QVariant reply) const;
+	void handleNetworkError(QNetworkReply::NetworkError error) const;
 	QNetworkAccessManager*	_networkAccessManager;
 };
 

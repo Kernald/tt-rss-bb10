@@ -43,10 +43,20 @@ void TTRSSManager::sendRequest(QByteArray requestData) {
 
 void TTRSSManager::requestFinished(QNetworkReply* reply) {
 	if (reply->error() == QNetworkReply::NoError) {
-		qDebug() << reply->readAll();
+		bb::data::JsonDataAccess jda;
+		handleReply(jda.loadFromBuffer(reply->readAll()));
 	} else {
-		qDebug() << "Error";
+		handleError(reply->error());
 	}
 
 	reply->deleteLater();
+}
+
+void TTRSSManager::handleReply(QVariant reply) const {
+	qDebug() << reply;
+}
+
+void TTRSSManager::handleError(QNetworkReply::NetworkError error) const {
+	emit networkError(error);
+	qDebug() << "Network error: " << error;
 }
