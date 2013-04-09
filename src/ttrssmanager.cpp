@@ -4,10 +4,10 @@
 
 #include <bb/data/JsonDataAccess>
 #include <QtCore/QDebug>
+#include <QtCore/QMap>
 #include <QtNetwork/QNetworkReply>
 
-TTRSSManager::TTRSSManager() {
-	_networkAccessManager = new QNetworkAccessManager(this);
+TTRSSManager::TTRSSManager() : _networkAccessManager(new QNetworkAccessManager(this)), _loginStatus(NOT_LOGGED_IN) {
 	connect(_networkAccessManager, SIGNAL(finished(QNetworkReply*)),
 			this, SLOT(requestFinished(QNetworkReply*)));
 
@@ -19,6 +19,7 @@ TTRSSManager::~TTRSSManager() {
 }
 
 void TTRSSManager::login() {
+	_loginStatus = IN_PROGRESS;
 	QVariantMap loginPacket;
 	loginPacket["op"] = "login";
 	loginPacket["user"] = Settings::getValueFor("serverLogin", "");
@@ -54,6 +55,14 @@ void TTRSSManager::requestFinished(QNetworkReply* reply) {
 
 void TTRSSManager::handleReply(QVariant reply) {
 	qDebug() << reply;
+	QMap<QString, QVariant> mReply = reply.toMap();
+	if (!mReply.contains("status") || !mReply.contains("seq") || !mReply.contains("content")) {
+		// TODO: proper error handling
+		qDebug() << "Invalid packet received";
+	} else {
+		// Dispatch depending on seq
+		qDebug() << "Answer to packet" << mReply.value("seq").toInt() << "received.";
+	}
 }
 
 void TTRSSManager::handleNetworkError(QNetworkReply::NetworkError error) {
@@ -74,4 +83,7 @@ void TTRSSManager::handleNetworkError(QNetworkReply::NetworkError error) {
 	}
 	emit networkError(QVariant(errorMessage));
 	qDebug() << "Network error:" << error << "-" << errorMessage;
+
+	// If login was in progress, it has probably failed
+	_loginStatus = FAILED;
 }
