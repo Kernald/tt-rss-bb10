@@ -2,9 +2,9 @@
 #define __TTRSS_MANAGER_HPP__
 
 class QNetworkAccessManager;
-class QNetworkReply;
 
 #include <QtCore/QObject>
+#include <QtNetwork/QNetworkReply>
 
 class TTRSSManager : public QObject {
 
@@ -17,18 +17,17 @@ public:
 	void login();
 
 signals:
-	void networkError(QNetworkReply::NetworkError error);
+	void networkError(QVariant error);
 	void loginResult(bool result);
-
-private:
-	void sendRequest(QByteArray requestData);
 
 private slots:
 	void requestFinished(QNetworkReply* reply);
 
 private:
-	void handleReply(QVariant reply) const;
-	void handleNetworkError(QNetworkReply::NetworkError error) const;
+	void sendRequest(QByteArray requestData);
+
+	void handleReply(QVariant reply);
+	void handleNetworkError(QNetworkReply::NetworkError error);
 	QNetworkAccessManager*	_networkAccessManager;
 };
 

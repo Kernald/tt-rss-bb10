@@ -46,17 +46,32 @@ void TTRSSManager::requestFinished(QNetworkReply* reply) {
 		bb::data::JsonDataAccess jda;
 		handleReply(jda.loadFromBuffer(reply->readAll()));
 	} else {
-		handleError(reply->error());
+		handleNetworkError(reply->error());
 	}
 
 	reply->deleteLater();
 }
 
-void TTRSSManager::handleReply(QVariant reply) const {
+void TTRSSManager::handleReply(QVariant reply) {
 	qDebug() << reply;
 }
 
-void TTRSSManager::handleError(QNetworkReply::NetworkError error) const {
-	emit networkError(error);
-	qDebug() << "Network error: " << error;
+void TTRSSManager::handleNetworkError(QNetworkReply::NetworkError error) {
+	QString errorMessage;
+	switch (error) {
+	case QNetworkReply::ConnectionRefusedError:
+		errorMessage = tr("Connection to %1 refused.").arg(Settings::getValueFor("serverAddress", "").toString());
+		break;
+	case QNetworkReply::HostNotFoundError:
+		errorMessage = tr("Host %1 not found.").arg(Settings::getValueFor("serverAddress", "").toString());
+		break;
+	case QNetworkReply::ContentNotFoundError:
+		errorMessage = tr("%1 not found.").arg(Settings::getApiPath().toString());
+		break;
+	default:
+		errorMessage = tr("Network error.");
+		break;
+	}
+	emit networkError(QVariant(errorMessage));
+	qDebug() << "Network error:" << error << "-" << errorMessage;
 }
