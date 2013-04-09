@@ -2,6 +2,7 @@
 #define __SETTINGS_HPP__
 
 #include <QtCore/QObject>
+#include <QtCore/QUrl>
 #include <QtCore/QVariant>
 
 class Settings : public QObject {
@@ -9,11 +10,10 @@ class Settings : public QObject {
 	Q_OBJECT
 
 public:
-	Settings();
-	virtual ~Settings();
+	Q_INVOKABLE static QVariant getValueFor(const QString &objectName, const QVariant &defaultValue);
+	Q_INVOKABLE static void saveValueFor(const QString &objectName, const QVariant &inputValue);
 
-	Q_INVOKABLE QVariant getValueFor(const QString &objectName, const QVariant &defaultValue);
-	Q_INVOKABLE void saveValueFor(const QString &objectName, const QVariant &inputValue);
+	static QUrl getApiPath();
 };
 
 #endif // __SETTINGS_HPP__

@@ -6,6 +6,7 @@
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) : QObject(app) {
 	bb::cascades::QmlDocument *qml = bb::cascades::QmlDocument::create("asset:///main.qml").parent(this);
+	qml->setContextProperty("_manager", &_manager);
 	qml->setContextProperty("_settings", &_settings);
     bb::cascades::AbstractPane *root = qml->createRootObject<bb::cascades::AbstractPane>();
     app->setScene(root);

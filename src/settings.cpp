@@ -2,12 +2,6 @@
 
 #include <QtCore/QSettings>
 
-Settings::Settings() {
-}
-
-Settings::~Settings() {
-}
-
 QVariant Settings::getValueFor(const QString &objectName, const QVariant &defaultValue) {
     QSettings settings;
 
@@ -24,4 +18,9 @@ void Settings::saveValueFor(const QString &objectName, const QVariant &inputValu
     // A new value is saved to the application settings object
     QSettings settings;
     settings.setValue(objectName, inputValue);
+}
+
+QUrl Settings::getApiPath() {
+	QUrl url(getValueFor("serverAddress", QVariant("")).toString() + "/api/");
+	return url;
 }

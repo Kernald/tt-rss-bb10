@@ -5,19 +5,23 @@ device {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
-                 $$quote($$BASEDIR/src/settings.cpp)
+                 $$quote($$BASEDIR/src/settings.cpp) \
+                 $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
-                 $$quote($$BASEDIR/src/settings.hpp)
+                 $$quote($$BASEDIR/src/settings.hpp) \
+                 $$quote($$BASEDIR/src/ttrssmanager.hpp)
     }
 
     CONFIG(release, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
-                 $$quote($$BASEDIR/src/settings.cpp)
+                 $$quote($$BASEDIR/src/settings.cpp) \
+                 $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
-                 $$quote($$BASEDIR/src/settings.hpp)
+                 $$quote($$BASEDIR/src/settings.hpp) \
+                 $$quote($$BASEDIR/src/ttrssmanager.hpp)
     }
 }
 
@@ -25,10 +29,12 @@ simulator {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
-                 $$quote($$BASEDIR/src/settings.cpp)
+                 $$quote($$BASEDIR/src/settings.cpp) \
+                 $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
-                 $$quote($$BASEDIR/src/settings.hpp)
+                 $$quote($$BASEDIR/src/settings.hpp) \
+                 $$quote($$BASEDIR/src/ttrssmanager.hpp)
     }
 }
 
