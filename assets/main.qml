@@ -3,6 +3,7 @@ import bb.system 1.0
 import "FeedsListPage"
 
 TabbedPane {
+    id: tabPane
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
             onTriggered: {
@@ -22,6 +23,10 @@ TabbedPane {
             id: settingsPageDefinition
             source: "SettingsPage/SettingsPage.qml"
         }, // Settings Page
+        ComponentDefinition {
+            id: newTabDefinition
+            content: Tab {}
+        }, // New tab
         SystemToast {
             id: errorToast
             body: "Error"
@@ -38,11 +43,13 @@ TabbedPane {
         errorToast.show();
     }
     
-    Tab {
-        title: qsTr("All feeds")
+    function addCategory(category) {
+        var tab = newTabDefinition.createObject();
+        tab.title = category;
+        tabPane.add(tab);
     }
     
     Tab {
-        title: qsTr("Test")
+        title: qsTr("All feeds")
     }
 } // TabbedPane

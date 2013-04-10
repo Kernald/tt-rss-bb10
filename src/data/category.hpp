@@ -4,9 +4,15 @@
 class Feed;
 
 #include <QtCore/QList>
+#include <QtCore/QObject>
 #include <QtCore/QString>
 
-class Category {
+class Category : public QObject {
+
+	Q_OBJECT
+
+	Q_PROPERTY(QString title READ getTitle CONSTANT);
+
 public:
 	Category(QString title, QList<Feed*> feeds);
 	virtual ~Category();

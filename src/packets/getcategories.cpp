@@ -1,5 +1,9 @@
 #include "getcategories.hpp"
 
+#include "ttrssmanager.hpp"
+
+#include "data/category.hpp"
+
 #include <QtCore/QDebug>
 
 GetCategories::GetCategories(	bool unreadOnly,
@@ -18,7 +22,12 @@ GetCategories::~GetCategories() {
 
 
 void GetCategories::handleSuccess(QVariant reply) {
-	qDebug() << "GetCategories::success";
+	QList<QVariant> lReply = reply.toList();
+	for (QList<QVariant>::ConstIterator it = lReply.constBegin(), end = lReply.constEnd(); it != end; ++it) {
+		QMap<QString, QVariant> mCategory = it->toMap();
+		Category* category = new Category(mCategory.value("title").toString(), QList<Feed*>());
+		getManager()->addCategory(category);
+	}
 }
 
 void GetCategories::handleError(QVariant /*reply*/) {

@@ -2,6 +2,7 @@
 #define __TTRSS_MANAGER_HPP__
 
 class APacket;
+class Category;
 
 class QNetworkAccessManager;
 
@@ -33,13 +34,16 @@ public:
 	QString sessionID() const;
 	void setSessionID(QString sessionID);
 
-	void getCategories();
+	void requestCategories();
 
-signals:
+	void addCategory(Category* category);
+
+Q_SIGNALS:
 	void networkError(QVariant error);
 	void loginResult(bool result);
+	void categoryAdded(QVariant title);
 
-private slots:
+private Q_SLOTS:
 	void requestFinished(QNetworkReply* reply);
 
 private:
@@ -54,6 +58,8 @@ private:
 	QString								_sessionID;
 	unsigned long long					_currentPacketID;
 	QMap<unsigned long long, APacket*>	_waitingPackets;
+
+	QList<Category*>					_categories;
 };
 
 inline TTRSSManager::ELoginStatus TTRSSManager::loginStatus() const {
@@ -70,7 +76,7 @@ inline QString TTRSSManager::sessionID() const {
 
 inline void TTRSSManager::setSessionID(QString sessionID) {
 	_sessionID = sessionID;
-	getCategories();
+	requestCategories();
 }
 
 #endif // __TTRSS_MANAGER_HPP__

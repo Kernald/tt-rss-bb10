@@ -2,6 +2,8 @@
 
 #include "settings.hpp"
 
+#include "data/category.hpp"
+
 #include "packets/getcategories.hpp"
 #include "packets/login.hpp"
 
@@ -19,6 +21,8 @@ TTRSSManager::TTRSSManager() :	_networkAccessManager(new QNetworkAccessManager(t
 
 TTRSSManager::~TTRSSManager() {
 	delete _networkAccessManager;
+	for (QList<Category*>::Iterator it = _categories.begin(), end = _categories.end(); it != end; ++it)
+		delete *it;
 }
 
 void TTRSSManager::login() {
@@ -26,12 +30,17 @@ void TTRSSManager::login() {
 	sendPacket(new Login(Settings::getValueFor("serverLogin", "").toString(), Settings::getValueFor("serverPassword", "").toString(), this, _currentPacketID++));
 }
 
-void TTRSSManager::getCategories() {
+void TTRSSManager::requestCategories() {
 	sendPacket(new GetCategories(	Settings::getValueFor("unreadOnly", true).toBool(),
 									Settings::getValueFor("enableNested", false).toBool(),
 									Settings::getValueFor("includeEmpty", false).toBool(),
 									this,
 									_currentPacketID++));
+}
+
+void TTRSSManager::addCategory(Category* category) {
+	_categories.append(category);
+	emit categoryAdded(QVariant(category->getTitle()));
 }
 
 void TTRSSManager::sendPacket(APacket* packet) {

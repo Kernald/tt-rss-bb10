@@ -11,5 +11,6 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) : QObject(app) {
 
     bb::cascades::AbstractPane *root = qml->createRootObject<bb::cascades::AbstractPane>();
     connect(&_manager, SIGNAL(networkError(QVariant)), root, SLOT(displayError(QVariant)));
+    connect(&_manager, SIGNAL(categoryAdded(QVariant)), root, SLOT(addCategory(QVariant)));
     app->setScene(root);
 }
