@@ -5,6 +5,7 @@
 #include "data/category.hpp"
 
 #include "packets/getcategories.hpp"
+#include "packets/getfeeds.hpp"
 #include "packets/login.hpp"
 
 #include <bb/data/JsonDataAccess>
@@ -43,6 +44,17 @@ void TTRSSManager::addCategory(Category* category) {
 	QVariant v;
 	v.setValue(qobject_cast<QObject*>(category));
 	emit categoryAdded(v);
+}
+
+Category* TTRSSManager::getCategory(int categoryId) const {
+	for (QList<Category*>::ConstIterator it = _categories.constBegin(), end = _categories.constEnd(); it != end; ++it)
+		if ((*it)->getId() == categoryId)
+			return *it;
+	return NULL;
+}
+
+void TTRSSManager::requestFeeds(int categoryId) {
+	sendPacket(new GetFeeds(categoryId, Settings::getValueFor("unreadOnly", true).toBool(), this, _currentPacketID++));
 }
 
 void TTRSSManager::sendPacket(APacket* packet) {

@@ -10,6 +10,7 @@ device {
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
+                 $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
@@ -20,6 +21,7 @@ device {
                  $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
+                 $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
@@ -33,6 +35,7 @@ device {
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
+                 $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
@@ -43,6 +46,7 @@ device {
                  $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
+                 $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
@@ -58,6 +62,7 @@ simulator {
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
+                 $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
@@ -68,6 +73,7 @@ simulator {
                  $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
+                 $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)

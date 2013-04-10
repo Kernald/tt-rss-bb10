@@ -37,6 +37,9 @@ public:
 	void requestCategories();
 
 	void addCategory(Category* category);
+	Category* getCategory(int categoryId) const;
+
+	void requestFeeds(int categoryId);
 
 Q_SIGNALS:
 	void networkError(QVariant error);

@@ -28,6 +28,8 @@ public:
 	bool hasUnreadArticles() const;
 	unsigned int unreadArticlesCount() const;
 
+	void addFeed(Feed* feed);
+
 Q_SIGNALS:
 	// TODO: emit it
 	void unreadArticlesChanged(bool hasUnreadArticles);

@@ -27,6 +27,7 @@ void GetCategories::handleSuccess(QVariant reply) {
 		QMap<QString, QVariant> mCategory = it->toMap();
 		Category* category = new Category(mCategory.value("id").toInt(), mCategory.value("title").toString(), QList<Feed*>());
 		getManager()->addCategory(category);
+		getManager()->requestFeeds(category->getId());
 	}
 }
 

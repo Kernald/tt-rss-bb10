@@ -32,3 +32,12 @@ unsigned int Category::unreadArticlesCount() const {
 
 	return count;
 }
+
+void Category::addFeed(Feed* feed) {
+	unsigned int unread = unreadArticlesCount();
+	_feeds.append(feed);
+	if (feed->hasUnreadArticles()) {
+		emit unreadArticlesChanged(true);
+		emit unreadArticlesCountChanged(unread + feed->unreadArticlesCount());
+	}
+}
