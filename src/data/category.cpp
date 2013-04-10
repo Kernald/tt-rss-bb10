@@ -2,10 +2,11 @@
 
 #include "feed.hpp"
 
-Category::Category(QString title, QList<Feed*> feeds) : _title(title), _feeds(feeds) {
+Category::Category(int id, QString title, QList<Feed*> feeds) : _id(id), _title(title), _feeds(feeds) {
 }
 
 Category::Category(const Category& other) : QObject() {
+	_id = other.getId();
 	_title = other.getTitle();
 	_feeds = other.getFeeds();
 }

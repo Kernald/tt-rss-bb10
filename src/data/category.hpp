@@ -17,10 +17,11 @@ class Category : public QObject {
 	Q_PROPERTY(unsigned int unreadArticlesCount READ unreadArticlesCount NOTIFY unreadArticlesCountChanged);
 
 public:
-	Category(QString title = "", QList<Feed*> feeds = QList<Feed*>());
+	Category(int id = -1, QString title = "", QList<Feed*> feeds = QList<Feed*>());
 	Category(const Category& other);
 	virtual ~Category();
 
+	int getId() const;
 	QString getTitle() const;
 	QList<Feed*> getFeeds() const;
 
@@ -34,11 +35,16 @@ Q_SIGNALS:
 	void unreadArticlesCountChanged(unsigned int unreadArticlesCount);
 
 private:
+	int				_id;
 	QString			_title;
 	QList<Feed*>	_feeds;
 };
 
 Q_DECLARE_METATYPE(Category)
+
+inline int Category::getId() const {
+	return _id;
+}
 
 inline QString Category::getTitle() const {
 	return _title;
