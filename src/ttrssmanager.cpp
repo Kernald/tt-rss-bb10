@@ -116,7 +116,7 @@ void TTRSSManager::handleReply(QVariant reply) {
 			packet->handleReply(mReply);
 		} else {
 			// TODO: handle error
-			qDebug() << "Received answer to uknown packet" << seq;
+			qDebug() << "Received answer to unknown packet" << seq;
 		}
 	}
 }
