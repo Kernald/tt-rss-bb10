@@ -6,14 +6,16 @@ Article::Article(	unsigned int id,
 					bool unread,
 					bool marked,
 					bool published,
-					QString content) :
+					QString content,
+					bool loaded) :
 						_id(id),
 						_title(title),
 						_labels(labels),
 						_unread(unread),
 						_marked(marked),
 						_published(published),
-						_content(content) {
+						_content(content),
+						_loaded(loaded) {
 }
 
 Article::~Article() {

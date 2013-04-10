@@ -8,7 +8,7 @@
 class Article {
 public:
 	// TODO: complete attributes
-	Article(unsigned int id, QString title, QList<QString> labels, bool unread, bool marked, bool published, QString content);
+	Article(unsigned int id, QString title, QList<QString> labels, bool unread, bool marked, bool published, QString content = "", bool loaded = false);
 	virtual ~Article();
 
 	unsigned int getId() const;
@@ -27,17 +27,18 @@ public:
 	QUrl getLink() const;
 
 private:
-	unsigned int _id;
-	QString _title;
-	QUrl _link;
-	QList<QString> _labels;
-	bool _unread;
-	bool _marked;
-	bool _published;
-	QString _comments;
-	QString _author;
-	unsigned int _updated;
-	QString _content;
+	unsigned int	_id;
+	QString			_title;
+	QUrl			_link;
+	QList<QString>	_labels;
+	bool			_unread;
+	bool			_marked;
+	bool			_published;
+	QString			_comments;
+	QString			_author;
+	unsigned int	_updated;
+	QString			_content;
+	bool			_loaded;
 	// TODO: feed_id
 	// TODO: attachments
 };
@@ -95,6 +96,7 @@ inline unsigned int Article::getUpdated() const {
 }
 
 inline QString Article::getContent() const {
+	// TODO: if not loaded, load first
 	return _content;
 }
 
