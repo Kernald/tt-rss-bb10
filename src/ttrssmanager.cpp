@@ -40,7 +40,9 @@ void TTRSSManager::requestCategories() {
 
 void TTRSSManager::addCategory(Category* category) {
 	_categories.append(category);
-	emit categoryAdded(QVariant(category->getTitle()));
+	QVariant v;
+	v.setValue(qobject_cast<QObject*>(category));
+	emit categoryAdded(v);
 }
 
 void TTRSSManager::sendPacket(APacket* packet) {

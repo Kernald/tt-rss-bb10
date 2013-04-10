@@ -16,6 +16,8 @@ public:
 	QUrl getUrl() const;
 	QList<Article*> getArticles() const;
 
+	bool hasUnreadArticles() const;
+	unsigned int unreadArticlesCount() const;
 	QList<Article*> unreadArticles() const;
 
 private:

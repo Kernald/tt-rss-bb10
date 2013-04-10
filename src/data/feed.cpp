@@ -12,6 +12,14 @@ Feed::~Feed() {
 		delete *it;
 }
 
+bool Feed::hasUnreadArticles() const {
+	return unreadArticles().size() > 0;
+}
+
+unsigned int Feed::unreadArticlesCount() const {
+	return unreadArticles().size();
+}
+
 QList<Article*> Feed::unreadArticles() const {
 	QList<Article*> ret;
 	for (QList<Article*>::ConstIterator it = _articles.constBegin(), end = _articles.constEnd(); it != end; ++it)

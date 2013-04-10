@@ -41,7 +41,7 @@ public:
 Q_SIGNALS:
 	void networkError(QVariant error);
 	void loginResult(bool result);
-	void categoryAdded(QVariant title);
+	void categoryAdded(QVariant category);
 
 private Q_SLOTS:
 	void requestFinished(QNetworkReply* reply);

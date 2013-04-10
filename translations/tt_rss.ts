@@ -26,9 +26,5 @@
         <source>All feeds</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Test</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 </TS>

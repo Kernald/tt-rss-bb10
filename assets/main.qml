@@ -1,5 +1,6 @@
 import bb.cascades 1.0
 import bb.system 1.0
+import "CategoryTab"
 import "FeedsListPage"
 
 TabbedPane {
@@ -25,7 +26,7 @@ TabbedPane {
         }, // Settings Page
         ComponentDefinition {
             id: newTabDefinition
-            content: Tab {}
+            content: CategoryTab {}
         }, // New tab
         SystemToast {
             id: errorToast
@@ -45,7 +46,7 @@ TabbedPane {
     
     function addCategory(category) {
         var tab = newTabDefinition.createObject();
-        tab.title = category;
+        tab.category = category;
         tabPane.add(tab);
     }
     

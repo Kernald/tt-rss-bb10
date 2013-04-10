@@ -1,5 +1,7 @@
 #include "applicationui.hpp"
 
+#include "data/category.hpp"
+
 #include <bb/cascades/Application>
 
 #include <QtCore/QLocale>
@@ -19,6 +21,8 @@ void standardOutput(QtMsgType /*type*/, const char* msg) {
 #endif // QT_DEBUG
 
 Q_DECL_EXPORT int main(int argc, char **argv) {
+	qRegisterMetaType<Category>("Category");
+
     Application app(argc, argv);
 
 #ifdef QT_DEBUG
