@@ -4,6 +4,9 @@ BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 device {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/data/article.cpp) \
+                 $$quote($$BASEDIR/src/data/category.cpp) \
+                 $$quote($$BASEDIR/src/data/feed.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
@@ -12,6 +15,9 @@ device {
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/data/article.hpp) \
+                 $$quote($$BASEDIR/src/data/category.hpp) \
+                 $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
@@ -21,6 +27,9 @@ device {
 
     CONFIG(release, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/data/article.cpp) \
+                 $$quote($$BASEDIR/src/data/category.cpp) \
+                 $$quote($$BASEDIR/src/data/feed.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
@@ -29,6 +38,9 @@ device {
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/data/article.hpp) \
+                 $$quote($$BASEDIR/src/data/category.hpp) \
+                 $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
@@ -40,6 +52,9 @@ device {
 simulator {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/data/article.cpp) \
+                 $$quote($$BASEDIR/src/data/category.cpp) \
+                 $$quote($$BASEDIR/src/data/feed.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
@@ -48,6 +63,9 @@ simulator {
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/data/article.hpp) \
+                 $$quote($$BASEDIR/src/data/category.hpp) \
+                 $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
@@ -57,6 +75,7 @@ simulator {
 }
 
 INCLUDEPATH +=  $$quote($$BASEDIR/src/packets) \
+         $$quote($$BASEDIR/src/data) \
          $$quote($$BASEDIR/src)
 
 CONFIG += precompile_header
