@@ -11,9 +11,10 @@ Login::Login(QString login, QString password, TTRSSManager* manager, unsigned lo
 Login::~Login() {
 }
 
-void Login::handleSuccess(QMap<QString, QVariant> reply) {
-	QMap<QString, QVariant>::ConstIterator it = reply.constFind("session_id");
-	if (it != reply.constEnd()) {
+void Login::handleSuccess(QVariant reply) {
+	QMap<QString, QVariant> mReply = reply.toMap();
+	QMap<QString, QVariant>::ConstIterator it = mReply.constFind("session_id");
+	if (it != mReply.constEnd()) {
 		qDebug() << "Successfuly logged in as user" << _login;
 		getManager()->setSessionID(it->toString());
 		getManager()->setLoginStatus(TTRSSManager::LOGGED_IN);
@@ -23,7 +24,7 @@ void Login::handleSuccess(QMap<QString, QVariant> reply) {
 	}
 }
 
-void Login::handleError(QMap<QString, QVariant> /*reply*/) {
+void Login::handleError(QVariant /*reply*/) {
 	qDebug() << "Error logging in as user" << _login;
 	getManager()->setLoginStatus(TTRSSManager::FAILED);
 }

@@ -4,6 +4,8 @@
 class TTRSSManager;
 
 #include <QtCore/QByteArray>
+#include <QtCore/QMap>
+#include <QtCore/QVariant>
 #include <QtCore/QVariantMap>
 
 class APacket {
@@ -15,8 +17,8 @@ public:
 	unsigned long long getId() const;
 
 	void handleReply(QMap<QString, QVariant> reply);
-	virtual void handleSuccess(QMap<QString, QVariant> reply) = 0;
-	virtual void handleError(QMap<QString, QVariant> reply) = 0;
+	virtual void handleSuccess(QVariant reply) = 0;
+	virtual void handleError(QVariant reply) = 0;
 
 protected:
 	TTRSSManager* getManager() const;

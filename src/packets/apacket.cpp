@@ -21,7 +21,7 @@ QByteArray APacket::getRequestData() const {
 
 void APacket::handleReply(QMap<QString, QVariant> reply) {
 	int status = reply.value("status").toInt();
-	QMap<QString, QVariant> content = reply.value("content").toMap();
+	QVariant content = reply.value("content");
 	switch (status) {
 	case TTRSSManager::API_STATUS_OK:
 		handleSuccess(content);

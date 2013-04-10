@@ -8,8 +8,8 @@ public:
 	Login(QString login, QString password, TTRSSManager* manager, unsigned long long id);
 	virtual ~Login();
 
-	virtual void handleSuccess(QMap<QString, QVariant> reply);
-	virtual void handleError(QMap<QString, QVariant> reply);
+	virtual void handleSuccess(QVariant reply);
+	virtual void handleError(QVariant reply);
 
 protected:
 	virtual QVariantMap getRequestDataImpl() const;

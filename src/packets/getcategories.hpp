@@ -8,8 +8,8 @@ public:
 	GetCategories(bool unreadOnly, bool enableNested, bool includeEmpty, TTRSSManager* manager, unsigned long long id);
 	virtual ~GetCategories();
 
-	virtual void handleSuccess(QMap<QString, QVariant> reply);
-	virtual void handleError(QMap<QString, QVariant> reply);
+	virtual void handleSuccess(QVariant reply);
+	virtual void handleError(QVariant reply);
 
 protected:
 	virtual QVariantMap getRequestDataImpl() const;

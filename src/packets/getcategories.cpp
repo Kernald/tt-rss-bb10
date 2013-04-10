@@ -17,11 +17,11 @@ GetCategories::~GetCategories() {
 }
 
 
-void GetCategories::handleSuccess(QMap<QString, QVariant> /*reply*/) {
+void GetCategories::handleSuccess(QVariant reply) {
 	qDebug() << "GetCategories::success";
 }
 
-void GetCategories::handleError(QMap<QString, QVariant> /*reply*/) {
+void GetCategories::handleError(QVariant /*reply*/) {
 	qDebug() << "GetCategories::error";
 }
 
