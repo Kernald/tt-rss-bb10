@@ -7,7 +7,14 @@ class Article;
 #include <QtCore/QString>
 #include <QtCore/QUrl>
 
-class Feed {
+class Feed : public QObject {
+
+	Q_OBJECT
+
+	Q_PROPERTY(QString title READ getTitle CONSTANT);
+	Q_PROPERTY(bool hasUnreadArticles READ hasUnreadArticles NOTIFY unreadArticlesChanged);
+	Q_PROPERTY(unsigned int unreadArticlesCount READ unreadArticlesCount NOTIFY unreadArticlesCountChanged);
+
 public:
 	Feed(int id, QString title, QUrl feedUrl, QList<Article*> articles);
 	virtual ~Feed();
@@ -22,6 +29,10 @@ public:
 	QList<Article*> unreadArticles() const;
 
 	void addArticle(Article* article);
+
+Q_SIGNALS:
+	void unreadArticlesChanged(bool hasUnreadArticles);
+	void unreadArticlesCountChanged(unsigned int unreadArticlesCount);
 
 private:
 	int				_id;

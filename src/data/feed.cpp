@@ -31,5 +31,10 @@ QList<Article*> Feed::unreadArticles() const {
 }
 
 void Feed::addArticle(Article* article) {
+	unsigned int unread = unreadArticlesCount();
 	_articles.append(article);
+	if (article->isUnread()) {
+		emit unreadArticlesChanged(true);
+		emit unreadArticlesCountChanged(unread + 1);
+	}
 }

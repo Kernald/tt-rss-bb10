@@ -102,11 +102,10 @@ void TTRSSManager::requestFinished(QNetworkReply* reply) {
 }
 
 void TTRSSManager::handleReply(QVariant reply) {
-	qDebug() << reply;
 	QMap<QString, QVariant> mReply = reply.toMap();
 	if (!mReply.contains("status") || !mReply.contains("seq") || !mReply.contains("content")) {
 		// TODO: proper error handling
-		qDebug() << "Invalid packet received";
+		qDebug() << "Invalid packet received" << reply;
 	} else {
 		unsigned long long seq = mReply.value("seq").toLongLong();
 		// TODO: find?

@@ -35,6 +35,9 @@ unsigned int Category::unreadArticlesCount() const {
 
 void Category::addFeed(Feed* feed) {
 	unsigned int unread = unreadArticlesCount();
+	// TODO: intermediary slot to handle case where feed gets totally unread, but not the category
+	connect(feed, SIGNAL(unreadArticlesChanged(bool)), this, SIGNAL(unreadArticlesChanged(bool)));
+	connect(feed, SIGNAL(unreadArticlesCountChanged(unsigned int)), this, SIGNAL(unreadArticlesCountChanged(unsigned int)));
 	_feeds.append(feed);
 	if (feed->hasUnreadArticles()) {
 		emit unreadArticlesChanged(true);

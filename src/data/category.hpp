@@ -31,9 +31,7 @@ public:
 	void addFeed(Feed* feed);
 
 Q_SIGNALS:
-	// TODO: emit it
 	void unreadArticlesChanged(bool hasUnreadArticles);
-	// TODO: emit it
 	void unreadArticlesCountChanged(unsigned int unreadArticlesCount);
 
 private:
