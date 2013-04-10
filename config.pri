@@ -6,12 +6,14 @@ device {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
+                 $$quote($$BASEDIR/src/packets/getcategories.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
+                 $$quote($$BASEDIR/src/packets/getcategories.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
@@ -21,12 +23,14 @@ device {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
+                 $$quote($$BASEDIR/src/packets/getcategories.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
+                 $$quote($$BASEDIR/src/packets/getcategories.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
@@ -38,12 +42,14 @@ simulator {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
+                 $$quote($$BASEDIR/src/packets/getcategories.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
+                 $$quote($$BASEDIR/src/packets/getcategories.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)

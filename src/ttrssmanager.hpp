@@ -33,6 +33,8 @@ public:
 	QString sessionID() const;
 	void setSessionID(QString sessionID);
 
+	void getCategories();
+
 signals:
 	void networkError(QVariant error);
 	void loginResult(bool result);
@@ -68,6 +70,7 @@ inline QString TTRSSManager::sessionID() const {
 
 inline void TTRSSManager::setSessionID(QString sessionID) {
 	_sessionID = sessionID;
+	getCategories();
 }
 
 #endif // __TTRSS_MANAGER_HPP__

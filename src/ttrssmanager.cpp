@@ -2,6 +2,7 @@
 
 #include "settings.hpp"
 
+#include "packets/getcategories.hpp"
 #include "packets/login.hpp"
 
 #include <bb/data/JsonDataAccess>
@@ -23,6 +24,14 @@ TTRSSManager::~TTRSSManager() {
 void TTRSSManager::login() {
 	_loginStatus = IN_PROGRESS;
 	sendPacket(new Login(Settings::getValueFor("serverLogin", "").toString(), Settings::getValueFor("serverPassword", "").toString(), this, _currentPacketID++));
+}
+
+void TTRSSManager::getCategories() {
+	sendPacket(new GetCategories(	Settings::getValueFor("categoryUnreadOnly", true).toBool(),
+									Settings::getValueFor("enableNested", false).toBool(),
+									Settings::getValueFor("includeEmpty", false).toBool(),
+									this,
+									_currentPacketID++));
 }
 
 void TTRSSManager::sendPacket(APacket* packet) {
