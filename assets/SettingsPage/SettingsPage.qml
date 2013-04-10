@@ -61,6 +61,28 @@ Page {
                 } // Address
             } // Server settings
             Divider {}
+            Container {
+                leftPadding: 20
+                rightPadding: 20
+                horizontalAlignment: HorizontalAlignment.Fill
+                Label {
+                    text: qsTr("UI")
+                }
+                Container {
+                    leftPadding: 40
+                    CheckBox {
+                        id: unreadOnly
+                        objectName: "unreadOnly"
+                        text: qsTr("Display only unread articles")
+                        checked: _settings.getValueFor(objectName, true);
+                        onCheckedChanged: {
+                            _settings.saveValueFor(unreadOnly.objectName, checked);
+                        }
+                    }
+                } // Unread only
+            } // Server settings
+            Divider {
+            }
         } // Main scrollview container
     } // ScrollView
 } // Page

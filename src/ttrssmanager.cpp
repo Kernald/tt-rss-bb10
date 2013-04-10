@@ -27,7 +27,7 @@ void TTRSSManager::login() {
 }
 
 void TTRSSManager::getCategories() {
-	sendPacket(new GetCategories(	Settings::getValueFor("categoryUnreadOnly", true).toBool(),
+	sendPacket(new GetCategories(	Settings::getValueFor("unreadOnly", true).toBool(),
 									Settings::getValueFor("enableNested", false).toBool(),
 									Settings::getValueFor("includeEmpty", false).toBool(),
 									this,
