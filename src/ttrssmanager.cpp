@@ -75,6 +75,7 @@ void TTRSSManager::requestHeadlines(int feedId) {
 
 void TTRSSManager::sendPacket(APacket* packet) {
 	_waitingPackets.insert(packet->getId(), packet);
+	emit workingStateChanged(true);
 	sendRequest(packet->getRequestData());
 }
 
@@ -111,6 +112,7 @@ void TTRSSManager::handleReply(QVariant reply) {
 		// TODO: find?
 		if (_waitingPackets.contains(seq)) {
 			APacket* packet = _waitingPackets.take(seq);
+			emit workingStateChanged(false);
 			packet->handleReply(mReply);
 		} else {
 			// TODO: handle error

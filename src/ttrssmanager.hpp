@@ -15,6 +15,8 @@ class TTRSSManager : public QObject {
 
 	Q_OBJECT
 
+	Q_PROPERTY(bool working READ isWorking NOTIFY workingStateChanged);
+
 public:
 	enum ELoginStatus {
 		NOT_LOGGED_IN,
@@ -28,6 +30,8 @@ public:
 
 	TTRSSManager();
 	virtual ~TTRSSManager();
+
+	bool isWorking() const;
 
 	void login();
 	ELoginStatus loginStatus() const;
@@ -46,6 +50,7 @@ public:
 	void requestHeadlines(int feedId);
 
 Q_SIGNALS:
+	void workingStateChanged(bool working);
 	void networkError(QVariant error);
 	void loginResult(bool result);
 	void categoryAdded(QVariant category);
@@ -68,6 +73,10 @@ private:
 
 	QList<Category*>					_categories;
 };
+
+inline bool TTRSSManager::isWorking() const {
+	return _waitingPackets.size() > 0;
+}
 
 inline TTRSSManager::ELoginStatus TTRSSManager::loginStatus() const {
 	return _loginStatus;
