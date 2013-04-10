@@ -10,13 +10,19 @@ Login::~Login() {
 }
 
 void Login::handleSuccess(QMap<QString, QVariant> reply) {
-	// TODO
 	qDebug() << "Successfuly logged in as user" << _login;
+	QMap<QString, QVariant>::ConstIterator it = reply.constFind("session_id");
+	if (it != reply.constEnd()) {
+		getManager()->setSessionID(it->value());
+		getManager()->setLoginStatus(TTRSSManager::LOGGED_IN);
+	} else {
+		getManager()->setLoginStatus(TTRSSManager::FAILED);
+	}
 }
 
 void Login::handleError(QMap<QString, QVariant> reply) {
-	// TODO
 	qDebug() << "Error logging in as user" << _login;
+	getManager()->setLoginStatus(TTRSSManager::FAILED);
 }
 
 QVariantMap Login::getRequestDataImpl() const {

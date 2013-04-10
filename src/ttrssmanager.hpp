@@ -29,6 +29,9 @@ public:
 
 	void login();
 	ELoginStatus loginStatus() const;
+	void setLoginStatus(ELoginStatus loginStatus);
+	QString sessionID() const;
+	void setSessionID(QString sessionID);
 
 signals:
 	void networkError(QVariant error);
@@ -46,12 +49,25 @@ private:
 
 	QNetworkAccessManager*				_networkAccessManager;
 	ELoginStatus						_loginStatus;
+	QString								_sessionID;
 	unsigned long long					_currentPacketID;
 	QMap<unsigned long long, APacket*>	_waitingPackets;
 };
 
 inline TTRSSManager::ELoginStatus TTRSSManager::loginStatus() const {
 	return _loginStatus;
+}
+
+inline void TTRSSManager::setLoginStatus(TTRSSManager::ELoginStatus loginStatus) {
+	_loginStatus = loginStatus;
+}
+
+inline QString TTRSSManager::sessionID() const {
+	return _sessionID;
+}
+
+inline void TTRSSManager::setSessionID(QString sessionID) {
+	_sessionID = sessionID;
 }
 
 #endif // __TTRSS_MANAGER_HPP__
