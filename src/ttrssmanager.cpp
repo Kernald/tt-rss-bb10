@@ -3,9 +3,11 @@
 #include "settings.hpp"
 
 #include "data/category.hpp"
+#include "data/feed.hpp"
 
 #include "packets/getcategories.hpp"
 #include "packets/getfeeds.hpp"
+#include "packets/getheadlines.hpp"
 #include "packets/login.hpp"
 
 #include <bb/data/JsonDataAccess>
@@ -55,6 +57,20 @@ Category* TTRSSManager::getCategory(int categoryId) const {
 
 void TTRSSManager::requestFeeds(int categoryId) {
 	sendPacket(new GetFeeds(categoryId, Settings::getValueFor("unreadOnly", true).toBool(), this, _currentPacketID++));
+}
+
+Feed* TTRSSManager::getFeed(int feedId) const {
+	for (QList<Category*>::ConstIterator itC = _categories.constBegin(), endC = _categories.constEnd(); itC != endC; ++itC) {
+		Category* c = *itC;
+		for (QList<Feed*>::ConstIterator itF = c->getFeeds().constBegin(), endF = c->getFeeds().constEnd(); itF != endF; ++itF)
+			if ((*itF)->getId() == feedId)
+				return *itF;
+	}
+	return NULL;
+}
+
+void TTRSSManager::requestHeadlines(int feedId) {
+	sendPacket(new GetHeadlines(feedId, Settings::getValueFor("unreadOnly", true).toBool(), this, _currentPacketID++));
 }
 
 void TTRSSManager::sendPacket(APacket* packet) {

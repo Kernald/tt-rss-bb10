@@ -2,9 +2,10 @@
 
 #include "article.hpp"
 
-Feed::Feed(QString title, QUrl feedUrl, QList<Article*> articles) : _title(title),
-																	_feedUrl(feedUrl),
-																	_articles(articles) {
+Feed::Feed(int id, QString title, QUrl feedUrl, QList<Article*> articles) :	_id(id),
+																			_title(title),
+																			_feedUrl(feedUrl),
+																			_articles(articles) {
 }
 
 Feed::~Feed() {
@@ -27,4 +28,8 @@ QList<Article*> Feed::unreadArticles() const {
 			ret << *it;
 
 	return ret;
+}
+
+void Feed::addArticle(Article* article) {
+	_articles.append(article);
 }

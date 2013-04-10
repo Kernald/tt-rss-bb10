@@ -25,8 +25,9 @@ void GetFeeds::handleSuccess(QVariant reply) {
 		QMap<QString, QVariant> mFeed = it->toMap();
 		Category* category = getManager()->getCategory(_categoryId);
 		if (category) {
-			Feed* feed = new Feed(mFeed.value("title").toString(), QUrl(mFeed.value("feed_url").toString()), QList<Article*>());
+			Feed* feed = new Feed(mFeed.value("id").toInt(), mFeed.value("title").toString(), QUrl(mFeed.value("feed_url").toString()), QList<Article*>());
 			category->addFeed(feed);
+			getManager()->requestHeadlines(feed->getId());
 		} else {
 			qDebug() << "Received feed for unknown category" << _categoryId;
 		}

@@ -3,6 +3,7 @@
 
 class APacket;
 class Category;
+class Feed;
 
 class QNetworkAccessManager;
 
@@ -40,6 +41,9 @@ public:
 	Category* getCategory(int categoryId) const;
 
 	void requestFeeds(int categoryId);
+	Feed* getFeed(int feedId) const;
+
+	void requestHeadlines(int feedId);
 
 Q_SIGNALS:
 	void networkError(QVariant error);

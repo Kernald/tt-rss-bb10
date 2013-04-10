@@ -9,9 +9,10 @@ class Article;
 
 class Feed {
 public:
-	Feed(QString title, QUrl feedUrl, QList<Article*> articles);
+	Feed(int id, QString title, QUrl feedUrl, QList<Article*> articles);
 	virtual ~Feed();
 
+	int getId() const;
 	QString getTitle() const;
 	QUrl getUrl() const;
 	QList<Article*> getArticles() const;
@@ -20,11 +21,18 @@ public:
 	unsigned int unreadArticlesCount() const;
 	QList<Article*> unreadArticles() const;
 
+	void addArticle(Article* article);
+
 private:
+	int				_id;
 	QString			_title;
 	QUrl			_feedUrl;
 	QList<Article*>	_articles;
 };
+
+inline int Feed::getId() const {
+	return _id;
+}
 
 inline QString Feed::getTitle() const {
 	return _title;
