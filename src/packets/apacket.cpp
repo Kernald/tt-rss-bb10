@@ -21,14 +21,15 @@ QByteArray APacket::getRequestData() const {
 
 void APacket::handleReply(QMap<QString, QVariant> reply) {
 	int status = reply.value("status").toInt();
+	QMap<QString, QVariant> content = reply.value("content").toMap();
 	switch (status) {
 	case TTRSSManager::API_STATUS_OK:
-		handleSuccess(reply);
+		handleSuccess(content);
 		break;
 
 	case TTRSSManager::API_STATUS_ERR:
 	default:
-		handleError(reply);
+		handleError(content);
 		break;
 	}
 }

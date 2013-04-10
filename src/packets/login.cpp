@@ -12,12 +12,13 @@ Login::~Login() {
 }
 
 void Login::handleSuccess(QMap<QString, QVariant> reply) {
-	qDebug() << "Successfuly logged in as user" << _login;
 	QMap<QString, QVariant>::ConstIterator it = reply.constFind("session_id");
 	if (it != reply.constEnd()) {
+		qDebug() << "Successfuly logged in as user" << _login;
 		getManager()->setSessionID(it->toString());
 		getManager()->setLoginStatus(TTRSSManager::LOGGED_IN);
 	} else {
+		qDebug() << "Error in login answer: no session_id";
 		getManager()->setLoginStatus(TTRSSManager::FAILED);
 	}
 }
