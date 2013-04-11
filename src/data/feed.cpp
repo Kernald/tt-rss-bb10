@@ -8,6 +8,13 @@ Feed::Feed(int id, QString title, QUrl feedUrl, QList<Article*> articles) :	_id(
 																			_articles(articles) {
 }
 
+Feed::Feed(const Feed& other) : QObject() {
+	_id = other.getId();
+	_title = other.getTitle();
+	_feedUrl = other.getUrl();
+	// TODO: _articles
+}
+
 Feed::~Feed() {
 	for (QList<Article*>::Iterator it = _articles.begin(), end = _articles.end(); it != end; ++it)
 		delete *it;

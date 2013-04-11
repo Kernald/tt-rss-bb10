@@ -6,6 +6,7 @@ class Article;
 #include <QtCore/QList>
 #include <QtCore/QString>
 #include <QtCore/QUrl>
+#include <QtCore/QVariant>
 
 class Feed : public QObject {
 
@@ -16,7 +17,8 @@ class Feed : public QObject {
 	Q_PROPERTY(unsigned int unreadArticlesCount READ unreadArticlesCount NOTIFY unreadArticlesCountChanged);
 
 public:
-	Feed(int id, QString title, QUrl feedUrl, QList<Article*> articles);
+	Feed(int id = -1, QString title = "", QUrl feedUrl = QUrl(), QList<Article*> articles = QList<Article*>());
+	Feed(const Feed& other);
 	virtual ~Feed();
 
 	int getId() const;
@@ -40,6 +42,9 @@ private:
 	QUrl			_feedUrl;
 	QList<Article*>	_articles;
 };
+
+Q_DECLARE_METATYPE(Feed);
+Q_DECLARE_METATYPE(Feed*);
 
 inline int Feed::getId() const {
 	return _id;
