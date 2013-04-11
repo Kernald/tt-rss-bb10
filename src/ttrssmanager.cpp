@@ -114,6 +114,7 @@ void TTRSSManager::handleReply(QVariant reply) {
 			APacket* packet = _waitingPackets.take(seq);
 			emit workingStateChanged(false);
 			packet->handleReply(mReply);
+			delete packet;
 		} else {
 			// TODO: handle error
 			qDebug() << "Received answer to unknown packet" << seq;
@@ -122,6 +123,7 @@ void TTRSSManager::handleReply(QVariant reply) {
 }
 
 void TTRSSManager::handleNetworkError(QNetworkReply::NetworkError error) {
+	// TODO: delete original packet
 	QString errorMessage;
 	switch (error) {
 	case QNetworkReply::ConnectionRefusedError:
