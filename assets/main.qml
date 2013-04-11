@@ -12,7 +12,7 @@ TabbedPane {
             }
         }
     } // Menu.definition
-    
+
     showTabsOnActionBar: false
     activePane: NavigationPane {
         id: nav

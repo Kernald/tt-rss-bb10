@@ -7,8 +7,17 @@ Page {
     } // titleBar
     
     Container {
+        layout: DockLayout {
+        }
+        
         Label {
             text: "Feeds list"
+        }
+
+        ActivityIndicator {
+            verticalAlignment: VerticalAlignment.Fill
+            horizontalAlignment: HorizontalAlignment.Fill
+            running: _manager.working
         }
     } // Root container
 } // Page
