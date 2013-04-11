@@ -40,7 +40,8 @@ private:
 	QList<Feed*>	_feeds;
 };
 
-Q_DECLARE_METATYPE(Category)
+Q_DECLARE_METATYPE(Category);
+Q_DECLARE_METATYPE(Category*);
 
 inline int Category::getId() const {
 	return _id;
