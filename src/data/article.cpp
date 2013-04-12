@@ -18,5 +18,16 @@ Article::Article(	unsigned int id,
 						_loaded(loaded) {
 }
 
+Article::Article(const Article& other) : QObject() {
+	// TODO: only attributes from default constructor, add others
+	_id = other.getId();
+	_title = other.getTitle();
+	_labels = other.getLabels();
+	_unread = other.isUnread();
+	_marked = other.isMarked();
+	_published = other.isPublished();
+	_content = other.getContent();
+}
+
 Article::~Article() {
 }

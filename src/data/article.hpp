@@ -2,13 +2,23 @@
 #define __ARTICLE_HPP__
 
 #include <QtCore/QList>
+#include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QUrl>
+#include <QtCore/QVariant>
 
-class Article {
+class Article : public QObject {
+
+	Q_OBJECT
+
+	Q_PROPERTY(QString title READ getTitle CONSTANT);
+	Q_PROPERTY(QString content READ getContent CONSTANT);
+	Q_PROPERTY(QString author READ getAuthor CONSTANT);
+
 public:
 	// TODO: complete attributes
-	Article(unsigned int id, QString title, QList<QString> labels, bool unread, bool marked, bool published, QString content = "", bool loaded = false);
+	Article(unsigned int id = 0, QString title = "", QList<QString> labels = QList<QString>(), bool unread = false, bool marked = false, bool published = false, QString content = "", bool loaded = false);
+	Article(const Article& other);
 	virtual ~Article();
 
 	unsigned int getId() const;
@@ -42,6 +52,9 @@ private:
 	// TODO: feed_id
 	// TODO: attachments
 };
+
+Q_DECLARE_METATYPE(Article);
+Q_DECLARE_METATYPE(Article*);
 
 inline unsigned int Article::getId() const {
 	return _id;
