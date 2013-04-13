@@ -1,6 +1,7 @@
 #ifndef __APPLICATION_UI_HPP__
 #define __APPLICATION_UI_HPP__
 
+#include "feedmanager.hpp"
 #include "settings.hpp"
 #include "ttrssmanager.hpp"
 
@@ -21,6 +22,7 @@ public:
     virtual ~ApplicationUI() {}
 
 private:
+    FeedManager		_feedManager;
     Settings		_settings;
     TTRSSManager	_manager;
 };

@@ -40,12 +40,13 @@ public:
 	void setSessionID(QString sessionID);
 
 	void requestCategories();
-
 	void addCategory(Category* category);
 	Category* getCategory(int categoryId) const;
 
 	void requestFeeds(int categoryId);
+	void addFeed(Feed* feed);
 	Feed* getFeed(int feedId) const;
+	QList<Feed*> getFeeds() const;
 
 	void requestHeadlines(int feedId);
 
@@ -54,6 +55,7 @@ Q_SIGNALS:
 	void networkError(QVariant error);
 	void loginResult(bool result);
 	void categoryAdded(QVariant category);
+	void feedAdded(QObject* feed);
 
 private Q_SLOTS:
 	void requestFinished(QNetworkReply* reply);

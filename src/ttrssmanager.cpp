@@ -59,6 +59,10 @@ void TTRSSManager::requestFeeds(int categoryId) {
 	sendPacket(new GetFeeds(categoryId, Settings::getValueFor("unreadOnly", true).toBool(), this, _currentPacketID++));
 }
 
+void TTRSSManager::addFeed(Feed* feed) {
+	emit feedAdded(feed);
+}
+
 Feed* TTRSSManager::getFeed(int feedId) const {
 	for (QList<Category*>::ConstIterator itC = _categories.constBegin(), endC = _categories.constEnd(); itC != endC; ++itC) {
 		Category* c = *itC;
@@ -67,6 +71,17 @@ Feed* TTRSSManager::getFeed(int feedId) const {
 				return *itF;
 	}
 	return NULL;
+}
+
+QList<Feed*> TTRSSManager::getFeeds() const {
+	QList<Feed*> res;
+	for (QList<Category*>::ConstIterator itC = _categories.constBegin(), endC = _categories.constEnd(); itC != endC; ++itC) {
+		Category* c = *itC;
+		for (QList<Feed*>::ConstIterator itF = c->getFeeds().constBegin(), endF = c->getFeeds().constEnd(); itF != endF; ++itF)
+			res << *itF;
+	}
+
+	return res;
 }
 
 void TTRSSManager::requestHeadlines(int feedId) {
