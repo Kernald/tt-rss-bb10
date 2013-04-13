@@ -24,7 +24,7 @@ void GetFeeds::handleSuccess(QVariant reply) {
 	for (QList<QVariant>::ConstIterator it = lReply.constBegin(), end = lReply.constEnd(); it != end; ++it) {
 		QMap<QString, QVariant> mFeed = it->toMap();
 		Category* category = getManager()->getCategory(_categoryId);
-		if (category) {
+		if (category && mFeed.value("id").toInt() >= 0) {
 			Feed* feed = new Feed(mFeed.value("id").toInt(), mFeed.value("title").toString(), QUrl(mFeed.value("feed_url").toString()), QList<Article*>());
 			category->addFeed(feed);
 			getManager()->requestHeadlines(feed->getId());
