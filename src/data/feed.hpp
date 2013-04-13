@@ -13,6 +13,7 @@ class Feed : public QObject {
 	Q_OBJECT
 
 	Q_PROPERTY(QString title READ getTitle CONSTANT);
+	Q_PROPERTY(QUrl url READ getUrl CONSTANT);
 	Q_PROPERTY(bool hasUnreadArticles READ hasUnreadArticles NOTIFY unreadArticlesChanged);
 	Q_PROPERTY(unsigned int unreadArticlesCount READ unreadArticlesCount NOTIFY unreadArticlesCountChanged);
 
