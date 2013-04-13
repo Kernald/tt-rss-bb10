@@ -23,13 +23,16 @@ void GetFeeds::handleSuccess(QVariant reply) {
 	QList<QVariant> lReply = reply.toList();
 	for (QList<QVariant>::ConstIterator it = lReply.constBegin(), end = lReply.constEnd(); it != end; ++it) {
 		QMap<QString, QVariant> mFeed = it->toMap();
-		Category* category = getManager()->getCategory(_categoryId);
-		if (category && mFeed.value("id").toInt() >= 0) {
-			Feed* feed = new Feed(mFeed.value("id").toInt(), mFeed.value("title").toString(), QUrl(mFeed.value("feed_url").toString()), QList<Article*>());
-			category->addFeed(feed);
-			getManager()->requestHeadlines(feed->getId());
-		} else {
-			qDebug() << "Received feed for unknown category" << _categoryId;
+		if (mFeed.value("id").toInt() >= 0) {
+			Category* category = getManager()->getCategory(_categoryId);
+			if (category) {
+				Feed* feed = new Feed(mFeed.value("id").toInt(), mFeed.value("title").toString(), QUrl(mFeed.value("feed_url").toString()), QList<Article*>());
+				category->addFeed(feed);
+				getManager()->addFeed(feed);
+				getManager()->requestHeadlines(feed->getId());
+			} else {
+				qDebug() << "Received feed for unknown category" << _categoryId;
+			}
 		}
 	}
 }
