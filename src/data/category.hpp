@@ -12,6 +12,7 @@ class Category : public QObject {
 
 	Q_OBJECT
 
+	Q_PROPERTY(int id READ getId CONSTANT);
 	Q_PROPERTY(QString title READ getTitle CONSTANT);
 	Q_PROPERTY(bool hasUnreadArticles READ hasUnreadArticles NOTIFY unreadArticlesChanged);
 	Q_PROPERTY(unsigned int unreadArticlesCount READ unreadArticlesCount NOTIFY unreadArticlesCountChanged);
