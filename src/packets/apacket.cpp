@@ -13,6 +13,8 @@ APacket::~APacket() {
 QByteArray APacket::getRequestData() const {
 	QVariantMap packetMap = getRequestDataImpl();
 	packetMap["seq"] = _id;
+	if (getManager()->loginStatus() == TTRSSManager::LOGGED_IN)
+		packetMap["sid"] = getManager()->sessionID();
 	QByteArray packet;
 	bb::data::JsonDataAccess jda;
 	jda.saveToBuffer(packetMap, &packet);

@@ -16,8 +16,8 @@ void Login::handleSuccess(QVariant reply) {
 	QMap<QString, QVariant>::ConstIterator it = mReply.constFind("session_id");
 	if (it != mReply.constEnd()) {
 		qDebug() << "Successfuly logged in as user" << _login;
-		getManager()->setSessionID(it->toString());
 		getManager()->setLoginStatus(TTRSSManager::LOGGED_IN);
+		getManager()->setSessionID(it->toString());
 	} else {
 		qDebug() << "Error in login answer: no session_id";
 		getManager()->setLoginStatus(TTRSSManager::FAILED);
