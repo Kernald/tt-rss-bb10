@@ -16,8 +16,14 @@ TabbedPane {
     showTabsOnActionBar: false
     activePane: NavigationPane {
         id: nav
-        FeedsListPage {}
+        FeedsListPage {
+            id: feedsPage
+        }
     } // NavigationPane
+    
+    onActiveTabChanged: {
+        feedsPage.titleBar.title = activeTab.title;
+    }
     
     attachedObjects: [
         ComponentDefinition {

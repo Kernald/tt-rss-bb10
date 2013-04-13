@@ -2,7 +2,7 @@ import bb.cascades 1.0
 
 Page {
     titleBar: TitleBar {
-        title: qsTr("Feeds")
+        title: qsTr("All feeds")
         visibility: ChromeVisibility.Visible
     } // titleBar
     
