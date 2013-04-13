@@ -4,7 +4,7 @@
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 
-ApplicationUI::ApplicationUI(bb::cascades::Application *app) : QObject(app) {
+ApplicationUI::ApplicationUI(bb::cascades::Application *app) : QObject(app), _feedManager(&_manager) {
 	bb::cascades::QmlDocument *qml = bb::cascades::QmlDocument::create("asset:///main.qml").parent(this);
 	qml->setContextProperty("_manager", &_manager);
 	qml->setContextProperty("_settings", &_settings);

@@ -12,7 +12,7 @@ TabbedPane {
             }
         }
     } // Menu.definition
-
+    
     showTabsOnActionBar: false
     activePane: NavigationPane {
         id: nav
@@ -23,6 +23,11 @@ TabbedPane {
     
     onActiveTabChanged: {
         feedsPage.titleBar.title = activeTab.title;
+        if (activeTab.category) {
+            _feedModel.filterOnCategory(activeTab.category.id);
+        } else {
+            _feedModel.resetCategoryFilter();
+        }
     }
     
     attachedObjects: [
