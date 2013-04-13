@@ -13,7 +13,7 @@ FeedManager::FeedManager(TTRSSManager* mainManager) : bb::cascades::GroupDataMod
 FeedManager::~FeedManager() {
 }
 
-void FeedManager::filterOnCategory(int categoryId) {
+void FeedManager::filterOnCategory(int /*categoryId*/) {
 	// TODO: filter on category
 }
 
