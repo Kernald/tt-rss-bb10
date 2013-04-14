@@ -33,6 +33,7 @@ namespace ttrss {
 			_marked = other.isMarked();
 			_published = other.isPublished();
 			_updated = other.getUpdated();
+			_excerpt = other.getExcerpt();
 			_content = other.getContent();
 		}
 
