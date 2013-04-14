@@ -18,6 +18,12 @@ Page {
                         updated: ListItemData.updatedTime
                         content: ListItemData.content
                     }
+                },
+                ListItemComponent {
+                    type: "header"
+                    Header {
+                        title: Qt.formatDate(ListItemData, Qt.DefaultLocaleLongDate)
+                    }
                 }
             ]
         } // ListView
