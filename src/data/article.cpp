@@ -9,6 +9,7 @@ namespace ttrss {
 							bool marked,
 							bool published,
 							unsigned int updated,
+							QString excerpt,
 							QString content,
 							bool loaded) :
 								_id(id),
@@ -18,6 +19,7 @@ namespace ttrss {
 								_marked(marked),
 								_published(published),
 								_updated(QDateTime::fromTime_t(updated)),
+								_excerpt(excerpt),
 								_content(content),
 								_loaded(loaded) {
 		}
@@ -35,6 +37,12 @@ namespace ttrss {
 		}
 
 		Article::~Article() {
+		}
+
+		QString Article::getContent() const {
+			/*if (!_loaded)
+				qDebug() << "Need to load";*/
+			return _content;
 		}
 	}
 }

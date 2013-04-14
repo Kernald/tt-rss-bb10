@@ -10,6 +10,7 @@ Page {
         TextArea {
             editable: false
             text: currentArticle.content
+            textFormat: TextFormat.Html
         }
     }
 }

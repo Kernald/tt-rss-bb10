@@ -17,7 +17,8 @@ namespace ttrss {
 			Q_OBJECT
 
 			Q_PROPERTY(QString title READ getTitle CONSTANT);
-			Q_PROPERTY(QString content READ getContent CONSTANT);
+			Q_PROPERTY(QString content READ getContent NOTIFY contentChanged);
+			Q_PROPERTY(QString excerpt READ getExcerpt CONSTANT);
 			Q_PROPERTY(QString author READ getAuthor CONSTANT);
 			Q_PROPERTY(QDateTime updated READ getUpdated CONSTANT);
 			Q_PROPERTY(QDate updatedDate READ getUpdatedDate CONSTANT);
@@ -32,6 +33,7 @@ namespace ttrss {
 					bool marked = false,
 					bool published = false,
 					unsigned int updated = 0,
+					QString excerpt = "",
 					QString content = "",
 					bool loaded = false);
 			Article(const Article& other);
@@ -47,12 +49,16 @@ namespace ttrss {
 			bool isPublished() const;
 			void setPublished(bool published);
 			QString getComments() const;
+			QString getExcerpt() const;
 			QString getContent() const;
 			QString getAuthor() const;
 			QDateTime getUpdated() const;
 			QDate getUpdatedDate() const;
 			QTime getUpdatedTime() const;
 			QUrl getLink() const;
+
+		Q_SIGNALS:
+			void contentChanged(QString newContent);
 
 		private:
 			unsigned int	_id;
@@ -65,6 +71,7 @@ namespace ttrss {
 			QString			_comments;
 			QString			_author;
 			QDateTime		_updated;
+			QString			_excerpt;
 			QString			_content;
 			bool			_loaded;
 			// TODO: feed_id
@@ -131,9 +138,8 @@ namespace ttrss {
 			return _updated.time();
 		}
 
-		inline QString Article::getContent() const {
-			// TODO: if not loaded, load first
-			return _content;
+		inline QString Article::getExcerpt() const {
+			return _excerpt;
 		}
 	}
 }

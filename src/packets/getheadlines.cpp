@@ -37,7 +37,9 @@ namespace ttrss {
 																mHeadline.value("unread").toBool(),
 																mHeadline.value("marked").toBool(),
 																mHeadline.value("published").toBool(),
-																mHeadline.value("updated").toUInt());
+																mHeadline.value("updated").toUInt(),
+																mHeadline.value("excerpt").toString(),
+																mHeadline.value("content").toString());
 					feed->addArticle(article);
 					getManager()->addArticle(article);
 				} else {
@@ -54,6 +56,9 @@ namespace ttrss {
 			QVariantMap packet;
 			packet["op"] = "getHeadlines";
 			packet["feed_id"] = _feedId;
+			packet["show_excerpt"] = true;
+			// TODO: load content on demand
+			packet["show_content"] = true;
 			packet["view_mode"] = _unreadOnly ? "unread" : "all_articles";
 			return packet;
 		}
