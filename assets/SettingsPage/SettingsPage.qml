@@ -80,6 +80,18 @@ Page {
                         }
                     }
                 } // Unread only
+                Container {
+                    leftPadding: 40
+                    CheckBox {
+                        id: articlesOldestFirst
+                        objectName: "articlesOldestFirst"
+                        text: qsTr("Display oldest articles first")
+                        checked: _settings.getValueFor(objectName, true)
+                        onCheckedChanged: {
+                            _settings.saveValueFor(articlesOldestFirst.objectName, checked);
+                        }
+                    }
+                } // Unread only
             } // Server settings
             Divider {
             }
