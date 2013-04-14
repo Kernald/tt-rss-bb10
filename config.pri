@@ -4,6 +4,7 @@ BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 device {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/articlemanager.cpp) \
                  $$quote($$BASEDIR/src/data/article.cpp) \
                  $$quote($$BASEDIR/src/data/category.cpp) \
                  $$quote($$BASEDIR/src/data/feed.cpp) \
@@ -18,6 +19,7 @@ device {
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/articlemanager.hpp) \
                  $$quote($$BASEDIR/src/data/article.hpp) \
                  $$quote($$BASEDIR/src/data/category.hpp) \
                  $$quote($$BASEDIR/src/data/feed.hpp) \
@@ -33,6 +35,7 @@ device {
 
     CONFIG(release, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/articlemanager.cpp) \
                  $$quote($$BASEDIR/src/data/article.cpp) \
                  $$quote($$BASEDIR/src/data/category.cpp) \
                  $$quote($$BASEDIR/src/data/feed.cpp) \
@@ -47,6 +50,7 @@ device {
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/articlemanager.hpp) \
                  $$quote($$BASEDIR/src/data/article.hpp) \
                  $$quote($$BASEDIR/src/data/category.hpp) \
                  $$quote($$BASEDIR/src/data/feed.hpp) \
@@ -64,6 +68,7 @@ device {
 simulator {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/articlemanager.cpp) \
                  $$quote($$BASEDIR/src/data/article.cpp) \
                  $$quote($$BASEDIR/src/data/category.cpp) \
                  $$quote($$BASEDIR/src/data/feed.cpp) \
@@ -78,6 +83,7 @@ simulator {
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/articlemanager.hpp) \
                  $$quote($$BASEDIR/src/data/article.hpp) \
                  $$quote($$BASEDIR/src/data/category.hpp) \
                  $$quote($$BASEDIR/src/data/feed.hpp) \

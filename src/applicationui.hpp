@@ -1,6 +1,7 @@
 #ifndef __APPLICATION_UI_HPP__
 #define __APPLICATION_UI_HPP__
 
+#include "articlemanager.hpp"
 #include "feedmanager.hpp"
 #include "settings.hpp"
 #include "ttrssmanager.hpp"
@@ -23,6 +24,7 @@ namespace ttrss {
 		virtual ~ApplicationUI() {}
 
 	private:
+		ArticleManager	_articleManager;
 		FeedManager		_feedManager;
 		Settings		_settings;
 		TTRSSManager	_manager;

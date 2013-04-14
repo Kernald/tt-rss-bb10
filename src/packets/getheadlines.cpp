@@ -38,6 +38,7 @@ namespace ttrss {
 																mHeadline.value("marked").toBool(),
 																mHeadline.value("published").toBool());
 					feed->addArticle(article);
+					getManager()->addArticle(article);
 				} else {
 					qDebug() << "Received article for unknown feed" << _feedId;
 				}

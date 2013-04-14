@@ -8,6 +8,17 @@ Page {
     
     Container {
         ListView {
+            dataModel: _articleModel
+            listItemComponents: [
+                ListItemComponent {
+                    type: "item"
+
+                    ArticleListComponent {
+                        title: ListItemData.title
+                        updated: ListItemData.updated
+                    }
+                }
+            ]
         } // ListView
     }
 }

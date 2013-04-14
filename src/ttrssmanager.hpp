@@ -3,6 +3,7 @@
 
 namespace ttrss {
 	namespace data {
+		class Article;
 		class Category;
 		class Feed;
 	}
@@ -56,6 +57,7 @@ namespace ttrss {
 		QList<data::Feed*> getFeeds() const;
 
 		void requestHeadlines(int feedId);
+		void addArticle(data::Article* article);
 
 	Q_SIGNALS:
 		void workingStateChanged(bool working);
@@ -63,6 +65,7 @@ namespace ttrss {
 		void loginResult(bool result);
 		void categoryAdded(QVariant category);
 		void feedAdded(QObject* feed);
+		void articleAdded(QObject* article);
 
 	private Q_SLOTS:
 		void requestFinished(QNetworkReply* reply);

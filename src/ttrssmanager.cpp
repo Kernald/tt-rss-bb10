@@ -2,6 +2,7 @@
 
 #include "settings.hpp"
 
+#include "data/article.hpp"
 #include "data/category.hpp"
 #include "data/feed.hpp"
 
@@ -92,6 +93,10 @@ namespace ttrss {
 
 	void TTRSSManager::requestHeadlines(int feedId) {
 		sendPacket(new packets::GetHeadlines(feedId, Settings::getValueFor("unreadOnly", true).toBool(), this, _currentPacketID++));
+	}
+
+	void TTRSSManager::addArticle(data::Article* article) {
+		emit articleAdded(article);
 	}
 
 	void TTRSSManager::sendPacket(packets::APacket* packet) {
