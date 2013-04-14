@@ -6,6 +6,7 @@
 #include <QtCore/QList>
 #include <QtCore/QObject>
 #include <QtCore/QString>
+#include <QtCore/QTime>
 #include <QtCore/QUrl>
 #include <QtCore/QVariant>
 
@@ -20,6 +21,7 @@ namespace ttrss {
 			Q_PROPERTY(QString author READ getAuthor CONSTANT);
 			Q_PROPERTY(QDateTime updated READ getUpdated CONSTANT);
 			Q_PROPERTY(QDate updatedDate READ getUpdatedDate CONSTANT);
+			Q_PROPERTY(QTime updatedTime READ getUpdatedTime CONSTANT);
 
 		public:
 			// TODO: complete attributes
@@ -49,6 +51,7 @@ namespace ttrss {
 			QString getAuthor() const;
 			QDateTime getUpdated() const;
 			QDate getUpdatedDate() const;
+			QTime getUpdatedTime() const;
 			QUrl getLink() const;
 
 		private:
@@ -122,6 +125,10 @@ namespace ttrss {
 
 		inline QDate Article::getUpdatedDate() const {
 			return _updated.date();
+		}
+
+		inline QTime Article::getUpdatedTime() const {
+			return _updated.time();
 		}
 
 		inline QString Article::getContent() const {

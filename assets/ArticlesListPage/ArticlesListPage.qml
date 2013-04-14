@@ -15,7 +15,7 @@ Page {
 
                     ArticleListComponent {
                         title: ListItemData.title
-                        updated: ListItemData.updated
+                        updated: ListItemData.updatedTime
                     }
                 }
             ]
