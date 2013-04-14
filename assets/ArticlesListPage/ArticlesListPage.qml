@@ -26,6 +26,19 @@ Page {
                     }
                 }
             ]
+            onTriggered: {
+                if (indexPath.length > 1) {
+                    currentArticle = dataModel.data(indexPath);
+                    var page = articlePageDefinition.createObject();
+                    nav.push(page)
+                }
+            }
+            attachedObjects: [
+                ComponentDefinition {
+                    id: articlePageDefinition
+                    source: "../ArticlePage/ArticlePage.qml"
+                } // Article page
+            ]
         } // ListView
     }
 }

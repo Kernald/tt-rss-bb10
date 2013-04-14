@@ -5,6 +5,7 @@ import "FeedsListPage"
 
 TabbedPane {
     property variant currentFeed
+    property variant currentArticle
     
     id: tabPane
     Menu.definition: MenuDefinition {
