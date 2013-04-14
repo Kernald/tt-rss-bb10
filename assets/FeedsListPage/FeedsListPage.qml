@@ -1,6 +1,10 @@
 import bb.cascades 1.0
 
 Page {
+    signal articleClicked(variant article)
+
+    id: root
+
     titleBar: TitleBar {
         title: qsTr("All feeds")
         visibility: ChromeVisibility.Visible
@@ -21,6 +25,12 @@ Page {
                 }
             ]
             //visible: !_manager.working
+
+            onTriggered: {
+                if (indexPath.length > 1) {
+                    root.articleClicked(dataModel.data(indexPath));
+                }
+            }
         } // ListView
         
         /*ActivityIndicator {

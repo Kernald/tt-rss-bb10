@@ -4,6 +4,8 @@ import "CategoryTab"
 import "FeedsListPage"
 
 TabbedPane {
+    property variant currentFeed
+    
     id: tabPane
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
@@ -18,6 +20,11 @@ TabbedPane {
         id: nav
         FeedsListPage {
             id: feedsPage
+            onArticleClicked: {
+                currentFeed = article;
+                var page = articlesListPageDefinition.createObject();
+                nav.push(page)
+            }
         }
     } // NavigationPane
     
@@ -34,7 +41,11 @@ TabbedPane {
         ComponentDefinition {
             id: settingsPageDefinition
             source: "SettingsPage/SettingsPage.qml"
-        }, // Settings Page
+        }, // Settings page
+        ComponentDefinition {
+            id: articlesListPageDefinition
+            source: "ArticlesListPage/ArticlesListPage.qml"
+        }, // Articles list page
         ComponentDefinition {
             id: newTabDefinition
             content: CategoryTab {}
