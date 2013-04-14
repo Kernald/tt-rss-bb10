@@ -36,7 +36,8 @@ namespace ttrss {
 																labels,
 																mHeadline.value("unread").toBool(),
 																mHeadline.value("marked").toBool(),
-																mHeadline.value("published").toBool());
+																mHeadline.value("published").toBool(),
+																mHeadline.value("updated").toUInt());
 					feed->addArticle(article);
 					getManager()->addArticle(article);
 				} else {

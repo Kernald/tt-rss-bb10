@@ -1,6 +1,8 @@
 #ifndef __ARTICLE_HPP__
 #define __ARTICLE_HPP__
 
+#include <QtCore/QDate>
+#include <QtCore/QDateTime>
 #include <QtCore/QList>
 #include <QtCore/QObject>
 #include <QtCore/QString>
@@ -16,11 +18,20 @@ namespace ttrss {
 			Q_PROPERTY(QString title READ getTitle CONSTANT);
 			Q_PROPERTY(QString content READ getContent CONSTANT);
 			Q_PROPERTY(QString author READ getAuthor CONSTANT);
-			Q_PROPERTY(unsigned int updated READ getUpdated CONSTANT);
+			Q_PROPERTY(QDateTime updated READ getUpdated CONSTANT);
+			Q_PROPERTY(QDate updatedDate READ getUpdatedDate CONSTANT);
 
 		public:
 			// TODO: complete attributes
-			Article(unsigned int id = 0, QString title = "", QList<QString> labels = QList<QString>(), bool unread = false, bool marked = false, bool published = false, QString content = "", bool loaded = false);
+			Article(unsigned int id = 0,
+					QString title = "",
+					QList<QString> labels = QList<QString>(),
+					bool unread = false,
+					bool marked = false,
+					bool published = false,
+					unsigned int updated = 0,
+					QString content = "",
+					bool loaded = false);
 			Article(const Article& other);
 			virtual ~Article();
 
@@ -36,7 +47,8 @@ namespace ttrss {
 			QString getComments() const;
 			QString getContent() const;
 			QString getAuthor() const;
-			unsigned int getUpdated() const;
+			QDateTime getUpdated() const;
+			QDate getUpdatedDate() const;
 			QUrl getLink() const;
 
 		private:
@@ -49,7 +61,7 @@ namespace ttrss {
 			bool			_published;
 			QString			_comments;
 			QString			_author;
-			unsigned int	_updated;
+			QDateTime		_updated;
 			QString			_content;
 			bool			_loaded;
 			// TODO: feed_id
@@ -104,8 +116,12 @@ namespace ttrss {
 			return _author;
 		}
 
-		inline unsigned int Article::getUpdated() const {
+		inline QDateTime Article::getUpdated() const {
 			return _updated;
+		}
+
+		inline QDate Article::getUpdatedDate() const {
+			return _updated.date();
 		}
 
 		inline QString Article::getContent() const {

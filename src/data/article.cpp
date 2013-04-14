@@ -8,6 +8,7 @@ namespace ttrss {
 							bool unread,
 							bool marked,
 							bool published,
+							unsigned int updated,
 							QString content,
 							bool loaded) :
 								_id(id),
@@ -16,6 +17,7 @@ namespace ttrss {
 								_unread(unread),
 								_marked(marked),
 								_published(published),
+								_updated(QDateTime::fromTime_t(updated)),
 								_content(content),
 								_loaded(loaded) {
 		}
@@ -28,6 +30,7 @@ namespace ttrss {
 			_unread = other.isUnread();
 			_marked = other.isMarked();
 			_published = other.isPublished();
+			_updated = other.getUpdated();
 			_content = other.getContent();
 		}
 
