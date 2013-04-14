@@ -21,7 +21,7 @@ void standardOutput(QtMsgType /*type*/, const char* msg) {
 #endif // QT_DEBUG
 
 Q_DECL_EXPORT int main(int argc, char **argv) {
-	qRegisterMetaType<Category>("Category");
+	qRegisterMetaType<ttrss::data::Category>("Category");
 
     Application app(argc, argv);
 
@@ -37,7 +37,7 @@ Q_DECL_EXPORT int main(int argc, char **argv) {
         app.installTranslator(&translator);
     }
 
-    new ApplicationUI(&app);
+    new ttrss::ApplicationUI(&app);
     return Application::exec();
 }
 

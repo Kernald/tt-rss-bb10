@@ -5,15 +5,17 @@
 #include <QtCore/QUrl>
 #include <QtCore/QVariant>
 
-class Settings : public QObject {
+namespace ttrss {
+	class Settings : public QObject {
 
-	Q_OBJECT
+		Q_OBJECT
 
-public:
-	Q_INVOKABLE static QVariant getValueFor(const QString &objectName, const QVariant &defaultValue);
-	Q_INVOKABLE static void saveValueFor(const QString &objectName, const QVariant &inputValue);
+	public:
+		Q_INVOKABLE static QVariant getValueFor(const QString &objectName, const QVariant &defaultValue);
+		Q_INVOKABLE static void saveValueFor(const QString &objectName, const QVariant &inputValue);
 
-	static QUrl getApiPath();
-};
+		static QUrl getApiPath();
+	};
+}
 
 #endif // __SETTINGS_HPP__

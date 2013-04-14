@@ -7,16 +7,18 @@
 
 #include <QtCore/QDebug>
 
-FeedManager::FeedManager(TTRSSManager* mainManager) : bb::cascades::GroupDataModel(QStringList() << "title"), _mainManager(mainManager) {
-}
+namespace ttrss {
+	FeedManager::FeedManager(TTRSSManager* mainManager) : bb::cascades::GroupDataModel(QStringList() << "title"), _mainManager(mainManager) {
+	}
 
-FeedManager::~FeedManager() {
-}
+	FeedManager::~FeedManager() {
+	}
 
-void FeedManager::filterOnCategory(int /*categoryId*/) {
-	// TODO: filter on category
-}
+	void FeedManager::filterOnCategory(int /*categoryId*/) {
+		// TODO: filter on category
+	}
 
-void FeedManager::resetCategoryFilter() {
-	// TODO: reset filter
+	void FeedManager::resetCategoryFilter() {
+		// TODO: reset filter
+	}
 }
