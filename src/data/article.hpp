@@ -16,6 +16,7 @@ namespace ttrss {
 			Q_PROPERTY(QString title READ getTitle CONSTANT);
 			Q_PROPERTY(QString content READ getContent CONSTANT);
 			Q_PROPERTY(QString author READ getAuthor CONSTANT);
+			Q_PROPERTY(unsigned int updated READ getUpdated CONSTANT);
 
 		public:
 			// TODO: complete attributes
