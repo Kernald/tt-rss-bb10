@@ -29,7 +29,6 @@ namespace ttrss {
 		}
 
 		Article::Article(const Article& other) : QObject() {
-			// TODO: only attributes from default constructor, add others
 			_manager = other._manager;
 			_id = other.getId();
 			_title = other.getTitle();
@@ -41,6 +40,8 @@ namespace ttrss {
 			_excerpt = other.getExcerpt();
 			_content = other._content;
 			_loaded = other.isLoaded();
+			_comments = other.getComments();
+			_author = other.getAuthor();
 		}
 
 		Article::~Article() {
