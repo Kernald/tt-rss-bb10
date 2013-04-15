@@ -31,7 +31,8 @@ namespace ttrss {
 					QList<QVariant> vLabels = mHeadline.value("labels").toList();
 					for (QList<QVariant>::ConstIterator it = vLabels.constBegin(), end = vLabels.constEnd(); it != end; ++it)
 						labels.append(it->toString());
-					data::Article* article = new data::Article(	mHeadline.value("id").toUInt(),
+					data::Article* article = new data::Article(	getManager(),
+																mHeadline.value("id").toUInt(),
 																mHeadline.value("title").toString(),
 																labels,
 																mHeadline.value("unread").toBool(),
@@ -39,7 +40,8 @@ namespace ttrss {
 																mHeadline.value("published").toBool(),
 																mHeadline.value("updated").toUInt(),
 																mHeadline.value("excerpt").toString(),
-																mHeadline.value("content").toString());
+																mHeadline.value("content").toString(),
+																mHeadline.contains("content"));
 					feed->addArticle(article);
 					getManager()->addArticle(article);
 				} else {
@@ -58,7 +60,7 @@ namespace ttrss {
 			packet["feed_id"] = _feedId;
 			packet["show_excerpt"] = true;
 			// TODO: load content on demand
-			packet["show_content"] = true;
+			packet["show_content"] = false;
 			packet["view_mode"] = _unreadOnly ? "unread" : "all_articles";
 			return packet;
 		}

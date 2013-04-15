@@ -59,6 +59,8 @@ namespace ttrss {
 		void requestHeadlines(int feedId);
 		void addArticle(data::Article* article);
 
+		void requestArticleDetails(data::Article* article);
+
 	Q_SIGNALS:
 		void workingStateChanged(bool working);
 		void networkError(QVariant error);

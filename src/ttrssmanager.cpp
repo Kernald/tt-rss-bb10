@@ -6,6 +6,7 @@
 #include "data/category.hpp"
 #include "data/feed.hpp"
 
+#include "packets/getarticle.hpp"
 #include "packets/getcategories.hpp"
 #include "packets/getfeeds.hpp"
 #include "packets/getheadlines.hpp"
@@ -97,6 +98,10 @@ namespace ttrss {
 
 	void TTRSSManager::addArticle(data::Article* article) {
 		emit articleAdded(article);
+	}
+
+	void TTRSSManager::requestArticleDetails(data::Article* article) {
+		sendPacket(new packets::GetArticle(article, this, _currentPacketID++));
 	}
 
 	void TTRSSManager::sendPacket(packets::APacket* packet) {

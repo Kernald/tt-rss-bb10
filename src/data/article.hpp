@@ -1,6 +1,10 @@
 #ifndef __ARTICLE_HPP__
 #define __ARTICLE_HPP__
 
+namespace ttrss {
+	class TTRSSManager;
+}
+
 #include <QtCore/QDate>
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
@@ -17,7 +21,7 @@ namespace ttrss {
 			Q_OBJECT
 
 			Q_PROPERTY(QString title READ getTitle CONSTANT);
-			Q_PROPERTY(QString content READ getContent NOTIFY contentChanged);
+			Q_PROPERTY(QString content READ getContent WRITE setContent NOTIFY contentChanged);
 			Q_PROPERTY(QString excerpt READ getExcerpt CONSTANT);
 			Q_PROPERTY(QString author READ getAuthor CONSTANT);
 			Q_PROPERTY(QDateTime updated READ getUpdated CONSTANT);
@@ -26,7 +30,8 @@ namespace ttrss {
 
 		public:
 			// TODO: complete attributes
-			Article(unsigned int id = 0,
+			Article(TTRSSManager* manager = NULL,
+					unsigned int id = 0,
 					QString title = "",
 					QList<QString> labels = QList<QString>(),
 					bool unread = false,
@@ -50,17 +55,22 @@ namespace ttrss {
 			void setPublished(bool published);
 			QString getComments() const;
 			QString getExcerpt() const;
-			QString getContent() const;
+			QString getContent();
+			void setContent(QString content);
+			bool isLoaded() const;
 			QString getAuthor() const;
 			QDateTime getUpdated() const;
 			QDate getUpdatedDate() const;
 			QTime getUpdatedTime() const;
 			QUrl getLink() const;
 
+			Q_INVOKABLE void load();
+
 		Q_SIGNALS:
 			void contentChanged(QString newContent);
 
 		private:
+			TTRSSManager*	_manager;
 			unsigned int	_id;
 			QString			_title;
 			QUrl			_link;
@@ -140,6 +150,10 @@ namespace ttrss {
 
 		inline QString Article::getExcerpt() const {
 			return _excerpt;
+		}
+
+		inline bool Article::isLoaded() const {
+			return _loaded;
 		}
 	}
 }

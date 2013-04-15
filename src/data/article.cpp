@@ -1,8 +1,11 @@
 #include "article.hpp"
 
+#include "ttrssmanager.hpp"
+
 namespace ttrss {
 	namespace data {
-		Article::Article(	unsigned int id,
+		Article::Article(	TTRSSManager* manager,
+							unsigned int id,
 							QString title,
 							QList<QString> labels,
 							bool unread,
@@ -12,6 +15,7 @@ namespace ttrss {
 							QString excerpt,
 							QString content,
 							bool loaded) :
+								_manager(manager),
 								_id(id),
 								_title(title),
 								_labels(labels),
@@ -26,6 +30,7 @@ namespace ttrss {
 
 		Article::Article(const Article& other) : QObject() {
 			// TODO: only attributes from default constructor, add others
+			_manager = other._manager;
 			_id = other.getId();
 			_title = other.getTitle();
 			_labels = other.getLabels();
@@ -34,16 +39,29 @@ namespace ttrss {
 			_published = other.isPublished();
 			_updated = other.getUpdated();
 			_excerpt = other.getExcerpt();
-			_content = other.getContent();
+			_content = other._content;
+			_loaded = other.isLoaded();
 		}
 
 		Article::~Article() {
 		}
 
-		QString Article::getContent() const {
-			/*if (!_loaded)
-				qDebug() << "Need to load";*/
+
+		QString Article::getContent() {
+			if (!_loaded)
+				load();
 			return _content;
+		}
+
+		void Article::setContent(QString content) {
+			_content = content;
+			_loaded = true;
+			emit contentChanged(_content);
+		}
+
+		void Article::load() {
+			if (!_loaded && _manager)
+				_manager->requestArticleDetails(this);
 		}
 	}
 }

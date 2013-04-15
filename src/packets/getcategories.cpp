@@ -22,7 +22,6 @@ namespace ttrss {
 		GetCategories::~GetCategories() {
 		}
 
-
 		void GetCategories::handleSuccess(QVariant reply) {
 			QList<QVariant> lReply = reply.toList();
 			for (QList<QVariant>::ConstIterator it = lReply.constBegin(), end = lReply.constEnd(); it != end; ++it) {

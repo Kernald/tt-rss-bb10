@@ -11,6 +11,7 @@ device {
                  $$quote($$BASEDIR/src/feedmanager.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
+                 $$quote($$BASEDIR/src/packets/getarticle.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.cpp) \
@@ -25,6 +26,7 @@ device {
                  $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
+                 $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.hpp) \
@@ -42,6 +44,7 @@ device {
                  $$quote($$BASEDIR/src/feedmanager.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
+                 $$quote($$BASEDIR/src/packets/getarticle.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.cpp) \
@@ -56,6 +59,7 @@ device {
                  $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
+                 $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.hpp) \
@@ -75,6 +79,7 @@ simulator {
                  $$quote($$BASEDIR/src/feedmanager.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
+                 $$quote($$BASEDIR/src/packets/getarticle.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.cpp) \
@@ -89,6 +94,7 @@ simulator {
                  $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
+                 $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.hpp) \
