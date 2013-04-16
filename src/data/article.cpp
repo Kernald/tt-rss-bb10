@@ -14,7 +14,8 @@ namespace ttrss {
 							unsigned int updated,
 							QString excerpt,
 							QString content,
-							bool loaded) :
+							bool loaded,
+							QUrl link) :
 								_manager(manager),
 								_id(id),
 								_title(title),
@@ -25,7 +26,8 @@ namespace ttrss {
 								_updated(QDateTime::fromTime_t(updated)),
 								_excerpt(excerpt),
 								_content(content),
-								_loaded(loaded) {
+								_loaded(loaded),
+								_link(link) {
 		}
 
 		Article::Article(const Article& other) : QObject() {
@@ -42,6 +44,7 @@ namespace ttrss {
 			_loaded = other.isLoaded();
 			_comments = other.getComments();
 			_author = other.getAuthor();
+			_link = other.getLink();
 		}
 
 		Article::~Article() {

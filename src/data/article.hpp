@@ -27,6 +27,7 @@ namespace ttrss {
 			Q_PROPERTY(QDateTime updated READ getUpdated CONSTANT);
 			Q_PROPERTY(QDate updatedDate READ getUpdatedDate CONSTANT);
 			Q_PROPERTY(QTime updatedTime READ getUpdatedTime CONSTANT);
+			Q_PROPERTY(QUrl link READ getLink CONSTANT);
 
 		public:
 			// TODO: complete attributes
@@ -40,7 +41,8 @@ namespace ttrss {
 					unsigned int updated = 0,
 					QString excerpt = "",
 					QString content = "",
-					bool loaded = false);
+					bool loaded = false,
+					QUrl link = QUrl());
 			Article(const Article& other);
 			virtual ~Article();
 
@@ -73,7 +75,6 @@ namespace ttrss {
 			TTRSSManager*	_manager;
 			unsigned int	_id;
 			QString			_title;
-			QUrl			_link;
 			QList<QString>	_labels;
 			bool			_unread;
 			bool			_marked;
@@ -84,6 +85,7 @@ namespace ttrss {
 			QString			_excerpt;
 			QString			_content;
 			bool			_loaded;
+			QUrl			_link;
 			// TODO: feed_id
 			// TODO: attachments
 		};
