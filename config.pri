@@ -16,6 +16,7 @@ device {
                  $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
+                 $$quote($$BASEDIR/src/packets/updatearticle.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
@@ -31,6 +32,7 @@ device {
                  $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
+                 $$quote($$BASEDIR/src/packets/updatearticle.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
     }
@@ -49,6 +51,7 @@ device {
                  $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
+                 $$quote($$BASEDIR/src/packets/updatearticle.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
@@ -64,6 +67,7 @@ device {
                  $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
+                 $$quote($$BASEDIR/src/packets/updatearticle.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
     }
@@ -84,6 +88,7 @@ simulator {
                  $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
+                 $$quote($$BASEDIR/src/packets/updatearticle.cpp) \
                  $$quote($$BASEDIR/src/settings.cpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.cpp)
 
@@ -99,6 +104,7 @@ simulator {
                  $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
+                 $$quote($$BASEDIR/src/packets/updatearticle.hpp) \
                  $$quote($$BASEDIR/src/settings.hpp) \
                  $$quote($$BASEDIR/src/ttrssmanager.hpp)
     }
