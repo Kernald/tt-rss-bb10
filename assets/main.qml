@@ -4,8 +4,6 @@ import "CategoryTab"
 import "FeedsListPage"
 
 TabbedPane {
-    property variant currentFeed
-    
     id: tabPane
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
@@ -21,8 +19,8 @@ TabbedPane {
         FeedsListPage {
             id: feedsPage
             onArticleClicked: {
-                currentFeed = article;
                 var page = articlesListPageDefinition.createObject();
+                page.feed = article;
                 nav.push(page)
             }
         }

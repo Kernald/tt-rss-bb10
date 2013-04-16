@@ -1,8 +1,9 @@
 import bb.cascades 1.0
 
 Page {
+    property variant feed
     titleBar: TitleBar {
-        title: currentFeed.title
+        title: feed.title
         visibility: ChromeVisibility.Visible
     } // titleBar
     
