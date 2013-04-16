@@ -1,15 +1,17 @@
 import bb.cascades 1.0
 
 Page {
+    property variant article
+    
     titleBar: TitleBar {
-        title: currentArticle.title
+        title: article.title
         visibility: ChromeVisibility.Visible
     } // titleBar
     
     Container {
         TextArea {
             editable: false
-            text: currentArticle.content
+            text: article.content
             textFormat: TextFormat.Html
         }
     }

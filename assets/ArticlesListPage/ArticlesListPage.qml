@@ -12,7 +12,7 @@ Page {
             listItemComponents: [
                 ListItemComponent {
                     type: "item"
-
+                    
                     ArticleListComponent {
                         title: ListItemData.title
                         updated: ListItemData.updatedTime
@@ -28,9 +28,9 @@ Page {
             ]
             onTriggered: {
                 if (indexPath.length > 1) {
-                    currentArticle = dataModel.data(indexPath);
                     var page = articlePageDefinition.createObject();
-                    nav.push(page)
+                    page.article = dataModel.data(indexPath);
+                    nav.push(page);
                 }
             }
             attachedObjects: [
