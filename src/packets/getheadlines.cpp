@@ -41,7 +41,8 @@ namespace ttrss {
 																mHeadline.value("updated").toUInt(),
 																mHeadline.value("excerpt").toString(),
 																mHeadline.value("content").toString(),
-																mHeadline.contains("content"));
+																mHeadline.contains("content"),
+																mHeadline.value("link").toUrl());
 					feed->addArticle(article);
 					getManager()->addArticle(article);
 				} else {
