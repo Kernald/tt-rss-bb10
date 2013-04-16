@@ -50,6 +50,13 @@ namespace ttrss {
 		Article::~Article() {
 		}
 
+		void Article::setUnread(bool unread) {
+			if (unread != _unread) {
+				_unread = unread;
+				emit unreadChanged(_unread);
+				_manager->setUnreadStatus(_id, _unread);
+			}
+		}
 
 		QString Article::getContent() {
 			if (!_loaded)

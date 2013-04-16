@@ -28,6 +28,7 @@ namespace ttrss {
 			Q_PROPERTY(QDate updatedDate READ getUpdatedDate CONSTANT);
 			Q_PROPERTY(QTime updatedTime READ getUpdatedTime CONSTANT);
 			Q_PROPERTY(QUrl link READ getLink CONSTANT);
+			Q_PROPERTY(bool unread READ isUnread WRITE setUnread NOTIFY unreadChanged);
 
 		public:
 			// TODO: complete attributes
@@ -70,6 +71,7 @@ namespace ttrss {
 
 		Q_SIGNALS:
 			void contentChanged(QString newContent);
+			void unreadChanged(bool isUnread);
 
 		private:
 			TTRSSManager*	_manager;
@@ -108,10 +110,6 @@ namespace ttrss {
 
 		inline bool Article::isUnread() const {
 			return _unread;
-		}
-
-		inline void Article::setUnread(bool unread) {
-			_unread = unread;
 		}
 
 		inline bool Article::isMarked() const {

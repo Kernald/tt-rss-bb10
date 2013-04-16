@@ -61,6 +61,8 @@ namespace ttrss {
 
 		void requestArticleDetails(data::Article* article);
 
+		void setUnreadStatus(unsigned int articleId, bool unreadStatus);
+
 	Q_SIGNALS:
 		void workingStateChanged(bool working);
 		void networkError(QVariant error);

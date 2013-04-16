@@ -11,6 +11,7 @@
 #include "packets/getfeeds.hpp"
 #include "packets/getheadlines.hpp"
 #include "packets/login.hpp"
+#include "packets/updatearticle.hpp"
 
 #include <bb/data/JsonDataAccess>
 #include <QtCore/QDebug>
@@ -102,6 +103,10 @@ namespace ttrss {
 
 	void TTRSSManager::requestArticleDetails(data::Article* article) {
 		sendPacket(new packets::GetArticle(article, this, _currentPacketID++));
+	}
+
+	void TTRSSManager::setUnreadStatus(unsigned int articleId, bool unreadStatus) {
+		sendPacket(new packets::UpdateArticle(articleId, packets::UpdateArticle::UNREAD, unreadStatus, "", this, _currentPacketID++));
 	}
 
 	void TTRSSManager::sendPacket(packets::APacket* packet) {
