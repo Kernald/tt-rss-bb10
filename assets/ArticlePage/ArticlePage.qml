@@ -14,5 +14,17 @@ Page {
             text: article.content
             textFormat: TextFormat.Html
         }
-    }
+    } // Container
+    
+    actions: [
+        InvokeActionItem {
+            query {
+                mimeType: "text/plain"
+                invokeActionId: "bb.action.SHARE"
+            }
+            onTriggered: {
+                data = article.link.toString();
+            }
+        } // Share
+    ] // Actions
 }
