@@ -17,6 +17,15 @@ Page {
     } // Container
     
     actions: [
+        ActionItem {
+            title: article.unread ? qsTr("Mark as read") : qsTr("Keep unread")
+            imageSource: article.unread ? "asset:///images/mark_as_read.png" : "asset:///images/keep_unread.png"
+            ActionBar.placement: ActionBarPlacement.OnBar
+
+            onTriggered: {
+                article.unread = !article.unread
+            }
+        }, // Keep unread
         InvokeActionItem {
             query {
                 mimeType: "text/plain"
