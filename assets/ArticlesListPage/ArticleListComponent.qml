@@ -1,9 +1,9 @@
 import bb.cascades 1.0
 
 StandardListItem {
-    property variant updated
-    property alias excerpt: root.description
+    property variant article
     
-    id: root
-    status: Qt.formatTime(updated, "hh:mm")
+    title: article.title
+    description: article.excerpt
+    status: Qt.formatTime(article.updated, "hh:mm")
 }

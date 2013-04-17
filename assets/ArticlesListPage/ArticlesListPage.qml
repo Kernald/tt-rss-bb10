@@ -15,9 +15,7 @@ Page {
                     type: "item"
                     
                     ArticleListComponent {
-                        title: ListItemData.title
-                        updated: ListItemData.updatedTime
-                        excerpt: ListItemData.excerpt
+                        article: ListItemData
                     }
                 },
                 ListItemComponent {
