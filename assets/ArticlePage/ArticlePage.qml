@@ -25,8 +25,19 @@ Page {
         WebView {
             id: webView
             html: article.content
+            
             settings.viewport: {
                 "initial-scale": 1.0
+            }
+            
+            onNavigationRequested: {
+                if (request.url == "local:///") {
+                    request.action = WebNavigationRequestAction.Accept;
+                } else {
+                    request.action = WebNavigationRequestAction.Ignore;
+                    invokeQuery.uri = request.url;
+                    invokeBrowser.trigger("bb.action.OPEN");
+                }
             }
         } // Web view
     } // Scroll view
@@ -51,4 +62,15 @@ Page {
             }
         } // Share
     ] // Actions
+    
+    attachedObjects: [
+        Invocation {
+            id: invokeBrowser
+            query: InvokeQuery {
+                id: invokeQuery
+                invokeTargetId: "sys.browser"
+                onQueryChanged: invokeQuery.updateQuery()
+            }
+        } // Browser invokation
+    ] // Attached objects
 }
