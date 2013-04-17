@@ -28,7 +28,9 @@ Page {
             onTriggered: {
                 if (indexPath.length > 1) {
                     var page = articlePageDefinition.createObject();
-                    page.article = dataModel.data(indexPath);
+                    var article = dataModel.data(indexPath);
+                    article.unread = false;
+                    page.article = article;
                     nav.push(page);
                 }
             }
