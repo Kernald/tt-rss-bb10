@@ -1,6 +1,8 @@
 import bb.cascades 1.0
 
 StandardListItem {
-    id: root
-    property alias unreadArticlesCount: root.status
+    property variant feed
+    
+    title: feed.title
+    status: feed.unreadArticlesCount
 }

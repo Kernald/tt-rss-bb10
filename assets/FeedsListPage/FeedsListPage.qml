@@ -19,8 +19,7 @@ Page {
                     type: "item"
                     
                     FeedListComponent {
-                        title: ListItemData.title
-                        unreadArticlesCount: ListItemData.unreadArticlesCount
+                        feed: ListItemData
                     }
                 }
             ]
