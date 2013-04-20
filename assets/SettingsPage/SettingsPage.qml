@@ -70,6 +70,7 @@ Page {
                 }
                 Container {
                     leftPadding: 40
+                    horizontalAlignment: HorizontalAlignment.Fill
                     CheckBox {
                         id: unreadOnly
                         objectName: "unreadOnly"
@@ -82,6 +83,7 @@ Page {
                 } // Unread only
                 Container {
                     leftPadding: 40
+                    horizontalAlignment: HorizontalAlignment.Fill
                     CheckBox {
                         id: articlesOldestFirst
                         objectName: "articlesOldestFirst"
