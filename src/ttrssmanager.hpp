@@ -41,6 +41,8 @@ namespace ttrss {
 
 		bool isWorking() const;
 
+		void requestConfig();
+
 		void login();
 		ELoginStatus loginStatus() const;
 		void setLoginStatus(ELoginStatus loginStatus);
@@ -62,6 +64,8 @@ namespace ttrss {
 		void requestArticleDetails(data::Article* article);
 
 		void setUnreadStatus(unsigned int articleId, bool unreadStatus);
+
+		void setIconsUrl(QString url);
 
 	Q_SIGNALS:
 		void workingStateChanged(bool working);
@@ -87,6 +91,7 @@ namespace ttrss {
 		unsigned long long							_currentPacketID;
 		QMap<unsigned long long, packets::APacket*>	_waitingPackets;
 
+		QString										_iconsUrl;
 		QList<data::Category*>						_categories;
 	};
 
@@ -108,7 +113,11 @@ namespace ttrss {
 
 	inline void TTRSSManager::setSessionID(QString sessionID) {
 		_sessionID = sessionID;
-		requestCategories();
+		requestConfig();
+	}
+
+	inline void TTRSSManager::setIconsUrl(QString url) {
+		_iconsUrl = url;
 	}
 }
 

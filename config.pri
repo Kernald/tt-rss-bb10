@@ -13,6 +13,7 @@ device {
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
+                 $$quote($$BASEDIR/src/packets/getconfig.cpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
@@ -29,6 +30,7 @@ device {
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
+                 $$quote($$BASEDIR/src/packets/getconfig.hpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
@@ -48,6 +50,7 @@ device {
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
+                 $$quote($$BASEDIR/src/packets/getconfig.cpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
@@ -64,6 +67,7 @@ device {
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
+                 $$quote($$BASEDIR/src/packets/getconfig.hpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \
@@ -85,6 +89,7 @@ simulator {
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
+                 $$quote($$BASEDIR/src/packets/getconfig.cpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.cpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.cpp) \
                  $$quote($$BASEDIR/src/packets/login.cpp) \
@@ -101,6 +106,7 @@ simulator {
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
+                 $$quote($$BASEDIR/src/packets/getconfig.hpp) \
                  $$quote($$BASEDIR/src/packets/getfeeds.hpp) \
                  $$quote($$BASEDIR/src/packets/getheadlines.hpp) \
                  $$quote($$BASEDIR/src/packets/login.hpp) \

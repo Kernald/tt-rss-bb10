@@ -8,6 +8,7 @@
 
 #include "packets/getarticle.hpp"
 #include "packets/getcategories.hpp"
+#include "packets/getconfig.hpp"
 #include "packets/getfeeds.hpp"
 #include "packets/getheadlines.hpp"
 #include "packets/login.hpp"
@@ -29,6 +30,10 @@ namespace ttrss {
 	TTRSSManager::~TTRSSManager() {
 		delete _networkAccessManager;
 		qDeleteAll(_categories);
+	}
+
+	void TTRSSManager::requestConfig() {
+		sendPacket(new packets::GetConfig(this, _currentPacketID++));
 	}
 
 	void TTRSSManager::login() {
