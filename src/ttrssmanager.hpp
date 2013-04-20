@@ -66,6 +66,7 @@ namespace ttrss {
 		void setUnreadStatus(unsigned int articleId, bool unreadStatus);
 
 		void setIconsUrl(QString url);
+		void setFeedIcon(data::Feed* feed);
 
 	Q_SIGNALS:
 		void workingStateChanged(bool working);

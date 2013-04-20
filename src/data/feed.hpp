@@ -23,6 +23,7 @@ namespace ttrss {
 			Q_PROPERTY(QUrl url READ getUrl CONSTANT);
 			Q_PROPERTY(bool hasUnreadArticles READ hasUnreadArticles NOTIFY unreadArticlesChanged);
 			Q_PROPERTY(unsigned int unreadArticlesCount READ unreadArticlesCount NOTIFY unreadArticlesCountChanged);
+			Q_PROPERTY(QVariant icon READ getIcon WRITE setIcon NOTIFY iconChanged);
 
 		public:
 			Feed(int id = -1, QString title = "", QUrl feedUrl = QUrl(), QList<Article*> articles = QList<Article*>());
@@ -33,6 +34,8 @@ namespace ttrss {
 			QString getTitle() const;
 			QUrl getUrl() const;
 			QList<Article*> getArticles() const;
+			QVariant getIcon() const;
+			void setIcon(QVariant icon);
 
 			bool hasUnreadArticles() const;
 			unsigned int unreadArticlesCount() const;
@@ -43,12 +46,14 @@ namespace ttrss {
 		Q_SIGNALS:
 			void unreadArticlesChanged(bool hasUnreadArticles);
 			void unreadArticlesCountChanged(unsigned int unreadArticlesCount);
+			void iconChanged(QVariant icon);
 
 		private:
 			int				_id;
 			QString			_title;
 			QUrl			_feedUrl;
 			QList<Article*>	_articles;
+			QVariant		_icon;
 		};
 
 		inline int Feed::getId() const {
@@ -65,6 +70,15 @@ namespace ttrss {
 
 		inline QList<Article*> Feed::getArticles() const {
 			return _articles;
+		}
+
+		inline QVariant Feed::getIcon() const {
+			return _icon;
+		}
+
+		inline void Feed::setIcon(QVariant icon) {
+			_icon = icon;
+			emit iconChanged(icon);
 		}
 	}
 }

@@ -15,6 +15,7 @@ namespace ttrss {
 			_title = other.getTitle();
 			_feedUrl = other.getUrl();
 			// TODO: _articles
+			_icon = other.getIcon();
 		}
 
 		Feed::~Feed() {

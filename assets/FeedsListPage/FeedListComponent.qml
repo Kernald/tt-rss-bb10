@@ -5,4 +5,5 @@ StandardListItem {
     
     title: feed.title
     status: feed.unreadArticlesCount
+    image: feed.icon
 }

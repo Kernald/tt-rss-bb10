@@ -8,7 +8,9 @@ device {
                  $$quote($$BASEDIR/src/data/article.cpp) \
                  $$quote($$BASEDIR/src/data/category.cpp) \
                  $$quote($$BASEDIR/src/data/feed.cpp) \
+                 $$quote($$BASEDIR/src/feediconloader.cpp) \
                  $$quote($$BASEDIR/src/feedmanager.cpp) \
+                 $$quote($$BASEDIR/src/imageloader.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.cpp) \
@@ -26,7 +28,9 @@ device {
                  $$quote($$BASEDIR/src/data/article.hpp) \
                  $$quote($$BASEDIR/src/data/category.hpp) \
                  $$quote($$BASEDIR/src/data/feed.hpp) \
+                 $$quote($$BASEDIR/src/feediconloader.hpp) \
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
+                 $$quote($$BASEDIR/src/imageloader.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
@@ -45,7 +49,9 @@ device {
                  $$quote($$BASEDIR/src/data/article.cpp) \
                  $$quote($$BASEDIR/src/data/category.cpp) \
                  $$quote($$BASEDIR/src/data/feed.cpp) \
+                 $$quote($$BASEDIR/src/feediconloader.cpp) \
                  $$quote($$BASEDIR/src/feedmanager.cpp) \
+                 $$quote($$BASEDIR/src/imageloader.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.cpp) \
@@ -63,7 +69,9 @@ device {
                  $$quote($$BASEDIR/src/data/article.hpp) \
                  $$quote($$BASEDIR/src/data/category.hpp) \
                  $$quote($$BASEDIR/src/data/feed.hpp) \
+                 $$quote($$BASEDIR/src/feediconloader.hpp) \
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
+                 $$quote($$BASEDIR/src/imageloader.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
@@ -84,7 +92,9 @@ simulator {
                  $$quote($$BASEDIR/src/data/article.cpp) \
                  $$quote($$BASEDIR/src/data/category.cpp) \
                  $$quote($$BASEDIR/src/data/feed.cpp) \
+                 $$quote($$BASEDIR/src/feediconloader.cpp) \
                  $$quote($$BASEDIR/src/feedmanager.cpp) \
+                 $$quote($$BASEDIR/src/imageloader.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.cpp) \
@@ -102,7 +112,9 @@ simulator {
                  $$quote($$BASEDIR/src/data/article.hpp) \
                  $$quote($$BASEDIR/src/data/category.hpp) \
                  $$quote($$BASEDIR/src/data/feed.hpp) \
+                 $$quote($$BASEDIR/src/feediconloader.hpp) \
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
+                 $$quote($$BASEDIR/src/imageloader.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \

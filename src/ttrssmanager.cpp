@@ -1,5 +1,6 @@
 #include "ttrssmanager.hpp"
 
+#include "feediconloader.hpp"
 #include "settings.hpp"
 
 #include "data/article.hpp"
@@ -75,6 +76,7 @@ namespace ttrss {
 
 	void TTRSSManager::addFeed(data::Feed* feed) {
 		emit feedAdded(feed);
+		setFeedIcon(feed);
 	}
 
 	data::Feed* TTRSSManager::getFeed(int feedId) const {
@@ -108,6 +110,12 @@ namespace ttrss {
 
 	void TTRSSManager::requestArticleDetails(data::Article* article) {
 		sendPacket(new packets::GetArticle(article, this, _currentPacketID++));
+	}
+
+	void TTRSSManager::setFeedIcon(data::Feed* feed) {
+		QString url(Settings::getValueFor("serverAddress", QVariant("")).toString() + QString("/%1/%2.ico").arg(_iconsUrl).arg(feed->getId()));
+		FeedIconLoader* loader = new FeedIconLoader(url, feed, this);
+		loader->load();
 	}
 
 	void TTRSSManager::setUnreadStatus(unsigned int articleId, bool unreadStatus) {
