@@ -9,3 +9,6 @@ x86
 # IDE
 .device
 .settings
+
+# QML preview
+.preview-*qml~
