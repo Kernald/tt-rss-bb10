@@ -11,7 +11,7 @@ namespace ttrss {
 
 namespace ttrss {
 	namespace packets {
-		class GetArticle: public ttrss::packets::APacket {
+		class GetArticle: public APacket {
 		public:
 			GetArticle(data::Article* article, TTRSSManager* manager, unsigned long long id);
 			virtual ~GetArticle();

@@ -5,7 +5,7 @@
 
 namespace ttrss {
 	namespace packets {
-		class UpdateArticle: public ttrss::packets::APacket {
+		class UpdateArticle: public APacket {
 		public:
 			enum E_Field {
 				STARRED = 0,

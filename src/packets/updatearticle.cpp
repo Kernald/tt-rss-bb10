@@ -6,11 +6,17 @@
 
 namespace ttrss {
 	namespace packets {
-		UpdateArticle::UpdateArticle(unsigned int articleId, E_Field field, bool status, QString data, TTRSSManager* manager, unsigned long long id) :	APacket(manager, id),
-																																						_articleId(articleId),
-																																						_field(field),
-																																						_status(status),
-																																						_data(data) {
+		UpdateArticle::UpdateArticle(	unsigned int articleId,
+										E_Field field,
+										bool status,
+										QString data,
+										TTRSSManager* manager,
+										unsigned long long id) :
+											APacket(manager, id),
+											_articleId(articleId),
+											_field(field),
+											_status(status),
+											_data(data) {
 		}
 
 		UpdateArticle::~UpdateArticle() {
