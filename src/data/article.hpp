@@ -5,6 +5,8 @@ namespace ttrss {
 	class TTRSSManager;
 }
 
+#include "data/feed.hpp"
+
 #include <QtCore/QDate>
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
@@ -29,6 +31,8 @@ namespace ttrss {
 			Q_PROPERTY(QTime updatedTime READ getUpdatedTime CONSTANT);
 			Q_PROPERTY(QUrl link READ getLink CONSTANT);
 			Q_PROPERTY(bool unread READ isUnread WRITE setUnread NOTIFY unreadChanged);
+			Q_PROPERTY(QVariant feed READ getFeed CONSTANT);
+			Q_PROPERTY(QVariant icon READ getIcon CONSTANT);
 
 		public:
 			// TODO: complete attributes
@@ -43,7 +47,8 @@ namespace ttrss {
 					QString excerpt = "",
 					QString content = "",
 					bool loaded = false,
-					QUrl link = QUrl());
+					QUrl link = QUrl(),
+					Feed* feed = NULL);
 			Article(const Article& other);
 			virtual ~Article();
 
@@ -66,6 +71,8 @@ namespace ttrss {
 			QDate getUpdatedDate() const;
 			QTime getUpdatedTime() const;
 			QUrl getLink() const;
+			QVariant getFeed() const;
+			QVariant getIcon() const;	// TODO: find how to access feed.icon from QML and remove this
 
 			Q_INVOKABLE void load();
 
@@ -88,6 +95,7 @@ namespace ttrss {
 			QString			_content;
 			bool			_loaded;
 			QUrl			_link;
+			Feed*			_feed;
 			// TODO: feed_id
 			// TODO: attachments
 		};
@@ -154,6 +162,14 @@ namespace ttrss {
 
 		inline bool Article::isLoaded() const {
 			return _loaded;
+		}
+
+		inline QVariant Article::getFeed() const {
+			return QVariant::fromValue(_feed);
+		}
+
+		inline QVariant Article::getIcon() const {
+			return _feed->getIcon();
 		}
 	}
 }

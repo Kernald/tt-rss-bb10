@@ -15,7 +15,8 @@ namespace ttrss {
 							QString excerpt,
 							QString content,
 							bool loaded,
-							QUrl link) :
+							QUrl link,
+							Feed* feed) :
 								_manager(manager),
 								_id(id),
 								_title(title),
@@ -27,7 +28,8 @@ namespace ttrss {
 								_excerpt(excerpt),
 								_content(content),
 								_loaded(loaded),
-								_link(link) {
+								_link(link),
+								_feed(feed) {
 		}
 
 		Article::Article(const Article& other) : QObject() {

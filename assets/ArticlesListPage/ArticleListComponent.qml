@@ -15,16 +15,27 @@ Container {
 	    horizontalAlignment: HorizontalAlignment.Fill
 	    preferredHeight: 120
 	
-	    /*ImageView {
+	    ImageView {
 	        id: image
 	        preferredHeight: 120
 	        preferredWidth: 120
 	        verticalAlignment: VerticalAlignment.Center
-	    }*/
+	        image: article.icon
+
+            layoutProperties: StackLayoutProperties {
+                spaceQuota: -1
+            }
+
+        }
 	    
 	    Container {
 	        layout: StackLayout {}
             horizontalAlignment: HorizontalAlignment.Fill
+
+            layoutProperties: StackLayoutProperties {
+                spaceQuota: 1
+            }
+
             leftPadding: 20
             rightPadding: 10
 
