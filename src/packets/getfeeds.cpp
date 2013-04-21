@@ -31,7 +31,8 @@ namespace ttrss {
 						data::Feed* feed = new data::Feed(	mFeed.value("id").toInt(),
 															mFeed.value("title").toString(),
 															QUrl(mFeed.value("feed_url").toString()),
-															QList<data::Article*>());
+															QList<data::Article*>(),
+															category);
 						category->addFeed(feed);
 						getManager()->addFeed(feed);
 						getManager()->requestHeadlines(feed->getId());

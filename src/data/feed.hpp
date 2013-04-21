@@ -7,6 +7,8 @@ namespace ttrss {
 	}
 }
 
+#include "data/category.hpp"
+
 #include <QtCore/QList>
 #include <QtCore/QString>
 #include <QtCore/QUrl>
@@ -26,7 +28,7 @@ namespace ttrss {
 			Q_PROPERTY(QVariant icon READ getIcon WRITE setIcon NOTIFY iconChanged);
 
 		public:
-			Feed(int id = -1, QString title = "", QUrl feedUrl = QUrl(), QList<Article*> articles = QList<Article*>());
+			Feed(int id = -1, QString title = "", QUrl feedUrl = QUrl(), QList<Article*> articles = QList<Article*>(), Category* category = NULL);
 			Feed(const Feed& other);
 			virtual ~Feed();
 
@@ -36,6 +38,7 @@ namespace ttrss {
 			QList<Article*> getArticles() const;
 			QVariant getIcon() const;
 			void setIcon(QVariant icon);
+			Category* getCategory() const;
 
 			bool hasUnreadArticles() const;
 			unsigned int unreadArticlesCount() const;
@@ -54,6 +57,7 @@ namespace ttrss {
 			QUrl			_feedUrl;
 			QList<Article*>	_articles;
 			QVariant		_icon;
+			Category*		_category;
 		};
 
 		inline int Feed::getId() const {
@@ -79,6 +83,10 @@ namespace ttrss {
 		inline void Feed::setIcon(QVariant icon) {
 			_icon = icon;
 			emit iconChanged(icon);
+		}
+
+		inline Category* Feed::getCategory() const {
+			return _category;
 		}
 	}
 }

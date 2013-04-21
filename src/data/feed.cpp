@@ -4,10 +4,11 @@
 
 namespace ttrss {
 	namespace data {
-		Feed::Feed(int id, QString title, QUrl feedUrl, QList<Article*> articles) :	_id(id),
-																					_title(title),
-																					_feedUrl(feedUrl),
-																					_articles(articles) {
+		Feed::Feed(int id, QString title, QUrl feedUrl, QList<Article*> articles, Category* category) :	_id(id),
+																										_title(title),
+																										_feedUrl(feedUrl),
+																										_articles(articles),
+																										_category(category) {
 		}
 
 		Feed::Feed(const Feed& other) : QObject() {
@@ -16,6 +17,7 @@ namespace ttrss {
 			_feedUrl = other.getUrl();
 			// TODO: _articles
 			_icon = other.getIcon();
+			_category = other.getCategory();
 		}
 
 		Feed::~Feed() {
