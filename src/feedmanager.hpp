@@ -16,9 +16,6 @@ namespace ttrss {
 		FeedManager(TTRSSManager* mainManager);
 		virtual ~FeedManager();
 
-		Q_INVOKABLE void filterOnCategory(int categoryId);
-		Q_INVOKABLE void resetCategoryFilter();
-
 	private:
 		TTRSSManager*	_mainManager;
 	};

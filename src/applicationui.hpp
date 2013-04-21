@@ -3,6 +3,7 @@
 
 #include "articlemanager.hpp"
 #include "feedmanager.hpp"
+#include "filteredfeedmanager.hpp"
 #include "settings.hpp"
 #include "ttrssmanager.hpp"
 
@@ -24,10 +25,11 @@ namespace ttrss {
 		virtual ~ApplicationUI() {}
 
 	private:
-		ArticleManager	_articleManager;
-		FeedManager		_feedManager;
-		Settings		_settings;
-		TTRSSManager	_manager;
+		ArticleManager		_articleManager;
+		FeedManager			_feedManager;
+		FilteredFeedManager	_filteredFeedManager;
+		Settings			_settings;
+		TTRSSManager		_manager;
 	};
 }
 
