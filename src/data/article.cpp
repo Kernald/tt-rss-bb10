@@ -60,6 +60,14 @@ namespace ttrss {
 			}
 		}
 
+		void Article::setPublished(bool published) {
+			if (published != _published) {
+				_published = published;
+				emit publishedChanged(_published);
+				_manager->setPublishedStatus(_id, _published);
+			}
+		}
+
 		QString Article::getContent() {
 			if (!_loaded)
 				load();

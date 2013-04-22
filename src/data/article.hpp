@@ -31,6 +31,7 @@ namespace ttrss {
 			Q_PROPERTY(QTime updatedTime READ getUpdatedTime CONSTANT);
 			Q_PROPERTY(QUrl link READ getLink CONSTANT);
 			Q_PROPERTY(bool unread READ isUnread WRITE setUnread NOTIFY unreadChanged);
+			Q_PROPERTY(bool published READ isPublished WRITE setPublished NOTIFY publishedChanged);
 			Q_PROPERTY(QVariant feed READ getFeed CONSTANT);
 			Q_PROPERTY(QVariant icon READ getIcon CONSTANT);
 
@@ -79,6 +80,7 @@ namespace ttrss {
 		Q_SIGNALS:
 			void contentChanged(QString newContent);
 			void unreadChanged(bool isUnread);
+			void publishedChanged(bool isPublished);
 
 		private:
 			TTRSSManager*	_manager;
@@ -130,10 +132,6 @@ namespace ttrss {
 
 		inline bool Article::isPublished() const {
 			return _published;
-		}
-
-		inline void Article::setPublished(bool published) {
-			_published = published;
 		}
 
 		inline QString Article::getComments() const {

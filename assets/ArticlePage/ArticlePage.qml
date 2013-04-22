@@ -47,11 +47,20 @@ Page {
             title: article.unread ? qsTr("Mark as read") : qsTr("Keep unread")
             imageSource: article.unread ? "asset:///images/mark_as_read.png" : "asset:///images/keep_unread.png"
             ActionBar.placement: ActionBarPlacement.OnBar
-            
+
             onTriggered: {
-                article.unread = !article.unread
+                article.unread = ! article.unread
             }
         }, // Keep unread
+        ActionItem {
+            title: article.published ? qsTr("Unpublish") : qsTr("Publish")
+            imageSource: article.published ? "asset:///images/unpublish.png" : "asset:///images/publish.png"
+            ActionBar.placement: ActionBarPlacement.OnBar
+
+            onTriggered: {
+                article.published = ! article.published
+            }
+        }, // Publish
         InvokeActionItem {
             query {
                 mimeType: "text/plain"
