@@ -71,10 +71,20 @@ Page {
                 Container {
                     leftPadding: 40
                     horizontalAlignment: HorizontalAlignment.Fill
-                    CheckBox {
+                    layout: StackLayout {
+                        orientation: LayoutOrientation.LeftToRight
+
+                    }
+                    Label {
+                        text: qsTr("Display only unread articles")
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1.0
+
+                        }
+                    }
+                    ToggleButton {
                         id: unreadOnly
                         objectName: "unreadOnly"
-                        text: qsTr("Display only unread articles")
                         checked: _settings.getValueFor(objectName, true);
                         onCheckedChanged: {
                             _settings.saveValueFor(unreadOnly.objectName, checked);
@@ -84,10 +94,20 @@ Page {
                 Container {
                     leftPadding: 40
                     horizontalAlignment: HorizontalAlignment.Fill
-                    CheckBox {
+                    layout: StackLayout {
+                        orientation: LayoutOrientation.LeftToRight
+
+                    }
+                    Label {
+                        text: qsTr("Display oldest articles first")
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1.0
+
+                        }
+                    }
+                    ToggleButton {
                         id: articlesOldestFirst
                         objectName: "articlesOldestFirst"
-                        text: qsTr("Display oldest articles first")
                         checked: _settings.getValueFor(objectName, true)
                         onCheckedChanged: {
                             _settings.saveValueFor(articlesOldestFirst.objectName, checked);
