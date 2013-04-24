@@ -2,6 +2,7 @@
 #define __FILTERED_FEED_MANAGER_HPP__
 
 #include <bb/cascades/DataModel>
+#include <QtCore/QHash>
 
 namespace ttrss {
 	class FilteredFeedManager: public bb::cascades::DataModel {
@@ -22,13 +23,16 @@ namespace ttrss {
 		Q_INVOKABLE void resetCategoryFilter();
 
 	private:
-	    bool isFiltered(const QVariantList& indexPath) const;
+	    bool isSourceIndexFiltered(const QVariantList& indexPath) const;
 	    int childCount_impl(const QVariantList& indexPath) const;
+	    void fillMapping();
+	    QVariantList proxyToSource(const QVariantList& indexPath) const;
+	    QVariantList sourceToProxy(const QVariantList& indexPath) const;
 
-	private:
 	    bb::cascades::DataModel*			_sourceDataModel;
 	    int									_filteredCategory;
 	    bool								_filtered;
+	    QHash<QVariantList, QVariantList>	_filterMapping;
 	};
 
 	inline int FilteredFeedManager::childCount(const QVariantList& indexPath) const {
@@ -38,6 +42,14 @@ namespace ttrss {
 	inline int FilteredFeedManager::childCount(const QVariantList& indexPath) {
 		return childCount_impl(indexPath);
 	}
+}
+
+inline uint qHash(const QVariantList& key) {
+	uint res = 0;
+	foreach (QVariant v, key) {
+		res ^= qHash(v.toInt());
+	}
+	return res;
 }
 
 #endif // __FILTERED_FEED_MANAGER_HPP__
