@@ -12,6 +12,7 @@ namespace ttrss {
 		FilteredFeedManager(bb::cascades::DataModel *sourceModel, QObject *parent = 0);
 		virtual ~FilteredFeedManager();
 
+	    int childCount(const QVariantList& indexPath) const;
 	    virtual int childCount(const QVariantList& indexPath);
 	    virtual bool hasChildren(const QVariantList& indexPath);
 	    virtual QVariant data(const QVariantList& indexPath);
@@ -22,12 +23,21 @@ namespace ttrss {
 
 	private:
 	    bool isFiltered(const QVariantList& indexPath) const;
+	    int childCount_impl(const QVariantList& indexPath) const;
 
 	private:
-	    bb::cascades::DataModel*	_sourceDataModel;
-	    int							_filteredCategory;
-	    bool						_filtered;
+	    bb::cascades::DataModel*			_sourceDataModel;
+	    int									_filteredCategory;
+	    bool								_filtered;
 	};
+
+	inline int FilteredFeedManager::childCount(const QVariantList& indexPath) const {
+		return childCount_impl(indexPath);
+	}
+
+	inline int FilteredFeedManager::childCount(const QVariantList& indexPath) {
+		return childCount_impl(indexPath);
+	}
 }
 
 #endif // __FILTERED_FEED_MANAGER_HPP__

@@ -28,13 +28,14 @@ namespace ttrss {
 	}
 
 	bool FilteredFeedManager::isFiltered(const QVariantList& indexPath) const {
-		return _filtered && indexPath.size() > 1 && qobject_cast<data::Feed*>(_sourceDataModel->data(indexPath).value<QObject*>())->getCategory()->getId() != _filteredCategory;
+		if (!_filtered)
+			return false;
+		if (indexPath.size() == 1)
+			return childCount(indexPath) == 0;
+		return qobject_cast<data::Feed*>(_sourceDataModel->data(indexPath).value<QObject*>())->getCategory()->getId() != _filteredCategory;
 	}
 
-	int FilteredFeedManager::childCount(const QVariantList& indexPath) {
-		if (isFiltered(indexPath))
-			return 0;
-
+	int FilteredFeedManager::childCount_impl(const QVariantList& indexPath) const {
 		int result = 0;
 		for (unsigned int i = 0, j = _sourceDataModel->childCount(indexPath); i < j; ++i) {
 			QVariantList path = indexPath;
