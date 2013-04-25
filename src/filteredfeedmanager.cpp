@@ -27,39 +27,39 @@ namespace ttrss {
 	FilteredFeedManager::~FilteredFeedManager() {
 	}
 
-	bool FilteredFeedManager::isSourceIndexFiltered(const QVariantList& indexPath) const {
-		if (!_filtered || indexPath.size() == 0)
+	bool FilteredFeedManager::isSourceIndexFiltered(const QVariantList& sourceIndexPath) const {
+		if (!_filtered || sourceIndexPath.size() == 0)
 			return false;
-		if (indexPath.size() == 1)
-			return childCount(sourceToProxy(indexPath)) == 0;
-		return qobject_cast<data::Feed*>(_sourceDataModel->data(indexPath).value<QObject*>())->getCategory()->getId() != _filteredCategory;
+		if (sourceIndexPath.size() == 1)
+			return childCount(sourceToProxy(sourceIndexPath)) == 0;
+		return qobject_cast<data::Feed*>(_sourceDataModel->data(sourceIndexPath).value<QObject*>())->getCategory()->getId() != _filteredCategory;
 	}
 
-	int FilteredFeedManager::childCount_impl(const QVariantList& indexPath) const {
+	int FilteredFeedManager::childCount_impl(const QVariantList& proxyIndexPath) const {
 		int result = 0;
-		for (unsigned int i = 0, j = _sourceDataModel->childCount(proxyToSource(indexPath)); i < j; ++i) {
-			QVariantList path = indexPath;
-			path << i;
-			if (!isSourceIndexFiltered(proxyToSource(path)))
+		for (unsigned int i = 0, j = _sourceDataModel->childCount(proxyToSource(proxyIndexPath)); i < j; ++i) {
+			QVariantList proxyPath = proxyIndexPath;
+			proxyPath << i;
+			if (!isSourceIndexFiltered(proxyToSource(proxyPath)))
 				++result;
 		}
 
 		return result;
 	}
 
-	bool FilteredFeedManager::hasChildren(const QVariantList& indexPath) {
-		if (isSourceIndexFiltered(proxyToSource(indexPath)) || !_sourceDataModel->hasChildren(proxyToSource(indexPath)))
+	bool FilteredFeedManager::hasChildren(const QVariantList& proxyIndexPath) {
+		if (isSourceIndexFiltered(proxyToSource(proxyIndexPath)) || !_sourceDataModel->hasChildren(proxyToSource(proxyIndexPath)))
 			return false;
 
-		return childCount(indexPath) > 0;
+		return childCount(proxyIndexPath) > 0;
 	}
 
-	QVariant FilteredFeedManager::data(const QVariantList& indexPath) {
-		return _sourceDataModel->data(proxyToSource(indexPath));
+	QVariant FilteredFeedManager::data(const QVariantList& proxyIndexPath) {
+		return _sourceDataModel->data(proxyToSource(proxyIndexPath));
 	}
 
-	QString FilteredFeedManager::itemType(const QVariantList& indexPath) {
-	    return _sourceDataModel->itemType(proxyToSource(indexPath));
+	QString FilteredFeedManager::itemType(const QVariantList& proxyIndexPath) {
+	    return _sourceDataModel->itemType(proxyToSource(proxyIndexPath));
 	}
 
 	void FilteredFeedManager::filterOnCategory(int categoryId) {
@@ -100,19 +100,19 @@ namespace ttrss {
 		}
 	}
 
-	QVariantList FilteredFeedManager::proxyToSource(const QVariantList& indexPath) const {
+	QVariantList FilteredFeedManager::proxyToSource(const QVariantList& proxyIndexPath) const {
 		if (!_filtered)
-			return indexPath;
-		QHash<QVariantList, QVariantList>::ConstIterator it = _filterMapping.find(indexPath);
+			return proxyIndexPath;
+		QHash<QVariantList, QVariantList>::ConstIterator it = _filterMapping.find(proxyIndexPath);
 		if (it == _filterMapping.constEnd())
 			return QVariantList();
 		else
 			return *it;
 	}
 
-	QVariantList FilteredFeedManager::sourceToProxy(const QVariantList& indexPath) const {
+	QVariantList FilteredFeedManager::sourceToProxy(const QVariantList& sourceIndexPath) const {
 		if (!_filtered)
-			return indexPath;
-		return _filterMapping.key(indexPath);
+			return sourceIndexPath;
+		return _filterMapping.key(sourceIndexPath);
 	}
 }

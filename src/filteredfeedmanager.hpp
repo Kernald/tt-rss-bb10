@@ -13,21 +13,21 @@ namespace ttrss {
 		FilteredFeedManager(bb::cascades::DataModel *sourceModel, QObject *parent = 0);
 		virtual ~FilteredFeedManager();
 
-	    int childCount(const QVariantList& indexPath) const;
-	    virtual int childCount(const QVariantList& indexPath);
-	    virtual bool hasChildren(const QVariantList& indexPath);
-	    virtual QVariant data(const QVariantList& indexPath);
-	    virtual QString itemType(const QVariantList& indexPath);
+	    int childCount(const QVariantList& proxyIndexPath) const;
+	    virtual int childCount(const QVariantList& proxyIndexPath);
+	    virtual bool hasChildren(const QVariantList& proxyIndexPath);
+	    virtual QVariant data(const QVariantList& proxyIndexPath);
+	    virtual QString itemType(const QVariantList& proxyIndexPath);
 
 		Q_INVOKABLE void filterOnCategory(int categoryId);
 		Q_INVOKABLE void resetCategoryFilter();
 
 	private:
-	    bool isSourceIndexFiltered(const QVariantList& indexPath) const;
-	    int childCount_impl(const QVariantList& indexPath) const;
+	    bool isSourceIndexFiltered(const QVariantList& sourceIndexPath) const;
+	    int childCount_impl(const QVariantList& proxyIndexPath) const;
 	    void fillMapping();
-	    QVariantList proxyToSource(const QVariantList& indexPath) const;
-	    QVariantList sourceToProxy(const QVariantList& indexPath) const;
+	    QVariantList proxyToSource(const QVariantList& proxyIndexPath) const;
+	    QVariantList sourceToProxy(const QVariantList& sourceIndexPath) const;
 
 	    bb::cascades::DataModel*			_sourceDataModel;
 	    int									_filteredCategory;
@@ -35,12 +35,12 @@ namespace ttrss {
 	    QHash<QVariantList, QVariantList>	_filterMapping;
 	};
 
-	inline int FilteredFeedManager::childCount(const QVariantList& indexPath) const {
-		return childCount_impl(indexPath);
+	inline int FilteredFeedManager::childCount(const QVariantList& proxyIndexPath) const {
+		return childCount_impl(proxyIndexPath);
 	}
 
-	inline int FilteredFeedManager::childCount(const QVariantList& indexPath) {
-		return childCount_impl(indexPath);
+	inline int FilteredFeedManager::childCount(const QVariantList& proxyIndexPath) {
+		return childCount_impl(proxyIndexPath);
 	}
 }
 
