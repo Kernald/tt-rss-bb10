@@ -11,20 +11,36 @@ namespace ttrss {
 				_sourceDataModel,
 					SIGNAL(itemAdded(QVariantList)),
 				this,
-					SIGNAL(itemAdded(QVariantList)));
+					SLOT(handleAdd(QVariantList)));
 		connect(
 				_sourceDataModel,
 					SIGNAL(itemUpdated(QVariantList)),
 				this,
-					SIGNAL(itemUpdated(QVariantList)));
+					SLOT(handleUpdate(QVariantList)));
 		connect(
 				_sourceDataModel,
 					SIGNAL(itemRemoved(QVariantList)),
 				this,
-					SIGNAL(itemRemoved(QVariantList)));
+					SLOT(handleRemove(QVariantList)));
 	}
 
 	FilteredFeedManager::~FilteredFeedManager() {
+	}
+
+
+	void FilteredFeedManager::handleAdd(const QVariantList& sourceIndexPath) {
+		if (!isSourceIndexFiltered(sourceIndexPath))
+			emit itemAdded(sourceToProxy(sourceIndexPath));
+	}
+
+	void FilteredFeedManager::handleUpdate(const QVariantList& sourceIndexPath) {
+		if (!isSourceIndexFiltered(sourceIndexPath))
+			emit itemUpdated(sourceToProxy(sourceIndexPath));
+	}
+
+	void FilteredFeedManager::handleRemove(const QVariantList& sourceIndexPath) {
+		if (!isSourceIndexFiltered(sourceIndexPath))
+			emit itemRemoved(sourceToProxy(sourceIndexPath));
 	}
 
 	bool FilteredFeedManager::isSourceIndexFiltered(const QVariantList& sourceIndexPath) const {
