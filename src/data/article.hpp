@@ -32,7 +32,7 @@ namespace ttrss {
 			Q_PROPERTY(QUrl link READ getLink CONSTANT);
 			Q_PROPERTY(bool unread READ isUnread WRITE setUnread NOTIFY unreadChanged);
 			Q_PROPERTY(bool published READ isPublished WRITE setPublished NOTIFY publishedChanged);
-			Q_PROPERTY(QVariant feed READ getFeed CONSTANT);
+			Q_PROPERTY(QVariant feed READ getFeedVariant CONSTANT);
 			Q_PROPERTY(QVariant icon READ getIcon CONSTANT);
 
 		public:
@@ -72,7 +72,8 @@ namespace ttrss {
 			QDate getUpdatedDate() const;
 			QTime getUpdatedTime() const;
 			QUrl getLink() const;
-			QVariant getFeed() const;
+			Feed* getFeed() const;
+			QVariant getFeedVariant() const;
 			QVariant getIcon() const;	// TODO: find how to access feed.icon from QML and remove this
 
 			Q_INVOKABLE void load();
@@ -162,7 +163,11 @@ namespace ttrss {
 			return _loaded;
 		}
 
-		inline QVariant Article::getFeed() const {
+		inline Feed* Article::getFeed() const {
+			return _feed;
+		}
+
+		inline QVariant Article::getFeedVariant() const {
 			return QVariant::fromValue(_feed);
 		}
 
