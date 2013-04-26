@@ -61,8 +61,9 @@ Container {
 	                    }
 	
 	                    text: article.title
-	
-	                }
+                        textFormat: TextFormat.Html
+
+                    }
 	            }
 
 				Container {
