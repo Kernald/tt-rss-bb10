@@ -100,7 +100,8 @@ Container {
 	                verticalAlignment: VerticalAlignment.Top
 	
 	                text: article.excerpt
-	            }
+                    textFormat: TextFormat.Html
+                }
 	        }
         }
     }
