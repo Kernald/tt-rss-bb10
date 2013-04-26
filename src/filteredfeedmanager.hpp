@@ -31,7 +31,7 @@ namespace ttrss {
 	    bool isSourceIndexFiltered(const QVariantList& sourceIndexPath) const;
 	    int childCount_impl(const QVariantList& proxyIndexPath) const;
 	    void fillMapping();
-	    QVariantList proxyToSource(const QVariantList& proxyIndexPath) const;
+	    QVariantList proxyToSource(const QVariantList& proxyIndexPath, bool& ok) const;
 	    QVariantList sourceToProxy(const QVariantList& sourceIndexPath) const;
 
 	    bb::cascades::DataModel*			_sourceDataModel;

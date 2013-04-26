@@ -53,29 +53,41 @@ namespace ttrss {
 
 	int FilteredFeedManager::childCount_impl(const QVariantList& proxyIndexPath) const {
 		int result = 0;
-		for (unsigned int i = 0, j = _sourceDataModel->childCount(proxyToSource(proxyIndexPath)); i < j; ++i) {
+		bool ok;
+		QVariantList sourceBasePath = proxyToSource(proxyIndexPath, ok);
+		if (!ok)
+			return result;
+
+		for (unsigned int i = 0, j = _sourceDataModel->childCount(sourceBasePath); i < j; ++i) {
 			QVariantList proxyPath = proxyIndexPath;
 			proxyPath << i;
-			if (!isSourceIndexFiltered(proxyToSource(proxyPath)))
+			bool res;
+			QVariantList sourcePath = proxyToSource(proxyPath, res);
+			if (res && !isSourceIndexFiltered(sourcePath)) {
 				++result;
+			}
 		}
 
 		return result;
 	}
 
 	bool FilteredFeedManager::hasChildren(const QVariantList& proxyIndexPath) {
-		if (isSourceIndexFiltered(proxyToSource(proxyIndexPath)) || !_sourceDataModel->hasChildren(proxyToSource(proxyIndexPath)))
+		bool ok;
+		QVariantList sourcePath = proxyToSource(proxyIndexPath, ok);
+		if (!ok || isSourceIndexFiltered(sourcePath) || !_sourceDataModel->hasChildren(sourcePath))
 			return false;
 
 		return childCount(proxyIndexPath) > 0;
 	}
 
 	QVariant FilteredFeedManager::data(const QVariantList& proxyIndexPath) {
-		return _sourceDataModel->data(proxyToSource(proxyIndexPath));
+		bool ok;
+		return _sourceDataModel->data(proxyToSource(proxyIndexPath, ok));
 	}
 
 	QString FilteredFeedManager::itemType(const QVariantList& proxyIndexPath) {
-	    return _sourceDataModel->itemType(proxyToSource(proxyIndexPath));
+		bool ok;
+	    return _sourceDataModel->itemType(proxyToSource(proxyIndexPath, ok));
 	}
 
 	void FilteredFeedManager::filterOnCategory(int categoryId) {
@@ -116,13 +128,17 @@ namespace ttrss {
 		}
 	}
 
-	QVariantList FilteredFeedManager::proxyToSource(const QVariantList& proxyIndexPath) const {
+	QVariantList FilteredFeedManager::proxyToSource(const QVariantList& proxyIndexPath, bool& ok) const {
+		ok = true;
 		if (!_filtered)
 			return proxyIndexPath;
-		QHash<QVariantList, QVariantList>::ConstIterator it = _filterMapping.find(proxyIndexPath);
-		if (it == _filterMapping.constEnd())
+		if (proxyIndexPath == QVariantList())
 			return QVariantList();
-		else
+		QHash<QVariantList, QVariantList>::ConstIterator it = _filterMapping.find(proxyIndexPath);
+		if (it == _filterMapping.constEnd()) {
+			ok = false;
+			return QVariantList();
+		} else
 			return *it;
 	}
 
