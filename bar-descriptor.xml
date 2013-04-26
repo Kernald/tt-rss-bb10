@@ -72,7 +72,7 @@
     <configuration name="Device-Release">
        <entryPointType>Qnx/Cascades</entryPointType>
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7/tt_rss.so" entry="true" type="Qnx/Elf">tt_rss.so</asset>
+       <asset path="arm/o.le-v7-g/tt_rss" entry="true" type="Qnx/Elf">tt_rss</asset>
     </configuration>
     <configuration name="Device-Profile">
        <platformArchitecture>armle-v7</platformArchitecture>
