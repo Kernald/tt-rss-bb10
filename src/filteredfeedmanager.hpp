@@ -23,9 +23,9 @@ namespace ttrss {
 		Q_INVOKABLE void resetCategoryFilter();
 
 	private Q_SLOTS:
-	void handleAdd(const QVariantList& sourceIndexPath);
-	void handleUpdate(const QVariantList& sourceIndexPath);
-	void handleRemove(const QVariantList& sourceIndexPath);
+		void handleAdd(const QVariantList& sourceIndexPath);
+		void handleUpdate(const QVariantList& sourceIndexPath);
+		void handleRemove(const QVariantList& sourceIndexPath);
 
 	private:
 	    bool isSourceIndexFiltered(const QVariantList& sourceIndexPath) const;
