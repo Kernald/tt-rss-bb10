@@ -23,7 +23,7 @@ Page {
                     }
                 }
             ]
-            visible: !_manager.working
+            //visible: !_manager.working
 
             onTriggered: {
                 if (indexPath.length > 1) {
@@ -32,10 +32,10 @@ Page {
             }
         } // ListView
         
-        ActivityIndicator {
+        /*ActivityIndicator {
             verticalAlignment: VerticalAlignment.Fill
             horizontalAlignment: HorizontalAlignment.Fill
             running: _manager.working
-        }
+        }*/
     } // Root container
 } // Page
