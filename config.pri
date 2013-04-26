@@ -13,6 +13,7 @@ device {
                  $$quote($$BASEDIR/src/filteredfeedmanager.cpp) \
                  $$quote($$BASEDIR/src/imageloader.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
+                 $$quote($$BASEDIR/src/modelfilter.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
@@ -33,6 +34,7 @@ device {
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
                  $$quote($$BASEDIR/src/filteredfeedmanager.hpp) \
                  $$quote($$BASEDIR/src/imageloader.hpp) \
+                 $$quote($$BASEDIR/src/modelfilter.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
@@ -56,6 +58,7 @@ device {
                  $$quote($$BASEDIR/src/filteredfeedmanager.cpp) \
                  $$quote($$BASEDIR/src/imageloader.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
+                 $$quote($$BASEDIR/src/modelfilter.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
@@ -76,6 +79,7 @@ device {
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
                  $$quote($$BASEDIR/src/filteredfeedmanager.hpp) \
                  $$quote($$BASEDIR/src/imageloader.hpp) \
+                 $$quote($$BASEDIR/src/modelfilter.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
@@ -101,6 +105,7 @@ simulator {
                  $$quote($$BASEDIR/src/filteredfeedmanager.cpp) \
                  $$quote($$BASEDIR/src/imageloader.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
+                 $$quote($$BASEDIR/src/modelfilter.cpp) \
                  $$quote($$BASEDIR/src/packets/apacket.cpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.cpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.cpp) \
@@ -121,6 +126,7 @@ simulator {
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
                  $$quote($$BASEDIR/src/filteredfeedmanager.hpp) \
                  $$quote($$BASEDIR/src/imageloader.hpp) \
+                 $$quote($$BASEDIR/src/modelfilter.hpp) \
                  $$quote($$BASEDIR/src/packets/apacket.hpp) \
                  $$quote($$BASEDIR/src/packets/getarticle.hpp) \
                  $$quote($$BASEDIR/src/packets/getcategories.hpp) \
