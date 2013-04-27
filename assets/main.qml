@@ -18,9 +18,9 @@ TabbedPane {
         id: nav
         FeedsListPage {
             id: feedsPage
-            onArticleClicked: {
+            onFeedClicked: {
                 var page = articlesListPageDefinition.createObject();
-                page.feed = article;
+                page.feed = feed;
                 nav.push(page)
             }
         }

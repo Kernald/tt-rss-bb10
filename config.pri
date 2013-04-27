@@ -10,6 +10,7 @@ device {
                  $$quote($$BASEDIR/src/data/feed.cpp) \
                  $$quote($$BASEDIR/src/feediconloader.cpp) \
                  $$quote($$BASEDIR/src/feedmanager.cpp) \
+                 $$quote($$BASEDIR/src/filteredarticlemanager.cpp) \
                  $$quote($$BASEDIR/src/filteredfeedmanager.cpp) \
                  $$quote($$BASEDIR/src/imageloader.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
@@ -32,6 +33,7 @@ device {
                  $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/feediconloader.hpp) \
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
+                 $$quote($$BASEDIR/src/filteredarticlemanager.hpp) \
                  $$quote($$BASEDIR/src/filteredfeedmanager.hpp) \
                  $$quote($$BASEDIR/src/imageloader.hpp) \
                  $$quote($$BASEDIR/src/modelfilter.hpp) \
@@ -55,6 +57,7 @@ device {
                  $$quote($$BASEDIR/src/data/feed.cpp) \
                  $$quote($$BASEDIR/src/feediconloader.cpp) \
                  $$quote($$BASEDIR/src/feedmanager.cpp) \
+                 $$quote($$BASEDIR/src/filteredarticlemanager.cpp) \
                  $$quote($$BASEDIR/src/filteredfeedmanager.cpp) \
                  $$quote($$BASEDIR/src/imageloader.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
@@ -77,6 +80,7 @@ device {
                  $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/feediconloader.hpp) \
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
+                 $$quote($$BASEDIR/src/filteredarticlemanager.hpp) \
                  $$quote($$BASEDIR/src/filteredfeedmanager.hpp) \
                  $$quote($$BASEDIR/src/imageloader.hpp) \
                  $$quote($$BASEDIR/src/modelfilter.hpp) \
@@ -102,6 +106,7 @@ simulator {
                  $$quote($$BASEDIR/src/data/feed.cpp) \
                  $$quote($$BASEDIR/src/feediconloader.cpp) \
                  $$quote($$BASEDIR/src/feedmanager.cpp) \
+                 $$quote($$BASEDIR/src/filteredarticlemanager.cpp) \
                  $$quote($$BASEDIR/src/filteredfeedmanager.cpp) \
                  $$quote($$BASEDIR/src/imageloader.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
@@ -124,6 +129,7 @@ simulator {
                  $$quote($$BASEDIR/src/data/feed.hpp) \
                  $$quote($$BASEDIR/src/feediconloader.hpp) \
                  $$quote($$BASEDIR/src/feedmanager.hpp) \
+                 $$quote($$BASEDIR/src/filteredarticlemanager.hpp) \
                  $$quote($$BASEDIR/src/filteredfeedmanager.hpp) \
                  $$quote($$BASEDIR/src/imageloader.hpp) \
                  $$quote($$BASEDIR/src/modelfilter.hpp) \

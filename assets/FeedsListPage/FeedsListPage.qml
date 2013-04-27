@@ -1,7 +1,7 @@
 import bb.cascades 1.0
 
 Page {
-    signal articleClicked(variant article)
+    signal feedClicked(variant feed)
 
     id: root
 
@@ -27,7 +27,10 @@ Page {
 
             onTriggered: {
                 if (indexPath.length > 1) {
-                    root.articleClicked(dataModel.data(indexPath));
+                    var feed = dataModel.data(indexPath);
+                    if (feed)
+                        _articleModel.filterOnFeed(feed.id);
+                    root.feedClicked(feed);
                 }
             }
         } // ListView

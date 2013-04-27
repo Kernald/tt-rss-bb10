@@ -5,11 +5,15 @@
 #include <bb/cascades/QmlDocument>
 
 namespace ttrss {
-	ApplicationUI::ApplicationUI(bb::cascades::Application *app) : QObject(app), _articleManager(&_manager), _feedManager(&_manager), _filteredFeedManager(&_feedManager, this) {
+	ApplicationUI::ApplicationUI(bb::cascades::Application *app) :	QObject(app),
+																	_articleManager(&_manager),
+																	_feedManager(&_manager),
+																	_filteredArticleManager(&_articleManager, this),
+																	_filteredFeedManager(&_feedManager, this) {
 		bb::cascades::QmlDocument *qml = bb::cascades::QmlDocument::create("asset:///main.qml").parent(this);
 		qml->setContextProperty("_manager", &_manager);
 		qml->setContextProperty("_settings", &_settings);
-		qml->setContextProperty("_articleModel", &_articleManager);
+		qml->setContextProperty("_articleModel", &_filteredArticleManager);
 		qml->setContextProperty("_feedModel", &_filteredFeedManager);
 
 		bb::cascades::AbstractPane *root = qml->createRootObject<bb::cascades::AbstractPane>();
