@@ -10,8 +10,8 @@ Page {
         visibility: ChromeVisibility.Visible
     } // titleBar
     
-    // TODO: scroll issues with dock layout? 
     Container {
+        layout: DockLayout {}
         ListView {
             dataModel: _feedModel
             listItemComponents: [
@@ -23,7 +23,7 @@ Page {
                     }
                 }
             ]
-            //visible: !_manager.working
+            visible: !_manager.working
 
             onTriggered: {
                 if (indexPath.length > 1) {
@@ -35,10 +35,11 @@ Page {
             }
         } // ListView
         
-        /*ActivityIndicator {
+        ActivityIndicator {
             verticalAlignment: VerticalAlignment.Fill
             horizontalAlignment: HorizontalAlignment.Fill
             running: _manager.working
-        }*/
+            visible: _manager.working
+        }
     } // Root container
 } // Page
