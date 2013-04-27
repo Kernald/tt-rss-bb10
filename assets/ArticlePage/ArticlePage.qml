@@ -62,12 +62,9 @@ Page {
             }
         }, // Publish
         InvokeActionItem {
+            id: share
             query {
-                mimeType: "text/plain"
                 invokeActionId: "bb.action.SHARE"
-            }
-            onTriggered: {
-                data = article.link.toString();
             }
         } // Share
     ] // Actions
@@ -82,4 +79,9 @@ Page {
             }
         } // Browser invokation
     ] // Attached objects
+    
+    onArticleChanged: {
+        share.query.uri = article.link.toString();
+        share.query.updateQuery();
+    }
 }
