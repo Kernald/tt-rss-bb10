@@ -66,7 +66,17 @@ Page {
             query {
                 invokeActionId: "bb.action.SHARE"
             }
-        } // Share
+        }, // Share
+        InvokeActionItem {
+            title: qsTr("Open in browser")
+            imageSource: "asset:///images/ic_open_link.png"
+            id: openInBrowser
+            
+            query {
+                invokeActionId: "bb.action.OPEN"
+                invokeTargetId: "sys.browser"
+            }
+        }
     ] // Actions
     
     attachedObjects: [
@@ -77,11 +87,13 @@ Page {
                 invokeTargetId: "sys.browser"
                 onQueryChanged: invokeQuery.updateQuery()
             }
-        } // Browser invokation
+        } // Browser invocation
     ] // Attached objects
     
     onArticleChanged: {
         share.query.uri = article.link.toString();
         share.query.updateQuery();
+        openInBrowser.query.uri = article.link.toString();
+        openInBrowser.query.updateQuery();
     }
 }
