@@ -60,6 +60,14 @@ namespace ttrss {
 			}
 		}
 
+		void Article::setMarked(bool marked) {
+			if (marked != _marked) {
+				_marked = marked;
+				emit markedChanged(_marked);
+				_manager->setMarkedStatus(_id, _marked);
+			}
+		}
+
 		void Article::setPublished(bool published) {
 			if (published != _published) {
 				_published = published;

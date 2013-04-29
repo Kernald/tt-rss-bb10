@@ -31,6 +31,7 @@ namespace ttrss {
 			Q_PROPERTY(QTime updatedTime READ getUpdatedTime CONSTANT);
 			Q_PROPERTY(QUrl link READ getLink CONSTANT);
 			Q_PROPERTY(bool unread READ isUnread WRITE setUnread NOTIFY unreadChanged);
+			Q_PROPERTY(bool marked READ isMarked WRITE setMarked NOTIFY markedChanged);
 			Q_PROPERTY(bool published READ isPublished WRITE setPublished NOTIFY publishedChanged);
 			Q_PROPERTY(QVariant feed READ getFeedVariant CONSTANT);
 			Q_PROPERTY(QVariant icon READ getIcon CONSTANT);
@@ -81,6 +82,7 @@ namespace ttrss {
 		Q_SIGNALS:
 			void contentChanged(QString newContent);
 			void unreadChanged(bool isUnread);
+			void markedChanged(bool isMarked);
 			void publishedChanged(bool isPublished);
 
 		private:
@@ -125,10 +127,6 @@ namespace ttrss {
 
 		inline bool Article::isMarked() const {
 			return _marked;
-		}
-
-		inline void Article::setMarked(bool marked) {
-			_marked = marked;
 		}
 
 		inline bool Article::isPublished() const {

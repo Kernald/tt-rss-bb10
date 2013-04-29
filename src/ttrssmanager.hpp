@@ -64,6 +64,7 @@ namespace ttrss {
 		void requestArticleDetails(data::Article* article);
 
 		void setUnreadStatus(unsigned int articleId, bool unreadStatus);
+		void setMarkedStatus(unsigned int articleId, bool markedStatus);
 		void setPublishedStatus(unsigned int articleId, bool publishedStatus);
 
 		void setIconsUrl(QString url);

@@ -49,7 +49,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
-                article.unread = ! article.unread
+                article.unread = !article.unread
             }
         }, // Keep unread
         ActionItem {
@@ -58,9 +58,18 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
-                article.published = ! article.published
+                article.published = !article.published
             }
         }, // Publish
+        ActionItem {
+            title: article.marked ? qsTr("Unstar") : qsTr("Star")
+            imageSource: article.marked ? "asset:///images/unstar.png" : "asset:///images/star.png"
+            ActionBar.placement: ActionBarPlacement.OnBar
+
+            onTriggered: {
+                article.marked = !article.marked
+            }
+        }, // Star
         InvokeActionItem {
             id: share
             query {

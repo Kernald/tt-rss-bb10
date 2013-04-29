@@ -122,6 +122,10 @@ namespace ttrss {
 		sendPacket(new packets::UpdateArticle(articleId, packets::UpdateArticle::UNREAD, unreadStatus, "", this, _currentPacketID++));
 	}
 
+	void TTRSSManager::setMarkedStatus(unsigned int articleId, bool markedStatus) {
+		sendPacket(new packets::UpdateArticle(articleId, packets::UpdateArticle::STARRED, markedStatus, "", this, _currentPacketID++));
+	}
+
 	void TTRSSManager::setPublishedStatus(unsigned int articleId, bool publishedStatus) {
 		sendPacket(new packets::UpdateArticle(articleId, packets::UpdateArticle::PUBLISHED, publishedStatus, "", this, _currentPacketID++));
 	}
