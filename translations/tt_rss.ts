@@ -7,6 +7,10 @@
         <source>All feeds</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Subscribe</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ttrss::TTRSSManager</name>

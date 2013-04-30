@@ -118,6 +118,12 @@ namespace ttrss {
 		loader->load();
 	}
 
+	void TTRSSManager::subscribe(QString url) {
+		Q_UNUSED(url);
+		// TODO:
+		qDebug() << "Subscription not implemented yet";
+	}
+
 	void TTRSSManager::setUnreadStatus(unsigned int articleId, bool unreadStatus) {
 		sendPacket(new packets::UpdateArticle(articleId, packets::UpdateArticle::UNREAD, unreadStatus, "", this, _currentPacketID++));
 	}

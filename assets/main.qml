@@ -2,6 +2,7 @@ import bb.cascades 1.0
 import bb.system 1.0
 import "CategoryTab"
 import "FeedsListPage"
+import "SubscriptionSheet"
 
 TabbedPane {
     id: tabPane
@@ -11,6 +12,15 @@ TabbedPane {
                 displaySettings();
             }
         }
+        actions: [
+            ActionItem {
+                title: qsTr("Subscribe")
+                imageSource: "asset:///images/subscribe.png"
+                onTriggered: {
+                    displaySubscriptionPage();
+                }
+            }
+        ]
     } // Menu.definition
     
     showTabsOnActionBar: false
@@ -51,12 +61,25 @@ TabbedPane {
         SystemToast {
             id: errorToast
             body: "Error"
-        } // Error toast
+        }, // Error toast
+        Sheet {
+            id: subscriptionSheet
+            SubscriptionSheet {
+                id: subscribe
+                onCancel: {
+                    subscriptionSheet.close();
+                }
+            }
+        } // Subscription page
     ] // attachedObjects
     
     function displaySettings() {
         var page = settingsPageDefinition.createObject();
         nav.push(page)
+    }
+    
+    function displaySubscriptionPage() {
+        subscriptionSheet.open();
     }
     
     function displayError(text) {

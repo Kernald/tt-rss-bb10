@@ -70,6 +70,8 @@ namespace ttrss {
 		void setIconsUrl(QString url);
 		void setFeedIcon(data::Feed* feed);
 
+		Q_INVOKABLE void subscribe(QString url);
+
 	Q_SIGNALS:
 		void workingStateChanged(bool working);
 		void networkError(QVariant error);
