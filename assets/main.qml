@@ -12,6 +12,11 @@ TabbedPane {
                 displaySettings();
             }
         }
+        helpAction: HelpActionItem {
+            onTriggered: {
+                displayHelp();
+            }
+        }
         actions: [
             ActionItem {
                 title: qsTr("Subscribe")
@@ -72,12 +77,16 @@ TabbedPane {
             }
         } // Subscription page
     ] // attachedObjects
-    
+
     function displaySettings() {
         var page = settingsPageDefinition.createObject();
         nav.push(page)
     }
-    
+
+    function displayHelp() {
+        // TODO: display help
+        console.log("Help not implemented yet");
+    }
     function displaySubscriptionPage() {
         subscriptionSheet.open();
     }
