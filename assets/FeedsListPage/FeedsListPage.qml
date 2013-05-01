@@ -42,4 +42,15 @@ Page {
             visible: _manager.working
         }
     } // Root container
+    actions: [
+        ActionItem {
+            title: qsTr("Refresh")
+            imageSource: "asset:///images/ic_refresh.png"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            enabled: !_manager.working
+            onTriggered: {
+                _manager.requestCategories();
+            }
+        } // Refresh
+    ] // Actions
 } // Page

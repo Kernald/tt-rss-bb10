@@ -33,8 +33,8 @@ namespace ttrss {
 															QUrl(mFeed.value("feed_url").toString()),
 															QList<data::Article*>(),
 															category);
-						category->addFeed(feed);
-						getManager()->addFeed(feed);
+						if (category->addFeed(feed))
+							getManager()->addFeed(feed);
 						getManager()->requestHeadlines(feed->getId());
 					} else {
 						qDebug() << "Received feed for unknown category" << _categoryId;

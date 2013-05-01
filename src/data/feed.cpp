@@ -42,13 +42,20 @@ namespace ttrss {
 			return ret;
 		}
 
-		void Feed::addArticle(Article* article) {
+		bool Feed::addArticle(Article* article) {
+			// Don't add the same article twice
+			QListIterator<data::Article*> i(_articles);
+			while (i.hasNext())
+				if (i.next()->getId() == article->getId())
+					return false;
+
 			unsigned int unread = unreadArticlesCount();
 			_articles.append(article);
 			if (article->isUnread()) {
 				emit unreadArticlesChanged(true);
 				emit unreadArticlesCountChanged(unread + 1);
 			}
+			return true;
 		}
 	}
 }

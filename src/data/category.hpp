@@ -34,7 +34,7 @@ namespace ttrss {
 			bool hasUnreadArticles() const;
 			unsigned int unreadArticlesCount() const;
 
-			void addFeed(Feed* feed);
+			bool addFeed(Feed* feed);
 
 		Q_SIGNALS:
 			void unreadArticlesChanged(bool hasUnreadArticles);

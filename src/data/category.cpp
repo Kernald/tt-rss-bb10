@@ -35,7 +35,13 @@ namespace ttrss {
 			return count;
 		}
 
-		void Category::addFeed(Feed* feed) {
+		bool Category::addFeed(Feed* feed) {
+			// Don't add the same feed twice
+			QListIterator<data::Feed*> i(_feeds);
+			while (i.hasNext())
+				if (i.next()->getId() == feed->getId())
+					return false;
+
 			unsigned int unread = unreadArticlesCount();
 			// TODO: intermediary slot to handle case where feed gets totally unread, but not the category
 			connect(feed, SIGNAL(unreadArticlesChanged(bool)), this, SIGNAL(unreadArticlesChanged(bool)));
@@ -45,6 +51,7 @@ namespace ttrss {
 				emit unreadArticlesChanged(true);
 				emit unreadArticlesCountChanged(unread + feed->unreadArticlesCount());
 			}
+			return true;
 		}
 	}
 }

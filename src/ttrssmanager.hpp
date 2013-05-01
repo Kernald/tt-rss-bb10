@@ -49,7 +49,7 @@ namespace ttrss {
 		QString sessionID() const;
 		void setSessionID(QString sessionID);
 
-		void requestCategories();
+		Q_INVOKABLE void requestCategories();
 		void addCategory(data::Category* category);
 		data::Category* getCategory(int categoryId) const;
 

@@ -44,8 +44,8 @@ namespace ttrss {
 																mHeadline.contains("content"),
 																mHeadline.value("link").toUrl(),
 																feed);
-					feed->addArticle(article);
-					getManager()->addArticle(article);
+					if (feed->addArticle(article))
+						getManager()->addArticle(article);
 				} else {
 					qDebug() << "Received article for unknown feed" << _feedId;
 				}

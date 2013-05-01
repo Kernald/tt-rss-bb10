@@ -54,6 +54,12 @@ namespace ttrss {
 	}
 
 	void TTRSSManager::addCategory(data::Category* category) {
+		// Don't add the same category twice
+		QListIterator<data::Category*> i(_categories);
+		while (i.hasNext())
+			if (i.next()->getId() == category->getId())
+				return;
+
 		_categories.append(category);
 		QVariant v;
 		v.setValue(qobject_cast<QObject*>(category));

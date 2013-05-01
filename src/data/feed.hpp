@@ -44,7 +44,7 @@ namespace ttrss {
 			unsigned int unreadArticlesCount() const;
 			QList<Article*> unreadArticles() const;
 
-			void addArticle(Article* article);
+			bool addArticle(Article* article);
 
 		Q_SIGNALS:
 			void unreadArticlesChanged(bool hasUnreadArticles);
