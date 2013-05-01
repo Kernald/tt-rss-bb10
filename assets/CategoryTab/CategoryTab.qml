@@ -5,4 +5,5 @@ Tab {
     title: category ? category.title : ""
     newContentAvailable: category ? category.hasUnreadArticles : false
     unreadContentCount: category ? category.unreadArticlesCount : 0
+    imageSource: "asset:///images/category.png"
 }

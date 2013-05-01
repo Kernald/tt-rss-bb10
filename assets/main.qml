@@ -104,5 +104,6 @@ TabbedPane {
     
     Tab {
         title: qsTr("All feeds")
+        imageSource: "asset:///images/all_categories.png"
     }
 } // TabbedPane
