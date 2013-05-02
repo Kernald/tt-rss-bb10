@@ -22,5 +22,6 @@ namespace ttrss {
 		connect(&_manager, SIGNAL(articleAdded(QObject*)), &_articleManager, SLOT(insert(QObject*)));
 		connect(&_manager, SIGNAL(feedAdded(QObject*)), &_feedManager, SLOT(insert(QObject*)));
 		app->setScene(root);
+		_manager.login();
 	}
 }

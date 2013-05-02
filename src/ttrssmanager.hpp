@@ -110,6 +110,8 @@ namespace ttrss {
 
 	inline void TTRSSManager::setLoginStatus(TTRSSManager::ELoginStatus loginStatus) {
 		_loginStatus = loginStatus;
+		if (_loginStatus == TTRSSManager::FAILED)
+			emit networkError(QVariant(tr("Login failed")));
 	}
 
 	inline QString TTRSSManager::sessionID() const {

@@ -30,5 +30,9 @@
         <source>Network error.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Login failed</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

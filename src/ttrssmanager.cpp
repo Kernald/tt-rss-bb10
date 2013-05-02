@@ -24,8 +24,6 @@ namespace ttrss {
 									_currentPacketID(0) {
 		connect(_networkAccessManager, SIGNAL(finished(QNetworkReply*)),
 				this, SLOT(requestFinished(QNetworkReply*)));
-
-		login();
 	}
 
 	TTRSSManager::~TTRSSManager() {
