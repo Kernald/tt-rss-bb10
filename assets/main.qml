@@ -31,6 +31,7 @@ TabbedPane {
     showTabsOnActionBar: false
     activePane: NavigationPane {
         id: nav
+        peekEnabled: false
         FeedsListPage {
             id: feedsPage
             onFeedClicked: {
