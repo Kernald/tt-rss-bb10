@@ -23,7 +23,7 @@ Page {
                     }
                 }
             ]
-            visible: !_manager.working
+            visible: !_manager.working && !_feedModel.empty
 
             onTriggered: {
                 if (indexPath.length > 1) {
@@ -41,6 +41,19 @@ Page {
             running: _manager.working
             visible: _manager.working
         }
+        
+        Label {
+            text: qsTr("Nothing to read")
+            visible: !_manager.working && _feedModel.empty
+            textStyle.textAlign: TextAlign.Center
+            verticalAlignment: VerticalAlignment.Center
+            horizontalAlignment: HorizontalAlignment.Center
+            textStyle.fontStyle: FontStyle.Italic
+            textStyle.fontWeight: FontWeight.W400
+            textStyle.fontSize: FontSize.Large
+            textStyle.color: Color.LightGray
+        } // Empty indicator
+    
     } // Root container
     actions: [
         ActionItem {
