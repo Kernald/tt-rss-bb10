@@ -9,6 +9,8 @@ namespace ttrss {
 
 		Q_OBJECT
 
+		Q_PROPERTY(bool empty READ isEmpty NOTIFY emptyChanged);
+
 	public:
 		ModelFilter(bb::cascades::DataModel *sourceModel, QObject *parent = 0);
 		virtual ~ModelFilter();
@@ -18,6 +20,11 @@ namespace ttrss {
 	    virtual bool hasChildren(const QVariantList& proxyIndexPath);
 	    virtual QVariant data(const QVariantList& proxyIndexPath);
 	    virtual QString itemType(const QVariantList& proxyIndexPath);
+
+	    bool isEmpty() const;
+
+	Q_SIGNALS:
+		void emptyChanged(bool isEmpty);
 
 	protected:
 	    virtual bool isSourceIndexFiltered(const QVariantList& sourceIndexPath) const = 0;

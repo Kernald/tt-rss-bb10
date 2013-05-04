@@ -36,8 +36,10 @@ namespace ttrss {
 	}
 
 	void ModelFilter::handleAdd(const QVariantList& sourceIndexPath) {
-		if (!isSourceIndexFiltered(sourceIndexPath))
+		if (!isSourceIndexFiltered(sourceIndexPath)) {
 			emit itemAdded(sourceToProxy(sourceIndexPath));
+			emit emptyChanged(false);
+		}
 	}
 
 	void ModelFilter::handleUpdate(const QVariantList& sourceIndexPath) {
@@ -46,8 +48,10 @@ namespace ttrss {
 	}
 
 	void ModelFilter::handleRemove(const QVariantList& sourceIndexPath) {
-		if (!isSourceIndexFiltered(sourceIndexPath))
+		if (!isSourceIndexFiltered(sourceIndexPath)) {
 			emit itemRemoved(sourceToProxy(sourceIndexPath));
+			emit emptyChanged(isEmpty());
+		}
 	}
 
 	int ModelFilter::childCount_impl(const QVariantList& proxyIndexPath) const {
@@ -87,6 +91,10 @@ namespace ttrss {
 	QString ModelFilter::itemType(const QVariantList& proxyIndexPath) {
 		bool ok;
 	    return _sourceDataModel->itemType(proxyToSource(proxyIndexPath, ok));
+	}
+
+	bool ModelFilter::isEmpty() const {
+		return childCount(QVariantList()) == 0;
 	}
 
 	void ModelFilter::fillMapping() {
