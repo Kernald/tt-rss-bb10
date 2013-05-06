@@ -8,39 +8,56 @@ Page {
         visibility: ChromeVisibility.Visible
     } // titleBar
     
-    ScrollView {
-        scrollViewProperties {
-            scrollMode: ScrollMode.Both
-            pinchToZoomEnabled: true
-            minContentScale: 0.75
-            maxContentScale: 5
+    Container {
+        layout: StackLayout {}
+
+        ProgressIndicator {
+            layoutProperties: StackLayoutProperties {
+                spaceQuota: -1
+            }
+            visible: webView.loading
+            toValue: 100
+            value: webView.loadProgress
+            horizontalAlignment: HorizontalAlignment.Fill
         }
         
-        onContentScaleChanged: {
-            webView.settings.viewport = {
-                "initial-scale": scale
-            }
-        }
-        
-        WebView {
-            id: webView
-            html: article.content
-            
-            settings.viewport: {
-                "initial-scale": 1.0
-            }
-            
-            onNavigationRequested: {
-                if (request.url == "local:///") {
-                    request.action = WebNavigationRequestAction.Accept;
-                } else {
-                    request.action = WebNavigationRequestAction.Ignore;
-                    invokeQuery.uri = request.url;
-                    invokeBrowser.trigger("bb.action.OPEN");
-                }
-            }
-        } // Web view
-    } // Scroll view
+        ScrollView {
+	    	layoutProperties: StackLayoutProperties {
+	    		spaceQuota: 1
+	    	}
+	        scrollViewProperties {
+	            scrollMode: ScrollMode.Both
+	            pinchToZoomEnabled: true
+	            minContentScale: 0.75
+	            maxContentScale: 5
+	        }
+	        
+	        onContentScaleChanged: {
+	            webView.settings.viewport = {
+	                "initial-scale": scale
+	            }
+	        }
+	        
+	        WebView {
+	            id: webView
+	            html: article.content
+	            
+	            settings.viewport: {
+	                "initial-scale": 1.0
+	            }
+	            
+	            onNavigationRequested: {
+	                if (request.url == "local:///") {
+	                    request.action = WebNavigationRequestAction.Accept;
+	                } else {
+	                    request.action = WebNavigationRequestAction.Ignore;
+	                    invokeQuery.uri = request.url;
+	                    invokeBrowser.trigger("bb.action.OPEN");
+	                }
+	            }
+	        } // Web view
+	    } // Scroll view
+    }
     
     actions: [
         ActionItem {
