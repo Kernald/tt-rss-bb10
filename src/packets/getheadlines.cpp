@@ -6,6 +6,7 @@
 #include "data/feed.hpp"
 
 #include <QtCore/QDebug>
+#include <QtGui/QTextDocument>
 
 namespace ttrss {
 	namespace packets {
@@ -31,9 +32,11 @@ namespace ttrss {
 					QList<QVariant> vLabels = mHeadline.value("labels").toList();
 					for (QList<QVariant>::ConstIterator it = vLabels.constBegin(), end = vLabels.constEnd(); it != end; ++it)
 						labels.append(it->toString());
+					QTextDocument title;
+					title.setHtml(mHeadline.value("title").toString());
 					data::Article* article = new data::Article(	getManager(),
 																mHeadline.value("id").toUInt(),
-																mHeadline.value("title").toString(),
+																title.toPlainText(),
 																labels,
 																mHeadline.value("unread").toBool(),
 																mHeadline.value("marked").toBool(),
