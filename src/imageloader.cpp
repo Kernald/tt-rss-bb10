@@ -42,7 +42,7 @@ namespace ttrss {
 					image.loadFromData(data);
 					image = image.scaled(120, 120, Qt::KeepAspectRatioByExpanding);
 					const QImage swappedImage = image.rgbSwapped();
-					const bb::ImageData imageData = bb::ImageData::fromPixels(swappedImage.bits(), bb::PixelFormat::RGBX, swappedImage.width(), swappedImage.height(), swappedImage.bytesPerLine());
+					const bb::ImageData imageData = bb::ImageData::fromPixels(swappedImage.bits(), bb::PixelFormat::RGBA_Premultiplied, swappedImage.width(), swappedImage.height(), swappedImage.bytesPerLine());
 
 					_image = bb::cascades::Image(imageData);
 					emit imageChanged();
