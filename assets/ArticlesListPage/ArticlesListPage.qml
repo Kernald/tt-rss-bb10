@@ -16,6 +16,20 @@ Page {
                     
                     ArticleListComponent {
                         article: ListItemData
+
+                        contextActions: [
+                            ActionSet {
+                                title: article.title
+                                ActionItem {
+                                    title: article.unread ? qsTr("Mark as read") : qsTr("Keep unread")
+                                    imageSource: article.unread ? "asset:///images/mark_as_read.png" : "asset:///images/keep_unread.png"
+
+                                    onTriggered: {
+                                        article.unread = !article.unread
+                                    }
+                                }
+                            }
+                        ]
                     }
                 },
                 ListItemComponent {
