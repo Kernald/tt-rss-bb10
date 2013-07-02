@@ -57,7 +57,7 @@ Container {
 	                    id: title
 	                    textStyle {
 	                        fontSize: FontSize.Large
-	                        fontWeight: FontWeight.W400
+	                        fontWeight: article.unread ? FontWeight.W400 : FontWeight.W100
 	                    }
 	
 	                    text: article.title
