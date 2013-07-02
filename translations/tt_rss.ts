@@ -34,5 +34,9 @@
         <source>Login failed</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SSL handshake failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

@@ -1,5 +1,7 @@
 #include "imageloader.hpp"
 
+#include "settings.hpp"
+
 #include <bb/ImageData>
 
 #include <QtCore/QUrl>
@@ -26,6 +28,8 @@ namespace ttrss {
 		QNetworkRequest request(url);
 
 		QNetworkReply* reply = netManager->get(request);
+		if (Settings::getValueFor("ignoreSslErrors", QVariant(false)).toBool())
+			reply->ignoreSslErrors();
 		connect(reply, SIGNAL(finished()), this, SLOT(onReplyFinished()));
 	}
 

@@ -155,7 +155,9 @@ namespace ttrss {
 		request.setRawHeader("Content-Type", "application/json");
 		request.setRawHeader("Content-Length", postDataSize);
 
-		_networkAccessManager->post(request, requestData);
+		QNetworkReply* reply = _networkAccessManager->post(request, requestData);
+		if (Settings::getValueFor("ignoreSslErrors", QVariant(false)).toBool())
+			reply->ignoreSslErrors();
 	}
 
 	void TTRSSManager::requestFinished(QNetworkReply* reply) {

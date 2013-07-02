@@ -58,7 +58,30 @@ Page {
                             _settings.saveValueFor(serverPassword.objectName, text);
                         }
                     }
-                } // Address
+                } // Password
+                Container {
+                    leftPadding: 40
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    layout: StackLayout {
+                        orientation: LayoutOrientation.LeftToRight
+
+                    }
+                    Label {
+                        text: qsTr("Ignore SSL errors")
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1.0
+
+                        }
+                    }
+                    ToggleButton {
+                        id: ignoreSslErrors
+                        objectName: "ignoreSslErrors"
+                        checked: _settings.getValueFor(objectName, false)
+                        onCheckedChanged: {
+                            _settings.saveValueFor(ignoreSslErrors.objectName, checked);
+                        }
+                    }
+                } // Ignore SSL errors
             } // Server settings
             Divider {}
             Container {
