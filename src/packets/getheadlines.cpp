@@ -34,6 +34,8 @@ namespace ttrss {
 						labels.append(it->toString());
 					QTextDocument title;
 					title.setHtml(mHeadline.value("title").toString());
+					QTextDocument excerpt;
+					excerpt.setHtml(mHeadline.value("excerpt").toString());
 					data::Article* article = new data::Article(	getManager(),
 																mHeadline.value("id").toUInt(),
 																title.toPlainText(),
@@ -43,7 +45,7 @@ namespace ttrss {
 																mHeadline.value("published").toBool(),
 																mHeadline.value("updated").toUInt(),
 																mHeadline.value("excerpt").toString(),
-																mHeadline.value("content").toString(),
+																excerpt.toPlainText(),
 																mHeadline.contains("content"),
 																mHeadline.value("link").toUrl(),
 																feed);
