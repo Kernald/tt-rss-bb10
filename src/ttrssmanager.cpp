@@ -199,6 +199,9 @@ namespace ttrss {
 		case QNetworkReply::HostNotFoundError:
 			errorMessage = tr("Host %1 not found.").arg(Settings::getValueFor("serverAddress", "").toString());
 			break;
+		case QNetworkReply::SslHandshakeFailedError:
+			errorMessage = tr("SSL handshake failed.");
+			break;
 		case QNetworkReply::ContentNotFoundError:
 			errorMessage = tr("%1 not found.").arg(Settings::getApiPath().toString());
 			break;
