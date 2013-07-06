@@ -27,8 +27,10 @@ namespace ttrss {
 			for (QList<QVariant>::ConstIterator it = lReply.constBegin(), end = lReply.constEnd(); it != end; ++it) {
 				QMap<QString, QVariant> mCategory = it->toMap();
 				data::Category* category = new data::Category(mCategory.value("id").toInt(), mCategory.value("title").toString(), QList<data::Feed*>());
-				getManager()->addCategory(category);
+				bool newCategory = getManager()->addCategory(category);
 				getManager()->requestFeeds(category->getId());
+				if (!newCategory)
+					delete category;
 			}
 		}
 

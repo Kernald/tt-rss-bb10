@@ -51,17 +51,18 @@ namespace ttrss {
 												_currentPacketID++));
 	}
 
-	void TTRSSManager::addCategory(data::Category* category) {
+	bool TTRSSManager::addCategory(data::Category* category) {
 		// Don't add the same category twice
 		QListIterator<data::Category*> i(_categories);
 		while (i.hasNext())
 			if (i.next()->getId() == category->getId())
-				return;
+				return false;
 
 		_categories.append(category);
 		QVariant v;
 		v.setValue(qobject_cast<QObject*>(category));
 		emit categoryAdded(v);
+		return true;
 	}
 
 	data::Category* TTRSSManager::getCategory(int categoryId) const {

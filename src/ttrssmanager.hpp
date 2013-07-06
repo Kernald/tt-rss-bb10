@@ -50,7 +50,7 @@ namespace ttrss {
 		void setSessionID(QString sessionID);
 
 		Q_INVOKABLE void requestCategories();
-		void addCategory(data::Category* category);
+		bool addCategory(data::Category* category);
 		data::Category* getCategory(int categoryId) const;
 
 		void requestFeeds(int categoryId);
