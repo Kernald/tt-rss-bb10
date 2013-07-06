@@ -28,6 +28,24 @@ Page {
                                         article.unread = !article.unread
                                     }
                                 }
+
+	                            ActionItem {
+                                    title: article.published ? qsTr("Unpublish") : qsTr("Publish")
+                                    imageSource: article.published ? "asset:///images/unpublish.png" : "asset:///images/publish.png"
+
+                                    onTriggered: {
+                                        article.published = !article.published
+                                    }
+                                }
+
+                                ActionItem {
+                                    title: article.marked ? qsTr("Unstar") : qsTr("Star")
+                                    imageSource: article.marked ? "asset:///images/unstar.png" : "asset:///images/star.png"
+
+                                    onTriggered: {
+                                        article.marked = !article.marked
+                                    }
+                                }
                             }
                         ]
                     }
