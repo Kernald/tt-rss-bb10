@@ -47,9 +47,12 @@ namespace ttrss {
 			bool addArticle(Article* article);
 
 		Q_SIGNALS:
-			void unreadArticlesChanged(bool hasUnreadArticles);
-			void unreadArticlesCountChanged(unsigned int unreadArticlesCount);
-			void iconChanged(QVariant icon);
+			void unreadArticlesChanged(bool hasUnreadArticles) const;
+			void unreadArticlesCountChanged(unsigned int unreadArticlesCount) const;
+			void iconChanged(QVariant icon) const;
+
+		private Q_SLOTS:
+			void notifyUnreadArticlesChanged() const;
 
 		private:
 			int				_id;

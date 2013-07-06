@@ -9,6 +9,9 @@ namespace ttrss {
 																										_feedUrl(feedUrl),
 																										_articles(articles),
 																										_category(category) {
+			foreach (Article* article, _articles) {
+				connect(article, SIGNAL(unreadChanged(bool)), this, SLOT(notifyUnreadArticlesChanged()));
+			}
 		}
 
 		Feed::Feed(const Feed& other) : QObject() {
@@ -50,12 +53,19 @@ namespace ttrss {
 					return false;
 
 			unsigned int unread = unreadArticlesCount();
+			connect(article, SIGNAL(unreadChanged(bool)), this, SLOT(notifyUnreadArticlesChanged()));
 			_articles.append(article);
 			if (article->isUnread()) {
 				emit unreadArticlesChanged(true);
 				emit unreadArticlesCountChanged(unread + 1);
 			}
 			return true;
+		}
+
+		void Feed::notifyUnreadArticlesChanged() const {
+			unsigned int size = unreadArticlesCount();
+			emit unreadArticlesChanged(size > 0);
+			emit unreadArticlesCountChanged(size);
 		}
 	}
 }
