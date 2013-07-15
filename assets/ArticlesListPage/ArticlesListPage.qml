@@ -21,28 +21,70 @@ Page {
                     ActionItem {
                         title: qsTr("Mark as read")
                         imageSource: "asset:///images/mark_as_read.png"
+                        
+                        onTriggered: {
+                            var selectionList = listView.selectionList();
+                            listView.clearSelection();
+                            for (var i = 0; i < selectionList.length; ++i)
+                            	_articleModel.data(selectionList[i]).unread = false;
+                        }
                     },
                     ActionItem {
                         title: qsTr("Keep unread")
                         imageSource: "asset:///images/keep_unread.png"
+
+                        onTriggered: {
+                            var selectionList = listView.selectionList();
+                            listView.clearSelection();
+                            for (var i = 0; i < selectionList.length; ++ i)
+                            	_articleModel.data(selectionList[i]).unread = true;
+                        }
                     },
 
                     ActionItem {
                         title: qsTr("Publish")
                         imageSource: "asset:///images/publish.png"
+
+                        onTriggered: {
+                            var selectionList = listView.selectionList();
+                            listView.clearSelection();
+                            for (var i = 0; i < selectionList.length; ++ i)
+                            	_articleModel.data(selectionList[i]).published = true;
+                        }
                     },
                     ActionItem {
                         title: qsTr("Unpublish")
                         imageSource: "asset:///images/unpublish.png"
+
+                        onTriggered: {
+                            var selectionList = listView.selectionList();
+                            listView.clearSelection();
+                            for (var i = 0; i < selectionList.length; ++ i)
+                            	_articleModel.data(selectionList[i]).published = false;
+                        }
                     },
 
                     ActionItem {
                         title: qsTr("Star")
                         imageSource: "asset:///images/star.png"
+
+                        onTriggered: {
+                            var selectionList = listView.selectionList();
+                            listView.clearSelection();
+                            for (var i = 0; i < selectionList.length; ++ i)
+                            	_articleModel.data(selectionList[i]).marked = true;
+                        }
                     },
                     ActionItem {
                         title: qsTr("Unstar")
                         imageSource: "asset:///images/unstar.png"
+
+                        onTriggered: {
+                            var selectionList = listView.selectionList();
+                            listView.clearSelection();
+                            for (var i = 0; i < selectionList.length; ++ i)
+                            	_articleModel.data(selectionList[i]).marked = false;
+                        }
                     }
                 ]
             }
