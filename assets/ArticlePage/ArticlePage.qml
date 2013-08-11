@@ -25,7 +25,11 @@ Page {
 	    	layoutProperties: StackLayoutProperties {
 	    		spaceQuota: 1
 	    	}
-	        scrollViewProperties {
+	    	
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
+            
+            scrollViewProperties {
 	            scrollMode: ScrollMode.Both
 	            pinchToZoomEnabled: true
 	            minContentScale: 0.75
@@ -37,8 +41,8 @@ Page {
 	                "initial-scale": scale
 	            }
 	        }
-	        
-	        WebView {
+            
+            WebView {
 	            id: webView
 	            html: article.content
 	            
