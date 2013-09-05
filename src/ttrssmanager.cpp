@@ -52,6 +52,10 @@ namespace ttrss {
 	}
 
 	bool TTRSSManager::addCategory(data::Category* category) {
+		// Ignore Special category
+		if (category->getId() == -1)
+			return false;
+
 		// Don't add the same category twice
 		QListIterator<data::Category*> i(_categories);
 		while (i.hasNext())
