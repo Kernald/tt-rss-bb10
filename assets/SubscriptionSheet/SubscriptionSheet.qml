@@ -2,6 +2,7 @@ import bb.cascades 1.0
 
 Page {
     signal cancel
+    signal accept (string feedUrl)
     
     titleBar: TitleBar {
         id: titleBar
@@ -17,15 +18,24 @@ Page {
 
         acceptAction: ActionItem {
             title: qsTr("OK")
-            enabled: false
+            // TODO: enable only when input is validated
+            enabled: true
             onTriggered: {
-                // TODO: get URL from textfield
-                _manager.subscribe("http://test");
-                // TODO: close
+                accept(feedUrl.text);
             }
         }
     }
     
     Container {
+        leftPadding: 20
+        rightPadding: 20
+        
+        Label {
+            text: qsTr("Feed url")
+        }
+        TextField {
+            id: feedUrl
+            inputMode: TextFieldInputMode.Url
+        }
     }
 }

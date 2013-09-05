@@ -75,6 +75,10 @@ TabbedPane {
                 onCancel: {
                     subscriptionSheet.close();
                 }
+                onAccept: {
+                    _manager.subscribe(feedUrl);
+                    subscriptionSheet.close();
+                }
             }
         } // Subscription page
     ] // attachedObjects
