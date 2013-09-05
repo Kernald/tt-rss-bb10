@@ -13,6 +13,7 @@
 #include "packets/getfeeds.hpp"
 #include "packets/getheadlines.hpp"
 #include "packets/login.hpp"
+#include "packets/subscribetofeed.hpp"
 #include "packets/updatearticle.hpp"
 
 #include <bb/data/JsonDataAccess>
@@ -128,9 +129,7 @@ namespace ttrss {
 	}
 
 	void TTRSSManager::subscribe(QString url) {
-		Q_UNUSED(url);
-		// TODO:
-		qDebug() << "Subscription not implemented yet";
+		sendPacket(new packets::SubscribeToFeed(url, this, _currentPacketID++));
 	}
 
 	void TTRSSManager::setUnreadStatus(unsigned int articleId, bool unreadStatus) {
