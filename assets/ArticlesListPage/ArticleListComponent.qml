@@ -6,6 +6,49 @@ Container {
     id: root
     layout: DockLayout {}
     horizontalAlignment: HorizontalAlignment.Fill
+    
+    ListItem.onSelectionChanged: {
+        if (selected)
+        	setSelected.play();
+        else 
+        	setUnselected.play();
+    }
+    
+    Container {
+        id: highlight
+        layout: DockLayout {}
+        horizontalAlignment: HorizontalAlignment.Fill
+        verticalAlignment: VerticalAlignment.Fill
+        opacity: 0.0
+        background: Color.create("#00A7DE")
+        topPadding: 4
+        bottomPadding: 4
+        leftPadding: 4
+        rightPadding: 4
+        
+        animations: [
+            FadeTransition {
+                id: setSelected
+                fromOpacity: 0.0
+                toOpacity: 1.0
+                duration: 200
+            },
+            FadeTransition {
+                id: setUnselected
+                fromOpacity: 1.0
+                toOpacity: 0.0
+                duration: 200
+            }
+        ]
+
+        Container {
+            id: innerHighlight
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
+            //opacity: 0.0
+            background: Color.create("#99DCF2")
+        }
+    }
 
     Container {
         id: main
