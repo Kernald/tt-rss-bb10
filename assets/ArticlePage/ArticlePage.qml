@@ -10,16 +10,6 @@ Page {
     
     Container {
         layout: StackLayout {}
-
-        ProgressIndicator {
-            layoutProperties: StackLayoutProperties {
-                spaceQuota: -1
-            }
-            visible: webView.loading
-            toValue: 100
-            value: webView.loadProgress
-            horizontalAlignment: HorizontalAlignment.Fill
-        }
         
         ScrollView {
 	    	layoutProperties: StackLayoutProperties {
@@ -60,7 +50,17 @@ Page {
 	                }
 	            }
 	        } // Web view
-	    } // Scroll view
+        } // Scroll view
+        
+        ProgressIndicator {
+            layoutProperties: StackLayoutProperties {
+                spaceQuota: -1
+            }
+            visible: webView.loading
+            toValue: 100
+            value: webView.loadProgress
+            horizontalAlignment: HorizontalAlignment.Fill
+        }
     }
     
     actions: [
