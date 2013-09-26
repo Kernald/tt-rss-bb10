@@ -25,6 +25,13 @@ stages of development.
 
 --------------
 
+## Translation
+
+ * English
+ * French
+
+--------------
+
 ## Screenshots
 
 ![Article view](https://kernald.github.io/tt-rss-bb10/img/screenshots/article.png)
