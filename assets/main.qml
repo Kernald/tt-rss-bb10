@@ -17,7 +17,7 @@ TabbedPane {
                 displayHelp();
             }
         }
-        actions: [
+        /*actions: [
             ActionItem {
                 title: qsTr("Subscribe")
                 imageSource: "asset:///images/subscribe.png"
@@ -25,7 +25,7 @@ TabbedPane {
                     displaySubscriptionPage();
                 }
             }
-        ]
+        ]*/
     } // Menu.definition
     
     showTabsOnActionBar: false
