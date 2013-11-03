@@ -166,9 +166,40 @@ lupdate_inclusion {
              $$quote($$BASEDIR/../src/*.cc) \
              $$quote($$BASEDIR/../src/*.cpp) \
              $$quote($$BASEDIR/../src/*.cxx) \
+             $$quote($$BASEDIR/../src/data/*.c) \
+             $$quote($$BASEDIR/../src/data/*.c++) \
+             $$quote($$BASEDIR/../src/data/*.cc) \
+             $$quote($$BASEDIR/../src/data/*.cpp) \
+             $$quote($$BASEDIR/../src/data/*.cxx) \
+             $$quote($$BASEDIR/../src/packets/*.c) \
+             $$quote($$BASEDIR/../src/packets/*.c++) \
+             $$quote($$BASEDIR/../src/packets/*.cc) \
+             $$quote($$BASEDIR/../src/packets/*.cpp) \
+             $$quote($$BASEDIR/../src/packets/*.cxx) \
              $$quote($$BASEDIR/../assets/*.qml) \
              $$quote($$BASEDIR/../assets/*.js) \
-             $$quote($$BASEDIR/../assets/*.qs)
+             $$quote($$BASEDIR/../assets/*.qs) \
+             $$quote($$BASEDIR/../assets/ArticlePage/*.qml) \
+             $$quote($$BASEDIR/../assets/ArticlePage/*.js) \
+             $$quote($$BASEDIR/../assets/ArticlePage/*.qs) \
+             $$quote($$BASEDIR/../assets/ArticlesListPage/*.qml) \
+             $$quote($$BASEDIR/../assets/ArticlesListPage/*.js) \
+             $$quote($$BASEDIR/../assets/ArticlesListPage/*.qs) \
+             $$quote($$BASEDIR/../assets/CategoryTab/*.qml) \
+             $$quote($$BASEDIR/../assets/CategoryTab/*.js) \
+             $$quote($$BASEDIR/../assets/CategoryTab/*.qs) \
+             $$quote($$BASEDIR/../assets/FeedsListPage/*.qml) \
+             $$quote($$BASEDIR/../assets/FeedsListPage/*.js) \
+             $$quote($$BASEDIR/../assets/FeedsListPage/*.qs) \
+             $$quote($$BASEDIR/../assets/SettingsPage/*.qml) \
+             $$quote($$BASEDIR/../assets/SettingsPage/*.js) \
+             $$quote($$BASEDIR/../assets/SettingsPage/*.qs) \
+             $$quote($$BASEDIR/../assets/SubscriptionSheet/*.qml) \
+             $$quote($$BASEDIR/../assets/SubscriptionSheet/*.js) \
+             $$quote($$BASEDIR/../assets/SubscriptionSheet/*.qs) \
+             $$quote($$BASEDIR/../assets/images/*.qml) \
+             $$quote($$BASEDIR/../assets/images/*.js) \
+             $$quote($$BASEDIR/../assets/images/*.qs)
 
     HEADERS +=  $$quote($$BASEDIR/../src/*.h) \
              $$quote($$BASEDIR/../src/*.h++) \
