@@ -6,3 +6,6 @@ LIBS   += -lbbdata -lbbsystem -lbb
 QT += network
 
 include(config.pri)
+
+TRANSLATIONS =  $$quote($${TARGET}.ts) \
+				$$quote($${TARGET}_fr.ts)
