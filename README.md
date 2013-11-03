@@ -1,5 +1,5 @@
-tt-rss-bb10
-===========
+Tiny Tiny Reader
+================
 
 This is a [tt-rss](http://tt-rss.org) client for BlackBerry 10. Still in early
 stages of development.
