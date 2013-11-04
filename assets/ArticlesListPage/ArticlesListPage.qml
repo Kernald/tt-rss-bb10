@@ -19,6 +19,7 @@ Page {
                 status: qsTr("None selected")
                 actions: [
                     ActionItem {
+                        id: actionMultiRead
                         title: qsTr("Mark as read")
                         imageSource: "asset:///images/mark_as_read.png"
                         
@@ -26,64 +27,69 @@ Page {
                             var selectionList = listView.selectionList();
                             listView.clearSelection();
                             for (var i = 0; i < selectionList.length; ++i)
-                            	_articleModel.data(selectionList[i]).unread = false;
+                            _articleModel.data(selectionList[i]).unread = false;
                         }
                     },
                     ActionItem {
+                        id: actionMultiUnread
                         title: qsTr("Keep unread")
                         imageSource: "asset:///images/keep_unread.png"
-
+                        
                         onTriggered: {
                             var selectionList = listView.selectionList();
                             listView.clearSelection();
                             for (var i = 0; i < selectionList.length; ++ i)
-                            	_articleModel.data(selectionList[i]).unread = true;
+                            _articleModel.data(selectionList[i]).unread = true;
                         }
                     },
-
+                    
                     ActionItem {
+                        id: actionMultiPublish
                         title: qsTr("Publish")
                         imageSource: "asset:///images/publish.png"
-
+                        
                         onTriggered: {
                             var selectionList = listView.selectionList();
                             listView.clearSelection();
                             for (var i = 0; i < selectionList.length; ++ i)
-                            	_articleModel.data(selectionList[i]).published = true;
+                            _articleModel.data(selectionList[i]).published = true;
                         }
                     },
                     ActionItem {
+                        id: actionMultiUnpublish
                         title: qsTr("Unpublish")
                         imageSource: "asset:///images/unpublish.png"
-
+                        
                         onTriggered: {
                             var selectionList = listView.selectionList();
                             listView.clearSelection();
                             for (var i = 0; i < selectionList.length; ++ i)
-                            	_articleModel.data(selectionList[i]).published = false;
+                            _articleModel.data(selectionList[i]).published = false;
                         }
                     },
-
+                    
                     ActionItem {
+                        id: actionMultiStar
                         title: qsTr("Star")
                         imageSource: "asset:///images/star.png"
-
+                        
                         onTriggered: {
                             var selectionList = listView.selectionList();
                             listView.clearSelection();
                             for (var i = 0; i < selectionList.length; ++ i)
-                            	_articleModel.data(selectionList[i]).marked = true;
+                            _articleModel.data(selectionList[i]).marked = true;
                         }
                     },
                     ActionItem {
+                        id: actionMultiUnstar
                         title: qsTr("Unstar")
                         imageSource: "asset:///images/unstar.png"
-
+                        
                         onTriggered: {
                             var selectionList = listView.selectionList();
                             listView.clearSelection();
                             for (var i = 0; i < selectionList.length; ++ i)
-                            	_articleModel.data(selectionList[i]).marked = false;
+                            _articleModel.data(selectionList[i]).marked = false;
                         }
                     }
                 ]
@@ -97,6 +103,37 @@ Page {
                 } else {
                     multiSelectHandler.status = qsTr("None selected");
                 }
+                
+                // Update available actions
+                var starred = false;
+                var unstarred = false;
+                var published = false;
+                var unpublished = false;
+                var read = false;
+                var unread = false;
+                for (var i = 0; i < selectionList().length; ++ i) {
+                    var elt = _articleModel.data(selectionList()[i]);
+                    if (elt.marked)
+                        starred = true;
+                    else
+                        unstarred = true;
+                    
+                    if (elt.published)
+                        published = true;
+                    else
+                        unpublished = true;
+                    
+                    if (elt.unread)
+                        unread = true;
+                    else
+                        read = true;
+                }
+                actionMultiUnstar.enabled = starred;
+                actionMultiStar.enabled = unstarred;
+                actionMultiUnpublish.enabled = published;
+                actionMultiPublish.enabled = unpublished;
+                actionMultiUnread.enabled = read;
+                actionMultiRead.enabled = unread;
             }
             
             listItemComponents: [
